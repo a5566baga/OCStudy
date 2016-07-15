@@ -194,6 +194,10 @@ int main(int argc, const char * argv[]) {
 >>>insertObject:  atIndex:
 >>>
 >>>addObject:
+>>* 其它操作:
+>>>replaceObjectAtIndex:1 withObject:替换对象
+>>>
+>>>exchangeObjectAtIndex:2 withObjectAtIndex:1 交换位置
 >>* 总结
       * 1.如果数组没有加类似<NSString *>这样的限制，取出的元素都是id类型
       * 2.如果数组添加了<NSString *>,那么就是要求存储的对象必须是字符串对象，取出的元素也是NSString型的.
