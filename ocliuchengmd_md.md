@@ -175,5 +175,11 @@ int main(int argc, const char * argv[]) {
 >>* 数组中可以用三种遍历，for、forin、enumerateObjectsUsingBlock
 
 >可变数组
+>
+>>* 可变数组是不可变数组的子类，可变数组可以调用不可变数组的方法。也就是可以对数组进行操作。
 >>
->>
+>>* 总结
+      * 1.如果数组没有加类似<NSString *>这样的限制，取出的元素都是id类型
+      * 2.如果数组添加了<NSString *>,那么就是要求存储的对象必须是字符串对象，取出的元素也是NSString型的.
+      * [注]
+      *      NSArray<类名 *>  NSMutableArray<类名 *>
