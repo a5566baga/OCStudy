@@ -205,10 +205,10 @@ int main(int argc, const char * argv[]) {
       *      NSArray<类名 *>  NSMutableArray<类名 *>
 
 ---
-## 字典
-## getter&setter方法
-## 扩展类与继承
-## 选择器
+## [字典](07-02.md)
+## [getter&setter方法](07-03.md)
+## [扩展类与继承](07-04.md)
+## [选择器](07-05.md)
 ## 内存管理
 ## Foundation/Foundation.h框架下基本类的使用
 ## Block的使用
