@@ -79,5 +79,82 @@
 
 ###单例模式
 #####main.h
+```
+#import <Foundation/Foundation.h>
+#import "Dog.h"
+
+void test(){
+    Dog *dog = [Dog defaultDog];
+    NSLog(@"test = %@ %p", [dog name],dog);
+    [dog setName:@"xiaohong"];
+}
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        Dog *dog2 = [Dog defaultDog];
+        [dog2 setName:@"dahuang"];
+        NSLog(@"first = %@ %p",[dog2 name], dog2);
+        
+        test();
+        NSLog(@"second = %@ %p",[dog2 name], dog2);
+    }
+    return 0;
+}
+```
 #####Singleton.h
-#####Singleton.m
+```
+#import <Foundation/Foundation.h>
+
+@interface Dog : NSObject
+{
+    NSString *_name;
+}
+
+//-(Dog*)init;
+//单例命名一般都是以 default 或是 share 的开头.
++(Dog*)defaultDog;
+-(void)setName:(NSString *)name;
+-(NSString *)name;
+
+@end
+```
+#####Singleton.
+```
+#import "Dog.h"
+
+//static 只初始化一次，有一个对其更改，就会变化
+@implementation Dog
+//*
++(Dog *)defaultDog{
+//    确保dog只会被创建一次
+    static Dog *dog = nil;
+    @synchronized(dog){//加入线程同步
+    if (dog == nil) {
+        dog = [[Dog alloc] init];
+    }
+ }
+    return dog;
+}
+
+ //*/
+//单例不是完整的
+/*
++(Dog *)defaultDog{
+    static Dog *dog = nil;
+    static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            dog = [[Dog alloc]init];
+        });
+    return dog;
+}
+ */
+-(void)setName:(NSString *)name{
+    _name = name;
+}
+
+-(NSString *)name{
+    return _name;
+}
+
+@end
+```
