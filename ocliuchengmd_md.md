@@ -211,7 +211,8 @@ int main(int argc, const char * argv[]) {
 ## [选择器](07-05.md)
 ## [内存管理](07-06.md)
 ## [Foundation/Foundation.h框架下基本类的使用](07-07.md)
-## [Block的使用](07-08.md)
-## [文件管理](07-11.md)
-## JSON
-## XML解析
+## [协议和代理](07-08.md)
+## [Block的使用](07-11.md)
+## [文件管理](07-12.md)
+## [JSON](07-13.md)
+## [XML解析](07-14.md)
