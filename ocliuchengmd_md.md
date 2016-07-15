@@ -37,6 +37,8 @@
         [person show];
 ```
 
+---
+
 ##构造方法
 ###格式
 >构造方法
@@ -51,6 +53,7 @@
 
 ![](init的格式.png)
 
+---
 ##类方法
 ###定义
 >类方法
@@ -158,3 +161,6 @@ int main(int argc, const char * argv[]) {
 
 @end
 ```
+---
+##数组
+###数组分为可变数组NSMutableArray和不可变数组NSArray
