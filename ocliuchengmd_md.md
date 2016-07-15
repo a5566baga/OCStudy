@@ -203,3 +203,6 @@ int main(int argc, const char * argv[]) {
       * 2.如果数组添加了<NSString *>,那么就是要求存储的对象必须是字符串对象，取出的元素也是NSString型的.
       * [注]
       *      NSArray<类名 *>  NSMutableArray<类名 *>
+
+---
+##字典
