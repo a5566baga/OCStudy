@@ -209,9 +209,9 @@ int main(int argc, const char * argv[]) {
 ## [getter&setter方法](07-03.md)
 ## [扩展类与继承](07-04.md)
 ## [选择器](07-05.md)
-## 内存管理
-## Foundation/Foundation.h框架下基本类的使用
-## Block的使用
-## 文件管理
+## [内存管理](07-06.md)
+## [Foundation/Foundation.h框架下基本类的使用](07-07.md)
+## [Block的使用](07-08.md)
+## [文件管理](07-11.md)
 ## JSON
 ## XML解析
