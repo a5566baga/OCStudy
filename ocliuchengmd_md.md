@@ -166,4 +166,10 @@ int main(int argc, const char * argv[]) {
 ###数组分为可变数组NSMutableArray和不可变数组NSArray
 >不可变数组
 >
+>>* 可以存储不同类对象
 >>
+>>* 打印一个对象，其实是打印的对象description方法的返回值
+>>
+>>* 让数组中存储相同的类型的对象 NSArray<NSString*>
+>>
+>>* 
