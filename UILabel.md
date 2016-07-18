@@ -50,4 +50,7 @@ label.font = [UIFont italicSystemFontOfSize:20];//倾斜
  ```
  label.adjustsFontSizeToFitWidth = YES;
  ```
- ####
+ ####对齐方式
+ ```
+ 
+ ```
