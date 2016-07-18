@@ -19,5 +19,12 @@
 >iPhone 6 Plus  5.5寸
  屏幕分辨率（1242 *2208） （0，0） （414，736） 宽 414 高736
  ##UILable的使用
- 
- 
+ ####创建一个label
+ ```
+ UILabel * label1 = [[UILabel
+alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
+ ```
+ ####把Label添加到视图
+ ```
+ [self.view addSubview:label1];
+ ```
