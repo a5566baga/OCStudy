@@ -90,7 +90,7 @@ label.font = [UIFont italicSystemFontOfSize:20];//倾斜
  ```
  ####圆角
  ```
- label.layer.borderColor = [[UIColor whiteColor] CGColor];
+label.layer.borderColor = [[UIColor whiteColor] CGColor];
 label.layer.borderWidth = 3.0;
 label.layer.cornerRadius = 10;
 //    超过的内容会切除掉
