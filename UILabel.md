@@ -46,4 +46,8 @@ orangeColor];
  label.font = [UIFont systemFontOfSize:40]; label.font = [UIFont boldSystemFontOfSize:20];//加粗
 label.font = [UIFont italicSystemFontOfSize:20];//倾斜
  ```
- 
+ ####自适应宽度
+ ```
+ label.adjustsFontSizeToFitWidth = YES;
+ ```
+ ####
