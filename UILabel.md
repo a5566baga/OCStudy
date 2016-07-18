@@ -85,5 +85,10 @@ label.font = [UIFont italicSystemFontOfSize:20];//倾斜
  ```
  ####阴影
  ```
+ label.shadowOffset = CGSizeMake(3, 5);
+ label.shadowColor = [UIColor blackColor];
+ ```
+ ####圆角
+ ```
  
  ```
