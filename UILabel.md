@@ -41,5 +41,9 @@ alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
  label.backgroundColor = [UIColor
 orangeColor];
  ```
- ####
+ ####设置字体大小
+ ```
+ label.font = [UIFont systemFontOfSize:40]; label.font = [UIFont boldSystemFontOfSize:20];//加粗
+label.font = [UIFont italicSystemFontOfSize:20];//倾斜
+ ```
  
