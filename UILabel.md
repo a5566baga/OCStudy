@@ -52,9 +52,34 @@ label.font = [UIFont italicSystemFontOfSize:20];//倾斜
  ```
  ####对齐方式
  ```
- 
+ //    对齐
+//    自然对齐
+    label.textAlignment = NSTextAlignmentNatural;
+//    右对齐
+    label.textAlignment = NSTextAlignmentRight;
+//    左对齐
+    label.textAlignment = NSTextAlignmentLeft;
+//    居中对齐
+    label.textAlignment = NSTextAlignmentCenter;
+//    在一个段落的最后一行自然对齐
+    label.textAlignment = NSTextAlignmentJustified;
  ```
  ####换行方式
  ```
- 
+ //    调整显示行数. 注：如果设置的是具体多少行，就是多少行。如果写0，那么是表示多行显示。
+    label.numberOfLines = 0;
+    /*
+     以单词为单位进行换行，多余的单词不显示
+     NSLineBreakByWordWrapping = 0,     	// Wrap at word boundaries, default
+     以字符为单位进行换行，多余的单词不显示
+     NSLineBreakByCharWrapping,		// Wrap at character boundaries
+     切除尾部内容，简单的换行方式，除最后一行都是以单词为单位进行换行，最后一行能显示多少显示多少
+     NSLineBreakByClipping,		// Simply clip
+     最后一行 前半部分不显示
+     NSLineBreakByTruncatingHead,	// Truncate at head of line: "...wxyz"
+     最后一行 后半部分不显示
+     NSLineBreakByTruncatingTail,	// Truncate at tail of line: "abcd..."
+     中间不显示
+     NSLineBreakByTruncatingMiddle	// Truncate middle of line:  "ab...yz"
+     */
  ```
