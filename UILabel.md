@@ -32,3 +32,14 @@ alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
  ```
  label2.text =@"hi,我是 个标签. ";
  ```
+ ####设置内容颜色
+ ```
+ label2.textColor = [UIColor whiteColor];
+ ```
+ ####设置标签背景颜色
+ ```
+ label.backgroundColor = [UIColor
+orangeColor];
+ ```
+ ####
+ 
