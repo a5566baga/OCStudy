@@ -28,4 +28,7 @@ alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
  ```
  [self.view addSubview:label1];
  ```
- ####
+ ####设置label内容
+ ```
+ label2.text =@"hi,我是 个标签. ";
+ ```
