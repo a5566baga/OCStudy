@@ -28,3 +28,4 @@ alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
  ```
  [self.view addSubview:label1];
  ```
+ ####
