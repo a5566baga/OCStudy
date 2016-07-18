@@ -54,3 +54,7 @@ label.font = [UIFont italicSystemFontOfSize:20];//倾斜
  ```
  
  ```
+ ####换行方式
+ ```
+ 
+ ```
