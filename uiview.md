@@ -312,7 +312,79 @@ UIView * green = [self.window viewWithTag:1000];
 
 ####具体代码实现——
 ```
+#import "AppDelegate.h"
 
+@interface AppDelegate ()
+@end
+
+@implementation AppDelegate
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = [[UIViewController alloc] init];
+    [self.window makeKeyAndVisible];
+    
+    [self createView];
+    return YES;
+}
+
+-(void)createView{
+    UIView * myView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+    myView.center = self.window.center;
+    myView.backgroundColor = [UIColor blackColor];
+    
+    myView.tag = 100;
+    
+    [self.window addSubview:myView];
+    
+    CABasicAnimation * animation = [CABasicAnimation animationWithKeyPath:@"transform.scale.y"];
+//    设置动画持续时间
+    animation.duration = 5;
+//    x的初始值
+    animation.fromValue = @1;
+//    x的动画终点值
+    animation.toValue = @3;
+//    设置延迟时间+2
+    animation.beginTime = CACurrentMediaTime()+2;
+//    设置代理
+    animation.delegate = self;
+//    添加key
+//    [animation setValue:@"yAnimation" forKey:@"myView"];
+    
+//    设置为自动回来，动画按原路径返回
+    animation.autoreverses = YES;
+    animation.repeatCount = 3;
+//    如果设置此属性为YES那么当动画结束时会自动删除这个动画
+    animation.removedOnCompletion = YES;
+    
+    [myView.layer addAnimation:animation forKey:@"myView"];
+    
+}
+
+-(void)animationDidStart:(CAAnimation *)anim{
+    NSLog(@"%s", __func__);
+//    NSLog(@"%@", [anim valueForKey:@"myView"]);
+    
+    UIView * myView = [self.window viewWithTag:100];
+//    通过key获取动画对象
+    if ([myView.layer animationForKey:@"myView"] == anim) {
+        NSLog(@"anim相同");
+//        移除一个动画
+//        [myView.layer removeAnimationForKey:@"myView"];
+    }
+    
+}
+
+-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+    UIView * myView = [self.window viewWithTag:100];
+    NSLog(@"%s", __func__);
+//    如果自动删除动画的时候，这个就不会打印
+    if ([myView.layer animationForKey:@"myView"] == anim) {
+        NSLog(@"————————anim相同");
+    }
+}
 ```
 ---
 ##UIView动画
