@@ -31,11 +31,12 @@ myView.bounds = CGRectMake(50, 0, 300, 300);
 >>myView.userInteractionEnabled = NO;  
 
 >获得视图的方法
->>*[myView viewWithTag:100];
->>*UIView * redView = [self.window viewWithTag:100];
->>*UIView * yellow = [self.window viewWithTag:1002];
->>*UIView * green = [self.window viewWithTag:1000];
-
+```
+[myView viewWithTag:100];
+UIView * redView = [self.window viewWithTag:100];
+UIView * yellow = [self.window viewWithTag:1002];
+UIView * green = [self.window viewWithTag:1000];
+```
 >获取所有的子视图
 >>NSArray * array = [self.window subviews];
 
