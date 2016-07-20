@@ -511,3 +511,31 @@ for (NSInteger i = 0; i < count; i++) {
   [array addObject:image];
 }
 ```
+###动画添加的图片集
+```
+self.imageView.animationImages = array;
+```
+###动画播放的时间设置
+```
+self.imageView.animationDuration = 0.08*array.count;
+```
+###动画重复次数
+```
+self.imageView.animationRepeatCount = 1;
+```
+###动画开始
+```
+ [self.imageView startAnimating];
+```
+###清除缓存
+```
+[self.imageView performSelector:@selector(setAnimationImages:) withObject:nil afterDelay:self.imageView.animationDuration+0.5];
+```
+####注意
+    1、要注意针对图片大小选择不同处理图片的方式。如果图片较小，则将图片放在缓存中，提高效率
+    >UIImage * image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%02ld.jpg", name, i]];
+    如果图片较大，则就不能使用这种方法，应用：
+    >NSString * path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_%02ld", name, i ] ofType:@"jpg"];
+     [UIImage imageWithContentsOfFile:path];
+     UIImage * image = [UIImage imageWithContentsOfFile:path];
+    2、注意缓存的清理
