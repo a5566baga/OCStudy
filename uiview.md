@@ -390,7 +390,13 @@ UIView * green = [self.window viewWithTag:1000];
 ##UIView动画
 ###普通的书写方式
 ####添加动画
+>[UIView beginAnimations:@"black" context:(__bridge void*)blackView ];
+
 ####手动添加监听器
+>[UIView setAnimationWillStartSelector:@selector(stratrssAnimation)];
+>
+>[UIView setAnimationDidStopSelector:@selector(stopAnimation)];
+
 ####设置速度
 ####动画执行速度
 ####自动回复
