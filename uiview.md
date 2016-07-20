@@ -428,4 +428,6 @@ UIView * green = [self.window viewWithTag:1000];
 ####提交动画
 >[UIView commitAnimations];
 
+####注意事项：
+
 ###利用block的书写方式
