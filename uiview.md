@@ -429,5 +429,8 @@ UIView * green = [self.window viewWithTag:1000];
 >[UIView commitAnimations];
 
 ####注意事项：
+    1、可以自己定义监听方法，此时创建的代理对象会调用自己写的方法。
+    2、如果没有自己添加方法，那么系统会调用代理对象的-(void)animationWillStart:(NSString *)animationID context:(void *)context;和-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag;
+    3、如果两者皆存在，那么自己定义的方法会覆盖掉系统的方法。
 
 ###利用block的书写方式
