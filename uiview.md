@@ -398,8 +398,14 @@ UIView * green = [self.window viewWithTag:1000];
 >[UIView setAnimationDidStopSelector:@selector(stopAnimation)];
 
 ####设置速度
+>[UIView setAnimationDuration:0.24];
+
 ####动画执行速度
+>[UIView setAnimationRepeatCount:100];
+
 ####自动回复
+>[UIView setAnimationRepeatAutoreverses:YES];
+
 ####延迟时间
 ####设置动画曲线
 ####设置代理
