@@ -46,4 +46,7 @@ UIView * green = [self.window viewWithTag:1000];
 
 ---
 ##视图的操作
-
+###位置的创建
+####center
+####bounds
+####frame
