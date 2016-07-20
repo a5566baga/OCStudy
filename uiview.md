@@ -48,5 +48,8 @@ UIView * green = [self.window viewWithTag:1000];
 ##视图的操作
 ###位置的创建
 ####center
+    center的位置在平移过会不会变
 ####bounds
+    bounds的位置大部分时间是(0,0)。如果定义，那么是对子视图的限制
 ####frame
+    
