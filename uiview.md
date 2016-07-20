@@ -32,3 +32,9 @@ myView.bounds = CGRectMake(50, 0, 300, 300);
 
 >获得视图的方法
 >>[myView viewWithTag:100];
+
+>获取所有的子视图
+>>NSArray * array = [self.window subviews];
+
+>获得父视图的方法
+>>[greenView superview]
