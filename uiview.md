@@ -539,3 +539,8 @@ self.imageView.animationRepeatCount = 1;
      [UIImage imageWithContentsOfFile:path];
      UIImage * image = [UIImage imageWithContentsOfFile:path];
     2、注意缓存的清理
+    
+####全部代码展示：
+```
+
+```
