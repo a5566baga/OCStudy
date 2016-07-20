@@ -161,3 +161,5 @@ UIView * green = [self.window viewWithTag:1000];
 
 ####插入视图，在某视图的上方
 >[redView insertSubview:yellow aboveSubview:green];
+
+---
