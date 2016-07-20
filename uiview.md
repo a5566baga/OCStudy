@@ -413,7 +413,7 @@ UIView * green = [self.window viewWithTag:1000];
 >[UIView setAnimationCurve:UIViewAnimationCurveLinear];
 
 >动画展示的几种方式
-    >>在开头和结尾的时候慢
+     >>在开头和结尾的时候慢
      UIViewAnimationCurveEaseInOut,         // slow at beginning and end
      在开始的时候慢
      UIViewAnimationCurveEaseIn,            // slow at beginning
@@ -423,6 +423,9 @@ UIView * green = [self.window viewWithTag:1000];
      UIViewAnimationCurveLinear
 
 ####设置代理
+>[UIView setAnimationDelegate:self];
+
 ####提交动画
+>[UIView commitAnimations];
 
 ###利用block的书写方式
