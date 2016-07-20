@@ -179,7 +179,8 @@ UIView * green = [self.window viewWithTag:1000];
      上边不变，下面自适应
      UIViewAutoresizingFlexibleBottomMargin = 1 << 5
 ####使用方式
->yellowView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    yellowView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
 ---
 ##自定义UIView
 ---
