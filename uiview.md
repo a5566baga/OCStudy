@@ -483,3 +483,17 @@ UIViewAnimationOptionTransitionFlipFromBottom  = 7 << 20,
         }];
     }];
 ```
+####动画创建Demo3
+#####Duration 动画时间 ；delay 延迟时间 ; Damping 反弹（0—1）值越小，弹性越大; Velocity;options 可以设定动画的曲线，设置一些特效等等。
+```
+[UIView animateWithDuration:3 delay:2 usingSpringWithDamping:0.2 initialSpringVelocity:3 options: UIViewAnimationOptionCurveEaseInOut animations:^{
+        blackView.frame = CGRectMake(120, 300, 200, 200);
+        blackView.alpha = 1;
+        
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:3 animations:^{
+                        blackView.transform = CGAffineTransformIdentity;
+                        blackView.alpha = 1;
+                    }];
+    }];
+```
