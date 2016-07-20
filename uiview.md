@@ -311,7 +311,9 @@ UIView * green = [self.window viewWithTag:1000];
 >[myView.layer removeAnimationForKey:@"myView"]
 
 ####具体代码实现——
+```
 
+```
 ---
 ##UIView动画
 ###普通的书写方式
