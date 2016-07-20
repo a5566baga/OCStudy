@@ -497,3 +497,14 @@ UIViewAnimationOptionTransitionFlipFromBottom  = 7 << 20,
                     }];
     }];
 ```
+---
+##UIImageView的使用
+###创建
+```
+self.imageView = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+self.imageView.image = [UIImage imageNamed:@"eat_00.jpg"];
+```
+###添加一组图片的方式：可以通过数组接收图片的名字，然后执行
+```
+
+```
