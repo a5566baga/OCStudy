@@ -17,4 +17,18 @@ myView.bounds = CGRectMake(50, 0, 300, 300);
 
 [self.window addSubview:myView];
 ```
-##
+##当子视图超出父视图部分的操作
+>减去子视图超出的部分
+>>myView.clipsToBounds = YES;  
+
+>透明度会对子视图产生影响
+>>myView.alpha = 0.1;  透明度会对子视图产生影响
+
+>隐藏设置也会对子视图产生影响
+>>myView.hidden = YES; 
+
+>父视图内子视图的不会响应。若为YES的时候，子视图超出父视图部分也不会响应。注：UILabel和UIImageView的事件响应开关，是view.userInteractionEnabled = NO。
+>>myView.userInteractionEnabled = NO;  
+
+>获得视图的方法
+>>[myView viewWithTag:100];
