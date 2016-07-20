@@ -185,6 +185,76 @@ UIView * green = [self.window viewWithTag:1000];
     [btn addTarget:self action:@selector(transformShape:) forControlEvents:UIControlEventTouchUpInside];
 ---
 ##自定义UIView
+###根据不同的需求来继承UIView类，重写方法
+####1、定义要写的控件属性
+```
+#import <UIKit/UIKit.h>
+
+@interface InforView : UIView
+
+@property(nonatomic, strong)UILabel * titleLabel;
+@property(nonatomic, strong)UILabel * detailLabel;
+
+-(void)setImage:(UIImage *)image;
+
+@end
+```
+####2、不需要外界访问的属性要写在匿名类中
+```
+#import "InforView.h"
+
+@interface InforView()
+
+@property(nonatomic, strong)UIImageView * imageView;
+
+@end
+
+@implementation InforView
+
+-(void)setImage:(UIImage *)image{
+    if (self.imageView != nil) {
+        self.imageView.image = image;
+    }
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+//    设置成员对象的frame值时最好写在layoutSubviews方法中
+    self = [super initWithFrame:frame];
+    if (self) {
+        _imageView = [[UIImageView alloc] init];
+        _imageView.backgroundColor = [UIColor grayColor];
+        [self addSubview:_imageView];
+        
+        _titleLabel = [[UILabel alloc] init];
+        _titleLabel.backgroundColor = [UIColor blueColor];
+        
+        _detailLabel = [[UILabel alloc] init];
+         _detailLabel.backgroundColor = [UIColor blueColor];
+        
+        [self addSubview:self.titleLabel];
+        [self addSubview:self.detailLabel];
+    }
+    return self;
+}
+
+//这个方法，是当所有对于对象所修饰的方法结束后调用此方法。
+-(void)layoutSubviews{
+    float margin = 8;
+    float leftmargin = 2;
+    _imageView.frame = CGRectMake(leftmargin, margin, CGRectGetWidth(self.frame)/3.0, CGRectGetHeight(self.frame)-2*margin);
+    
+    float height = (CGRectGetHeight(self.frame)-3*margin)/2;
+    float width = CGRectGetWidth(self.frame)/3.0*2 - 3*leftmargin ;
+    float x = CGRectGetWidth(self.frame)/3.0 + 2*leftmargin;
+    _titleLabel.frame = CGRectMake(x, margin, width, height);
+    
+    _detailLabel.frame = CGRectMake(x, 2*margin+height, width, height);
+
+}
+
+@end
+```
 ---
 ##CABasicAnimation动画
 ---
