@@ -180,7 +180,9 @@ UIView * green = [self.window viewWithTag:1000];
      UIViewAutoresizingFlexibleBottomMargin = 1 << 5
 ####使用方式
     yellowView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
+####注意：
+#####要添加button的target
+    [btn addTarget:self action:@selector(transformShape:) forControlEvents:UIControlEventTouchUpInside];
 ---
 ##自定义UIView
 ---
