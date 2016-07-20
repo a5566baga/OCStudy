@@ -134,3 +134,11 @@ UIView * green = [self.window viewWithTag:1000];
 
 >>一直旋转
 >>>myView.transform = CGAffineTransformRotate(myView.transform, M_PI_4/2.0);
+
+>>利用公式完成缩放、平移、旋转
+>>>myView.transform = CGAffineTransformMake(0.5, 0, 33, 22, 2, 3);
+
+>>形变恢复
+>>>myView.transform = CGAffineTransformIdentity;
+
+
