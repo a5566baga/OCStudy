@@ -141,4 +141,23 @@ UIView * green = [self.window viewWithTag:1000];
 >>形变恢复
 >>>myView.transform = CGAffineTransformIdentity;
 
+---
+##改变视图位置关系
+>[redView exchangeSubviewAtIndex:0 withSubviewAtIndex:2];
+插入视图进入某个位置，可以改变父子视图关系
 
+>[yellow insertSubview:green atIndex:0];
+    
+####前置视图
+>[redView bringSubviewToFront:green];
+
+####后置视图
+>[redView sendSubviewToBack:yellow];
+
+####移除视图
+>[yellow removeFromSuperview];
+>
+>[button removeFromSuperview];
+
+####插入视图，在某视图的上方
+>[redView insertSubview:yellow aboveSubview:green];
