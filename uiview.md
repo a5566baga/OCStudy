@@ -255,6 +255,13 @@ UIView * green = [self.window viewWithTag:1000];
 
 @end
 ```
+####注意：
+>在用init初始化view的时候，如果没有用intiWithFrame方法，只用init的话,那么也会调用intiWithFrame方法，只不过没有给大小赋值。
+>
+>frame的值是一定要赋予的，只有这样才能创建出来可用的控件
+>
+>对于
+
 ---
 ##CABasicAnimation动画
 ---
