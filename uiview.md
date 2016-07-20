@@ -542,5 +542,200 @@ self.imageView.animationRepeatCount = 1;
     
 ####全部代码展示：
 ```
+#import "AppDelegate.h"
 
+@interface AppDelegate ()
+
+@property(nonatomic, strong)UIImageView * imageView;
+
+@end
+
+@implementation AppDelegate
+
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = [[UIViewController alloc] init];
+    [self.window makeKeyAndVisible];
+
+    [self createUIImageView];
+    return YES;
+}
+
+-(void)createUIImageView{
+//    创建UIImageView
+    self.imageView = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    self.imageView.backgroundColor = [UIColor orangeColor];
+    self.imageView.image = [UIImage imageNamed:@"eat_00.jpg"];
+    
+    //    创建fartButton
+    UIButton * fartButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 535, 40, 40)];
+    [fartButton setBackgroundImage:[UIImage imageNamed:@"fart"] forState:UIControlStateNormal];
+    [fartButton addTarget:self action:@selector(fartAnamation:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //    创建pieButton
+    UIButton * pieButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 500, 40, 40)];
+    [pieButton setBackgroundImage:[UIImage imageNamed:@"pie"] forState:UIControlStateNormal];
+    [pieButton addTarget:self action:@selector(pieAnamation:) forControlEvents:UIControlEventTouchUpInside];
+    
+//    创建 eatbutton
+    UIButton * eatButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 570, 40, 40)];
+    [eatButton setBackgroundImage:[UIImage imageNamed: @"eat"] forState:UIControlStateNormal];
+    [eatButton addTarget:self action:@selector(eatAnamation:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //    创建drinkButton
+    UIButton * drinkButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 605, 40, 40)];
+    [drinkButton setBackgroundImage:[UIImage imageNamed: @"drink"] forState:UIControlStateNormal];
+    [drinkButton addTarget:self action:@selector(drinkAnamation:) forControlEvents:UIControlEventTouchUpInside];
+    
+//    创建scratchButton
+    UIButton * scratchButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 640, 40, 40)];
+    [scratchButton setBackgroundImage:[UIImage imageNamed:@"scratch"] forState:UIControlStateNormal];
+    [scratchButton addTarget:self action:@selector(scratchAnamation:) forControlEvents:UIControlEventTouchUpInside];
+    
+//    创建cymbalButton
+    UIButton * cymbalButton = [[UIButton alloc]initWithFrame:CGRectMake(10, 675, 40, 40)];
+    [cymbalButton setBackgroundImage:[UIImage imageNamed:@"cymbal"] forState:UIControlStateNormal];
+    [cymbalButton addTarget:self action:@selector(cymbalAnamation:) forControlEvents:UIControlEventTouchUpInside];
+    
+//    knockoutButton
+    UIButton * knockoutButton = [[UIButton alloc] initWithFrame:CGRectMake(180, 130, 50, 50)];
+    knockoutButton.backgroundColor = [UIColor clearColor];
+    [knockoutButton addTarget:self action:@selector(knockoutAnamation) forControlEvents:UIControlEventTouchUpInside];
+    
+//    footrightButton
+    UIButton * footrightButton = [[UIButton alloc] initWithFrame:CGRectMake(150, 665, 50, 50)];
+    footrightButton.backgroundColor = [UIColor clearColor];
+    [footrightButton addTarget:self action:@selector(footRightAnamation) forControlEvents:UIControlEventTouchUpInside];
+    
+//    footleftButton
+    UIButton * footrileftButton = [[UIButton alloc] initWithFrame:CGRectMake(210, 665, 50, 50)];
+    footrileftButton.backgroundColor = [UIColor clearColor];
+    [footrileftButton addTarget:self action:@selector(footLetfAnamation) forControlEvents:UIControlEventTouchUpInside];
+//    angryButton
+    UIButton * angryButton1 = [[UIButton alloc] initWithFrame:CGRectMake(80, 130, 55, 60)];
+    angryButton1.backgroundColor = [UIColor clearColor];
+    [angryButton1 addTarget:self action:@selector(angryAnamation) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton * angryButton2 = [[UIButton alloc] initWithFrame:CGRectMake(280, 130, 55, 60)];
+    angryButton2.backgroundColor = [UIColor clearColor];
+    [angryButton2 addTarget:self action:@selector(angryAnamation) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    [self.window addSubview: self.imageView];
+    [self.window addSubview:eatButton];
+    [self.window addSubview:drinkButton];
+    [self.window addSubview:scratchButton];
+    [self.window addSubview:cymbalButton];
+    [self.window addSubview:fartButton];
+    [self.window addSubview:pieButton];
+    [self.window addSubview:knockoutButton];
+    [self.window addSubview:footrightButton];
+    [self.window addSubview:footrileftButton];
+    [self.window addSubview:angryButton1];
+    [self.window addSubview:angryButton2];
+}
+
+-(void)footLetfAnamation{
+    [self animationName:@"footLeft" count:30];
+}
+
+-(void)footRightAnamation{
+    [self animationName:@"footRight" count:29];
+}
+
+-(void)angryAnamation{
+    [self animationName:@"angry" count:26];
+}
+
+-(void)knockoutAnamation{
+    [self animationName:@"knockout" count:81];
+}
+
+-(void)pieAnamation:(UIButton *)btn{
+    [self animationName:@"pie" count:24];
+}
+
+-(void)fartAnamation:(UIButton *)btn{
+    [self animationName:@"fart" count:28];
+}
+
+-(void)cymbalAnamation:(UIButton *)btn{
+    [self animationName:@"cymbal" count:13];
+}
+-(void)eatAnamation:(UIButton *)btn{
+    [self animationName:@"eat" count:40];
+}
+
+
+-(void)drinkAnamation:(UIButton *)btn{
+    [self animationName:@"drink" count:81];
+}
+
+-(void)scratchAnamation:(UIButton *)btn{
+    [self animationName:@"scratch" count:56];
+}
+
+-(void)animationName:(NSString *)name count:(NSUInteger)count{
+    
+    NSMutableArray * array = [NSMutableArray array];
+    for (NSInteger i = 0; i < count; i++) {
+        
+        NSString * path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_%02ld", name, i ] ofType:@"jpg"];
+        [UIImage imageWithContentsOfFile:path];
+        
+//        直接使用你name的方式加载图片是会有缓存的。程序员还无法手动控制。
+//        适合存放较小的图片，
+//        UIImage * image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%02ld.jpg", name, i]];
+//        [array addObject:image];
+//        利用路径的方法是不会有缓存的。执行效率不如有缓存的方法高。适合存放较大的图片资源。
+        
+        UIImage * image = [UIImage imageWithContentsOfFile:path];
+        [array addObject:image];
+    }
+    self.imageView.animationImages = array;
+    self.imageView.animationDuration = 0.08*array.count;
+    self.imageView.animationRepeatCount = 1;
+    
+    [self.imageView startAnimating];
+    
+//    [self performSelector:@selector(clear) withObject:nil afterDelay:0.08*array.count+1];
+    
+    [self.imageView performSelector:@selector(setAnimationImages:) withObject:nil afterDelay:self.imageView.animationDuration+0.5];
+}
+
+//-(void)clear{
+//    self.imageView.animationImages = nil;
+//    NSLog(@"%s", __func__);
+//}
+
+
+
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+@end
 ```
