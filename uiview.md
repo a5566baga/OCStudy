@@ -462,7 +462,7 @@ UIViewAnimationOptionTransitionFlipFromTop     = 6 << 20,
 UIViewAnimationOptionTransitionFlipFromBottom  = 7 << 20,
 ```
 ####动画创建Demo1
-#####Duration：是动画的时间；animations 变化；completion 动画结束内容。
+#####Duration：是动画的时间；animations 变化。
 ```
 [UIView animateWithDuration:3 animations:^{
             blackView.center = self.window.center;
@@ -470,7 +470,16 @@ UIViewAnimationOptionTransitionFlipFromBottom  = 7 << 20,
         }];
 ```
 ####动画创建Demo2
-#####
+#####Duration：是动画的时间；animations 变化；completion 动画结束内容。
 ```
-
+[UIView animateWithDuration:3 animations:^{
+        blackView.transform = CGAffineTransformScale(blackView.transform, 2, 2);
+    } completion:^(BOOL finished) {
+        //        blackView.transform = CGAffineTransformIdentity;
+        //        blackView.alpha = 1;
+        [UIView animateWithDuration:3 animations:^{
+            blackView.transform = CGAffineTransformIdentity;
+            blackView.alpha = 1;
+        }];
+    }];
 ```
