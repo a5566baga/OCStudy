@@ -407,7 +407,21 @@ UIView * green = [self.window viewWithTag:1000];
 >[UIView setAnimationRepeatAutoreverses:YES];
 
 ####延迟时间
+>[UIView setAnimationDelay:2];
+
 ####设置动画曲线
+>[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+
+>动画展示的几种方式
+    >>在开头和结尾的时候慢
+     UIViewAnimationCurveEaseInOut,         // slow at beginning and end
+     在开始的时候慢
+     UIViewAnimationCurveEaseIn,            // slow at beginning
+     在结尾的时候慢
+     UIViewAnimationCurveEaseOut,           // slow at end
+     线性运动，匀速
+     UIViewAnimationCurveLinear
+
 ####设置代理
 ####提交动画
 
