@@ -462,6 +462,15 @@ UIViewAnimationOptionTransitionFlipFromTop     = 6 << 20,
 UIViewAnimationOptionTransitionFlipFromBottom  = 7 << 20,
 ```
 ####动画创建Demo1
+#####Duration：是动画的时间；animations 变化；completion 动画结束内容。
+```
+[UIView animateWithDuration:3 animations:^{
+            blackView.center = self.window.center;
+            blackView.alpha = 0.1;
+        }];
+```
+####动画创建Demo2
+#####
 ```
 
 ```
