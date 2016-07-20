@@ -143,8 +143,8 @@ UIView * green = [self.window viewWithTag:1000];
 
 ---
 ##改变视图位置关系
+####插入视图进入某个位置，可以改变父子视图关系
 >[redView exchangeSubviewAtIndex:0 withSubviewAtIndex:2];
-插入视图进入某个位置，可以改变父子视图关系
 
 >[yellow insertSubview:green atIndex:0];
     
