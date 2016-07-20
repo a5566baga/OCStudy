@@ -163,3 +163,12 @@ UIView * green = [self.window viewWithTag:1000];
 >[redView insertSubview:yellow aboveSubview:green];
 
 ---
+##停靠方式
+---
+##自定义UIView
+---
+##CABasicAnimation动画
+---
+##UIView动画
+###普通的书写方式
+###利用block的书写方式
