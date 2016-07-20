@@ -506,5 +506,8 @@ self.imageView.image = [UIImage imageNamed:@"eat_00.jpg"];
 ```
 ###添加一组图片的方式：可以通过数组接收图片的名字，然后执行
 ```
-
+for (NSInteger i = 0; i < count; i++) {
+  UIImage * image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%02ld.jpg", name, i]];
+  [array addObject:image];
+}
 ```
