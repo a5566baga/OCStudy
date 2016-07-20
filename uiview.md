@@ -52,4 +52,8 @@ UIView * green = [self.window viewWithTag:1000];
 ####bounds
     bounds的位置大部分时间是(0,0)。如果定义，那么是对子视图的限制
 ####frame
-    
+    frame大小改变是会改变的
+#####代码展示
+```
+
+```
