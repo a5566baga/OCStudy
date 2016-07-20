@@ -260,7 +260,7 @@ UIView * green = [self.window viewWithTag:1000];
 >
 >frame的值是一定要赋予的，只有这样才能创建出来可用的控件
 >
->对于
+>对于属性中的控件要重写-(void)layoutSubviews;方法，在里面进行创建。因为在外面创建当前对象后，在没有
 
 ---
 ##CABasicAnimation动画
