@@ -55,5 +55,82 @@ UIView * green = [self.window viewWithTag:1000];
     frame大小改变是会改变的
 #####代码展示
 ```
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController = [[UIViewController alloc] init];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    [self createView];
+    return YES;
+}
 
+-(void)createView{
+    UIView * myView = [[UIView alloc] init];
+//    frame的point坐标是相对是父视图的位置。
+    myView.frame = CGRectMake(60, 100, 300, 300);
+    myView.backgroundColor = [UIColor orangeColor];
+    [self.window addSubview:myView];
+//    改变center值。frame会变吗？会改变。
+//    bounds值会改变吗？一个view在没设置bounds值前，bounds的(x, y)大部分都是(0, 0)
+    myView.center = self.window.center;
+    myView.tag = 100;
+//    对bounds的修改不影响当前对象。但会修改当前对象的大小
+//    注：bounds的(x, y)是设置的view左上角起始位置是多少。
+    myView.bounds = CGRectMake(-50, -50, 300, 300);
+    NSLog(@"myView.center  \n%@", NSStringFromCGPoint(myView.center));
+    NSLog(@"myView.frame  \n%@", NSStringFromCGRect( myView.frame));
+    NSLog(@"myView.bounds  \n%@", NSStringFromCGRect( myView.bounds));
+//
+//    UIView * secondView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+//    secondView.backgroundColor = [UIColor purpleColor];
+//    [myView addSubview:secondView];
+
+//    视图的形变 CGAffineTransform。平移不会改变视图的bounds还有和center的值。只会改变frame的值。左上角是基本点。
+//    myView.transform = CGAffineTransformMakeTranslation(100, 100);
+    
+    UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(100, 40, 80, 30)];
+    [btn setTitle:@"变型" forState:UIControlStateNormal];
+    btn.backgroundColor = [UIColor blueColor];
+    [btn addTarget:self action:@selector(shapeTransform) forControlEvents:UIControlEventTouchUpInside];
+    [self.window addSubview:btn];
+    
+    
+}
+
+-(void)shapeTransform{
+    UIView * myView = (UIView *)[self.window viewWithTag:100 ];
+//    myView.transform = CGAffineTransformMakeTranslation(-70, 200);
+//    放大或是缩小时，是不会在一侧发生的。只针对原视图只实现一次。
+//    myView.transform = CGAffineTransformMakeScale(0.4, 0.5);
+//    旋转，center和bounds值不变，frame值改变。整数顺时针转的。
+//    myView.transform  = CGAffineTransformMakeRotation(M_PI_4);
+//    一直旋转
+//    myView.transform = CGAffineTransformRotate(myView.transform, M_PI_4/2.0);
+    NSLog(@"=========================");
+    NSLog(@"myView.center  \n%@", NSStringFromCGPoint(myView.center));
+    NSLog(@"myView.frame  \n%@", NSStringFromCGRect( myView.frame));
+    NSLog(@"myView.bounds  \n%@", NSStringFromCGRect( myView.bounds));
+
+//    利用公式完成缩放、平移、旋转
+    myView.transform = CGAffineTransformMake(0.5, 0, 33, 22, 2, 3);
+    
+    static BOOL flg = NO;
+    if (flg) {
+//        会让形变恢复
+        myView.transform = CGAffineTransformIdentity;
+    }
+    flg = !flg;
+    
+}
 ```
+>注意：
+>>放大或是缩小时，是不会在一侧发生的。只针对原视图只实现一次
+>>>myView.transform = CGAffineTransformMakeTranslation(-70, 200);
+
+>>旋转，center和bounds值不变，frame值改变。整数顺时针转的
+>>>myView.transform  = CGAffineTransformMakeRotation(M_PI_4);
+
+>>一直旋转
+>>>myView.transform = CGAffineTransformRotate(myView.transform, M_PI_4/2.0);
