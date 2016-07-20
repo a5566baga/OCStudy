@@ -260,10 +260,47 @@ UIView * green = [self.window viewWithTag:1000];
 >
 >frame的值是一定要赋予的，只有这样才能创建出来可用的控件
 >
->对于属性中的控件要重写-(void)layoutSubviews;方法，在里面进行创建。因为在外面创建当前对象后，在没有
+>对于属性中的控件要重写-(void)layoutSubviews;方法，在里面进行创建。因为在外面创建当前对象后，在没有对当前对象进行修饰的方法时，会自动调用layoutSubviews方法。
 
 ---
 ##CABasicAnimation动画
+####简介
+在iOS中，你能看得见摸得着的东西基本上都是UIView，比如一个按钮、一个文本标签、一个文本输入框、一个图标等等，这些都是UIView。
+其实UIView之所以能显示在屏幕上，完全是因为它内部的一个图层，在创建UIView对象时，UIView内部会自动创建一个图层(即CALayer对象)，通过UIView的layer属性可以访问这个层
+@property(nonatomic,readonly,retain) CALayer *layer; 
+当UIView需要显示到屏幕上时，会调用drawRect:方法进行绘图，并且会将所有内容绘制在自己的图层上，绘图完毕后，系统会将图层拷贝到屏幕上，于是就完成了UIView的显示
+换句话说，UIView本身不具备显示的功能，拥有显示功能的是它内部的图层。
+####创建对象
+>CABasicAnimation * animation = [CABasicAnimation animationWithKeyPath:@"transform.scale.y"];
+
+####设置动画持续时间(秒)
+>animation.duration = 5;
+
+####设置动画开始的初始x
+>animation.fromValue = @1;
+
+####设置动画结束的终点值
+>animation.toValue = @3;
+
+####设置延迟时间
+>animation.beginTime = CACurrentMediaTime()+2;
+
+####设置代理
+>animation.delegate = self;
+
+####设置路径返回
+>animation.autoreverses = YES;
+
+####设置重复次数
+>animation.repeatCount = 3;
+
+####设置自动删除动画
+>animation.removedOnCompletion = YES;
+
+####添加动画的key
+>[animation setValue:@"yAnimation" forKey:@"myView"];
+>[myView.layer addAnimation:animation forKey:@"myView"];
+
 ---
 ##UIView动画
 ###普通的书写方式
