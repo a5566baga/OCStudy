@@ -299,7 +299,14 @@ UIView * green = [self.window viewWithTag:1000];
 
 ####添加动画的key
 >[animation setValue:@"yAnimation" forKey:@"myView"];
+
 >[myView.layer addAnimation:animation forKey:@"myView"];
+
+####通过key获取动画对象
+>UIView * myView = [self.window viewWithTag:100];
+
+>[myView.layer animationForKey:@"myView"];
+####移除一个动画
 
 ---
 ##UIView动画
