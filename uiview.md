@@ -44,4 +44,6 @@ UIView * green = [self.window viewWithTag:1000];
 >获得父视图的方法
 >>[greenView superview];
 
+---
+##视图的操作
 
