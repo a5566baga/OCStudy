@@ -27,3 +27,23 @@
 
 ####禁用状态按钮
 >[button setTitle:@"禁用" forState: UIControlStateDisabled];
+
+####选中状态的按钮
+>[button setTitle:@"选中" forState: UIControlStateSelected];
+
+####设置正常标题的颜色
+>[button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
+####设置高亮标题的颜色
+>[button setTitleColor:[UIColor yellowColor] forState:UIControlStateHighlighted];
+
+####改变button的字体
+>button.titleLabel.font = [UIFont fontWithName:@"Zapfino" size:30.0];
+
+####创建图片对象
+>UIImage *image = [UIImage imageNamed:@"bgSelected"];
+
+####设置背景图片正常
+####设置背景图片高亮
+####设置前置图片正常
+####设置前置图片高亮
