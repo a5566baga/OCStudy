@@ -44,6 +44,13 @@
 >UIImage *image = [UIImage imageNamed:@"bgSelected"];
 
 ####设置背景图片正常
+>[button setBackgroundImage:image forState:UIControlStateNormal];
+
 ####设置背景图片高亮
+>[button setBackgroundImage:[UIImage imageNamed:@"bgCommon"] forState:UIControlStateHighlighted];
+
 ####设置前置图片正常
+>[button setImage:[UIImage imageNamed:@"tabbar_icon_news_normal"] forState:UIControlStateNormal];
+
 ####设置前置图片高亮
+>[button setImage:[UIImage imageNamed:@"tabbar_icon_news_highlight"] forState:UIControlStateHighlighted];
