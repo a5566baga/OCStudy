@@ -76,4 +76,10 @@ self.textField.textAlignment = NSTextAlignmentCenter;
 
 ---
 ###键盘的设计
-
+#### UIKeyboardAppearance 键盘样式
+```
+UIKeyboardAppearanceDefault, // Default apperance for the current input method.
+UIKeyboardAppearanceDark NS_ENUM_AVAILABLE_IOS(7_0),
+UIKeyboardAppearanceLight NS_ENUM_AVAILABLE_IOS(7_0),
+UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
+```
