@@ -739,6 +739,7 @@ self.imageView.animationRepeatCount = 1;
 
 @end
 ```
+---
 
 ####附录：动画的方式介绍
 
