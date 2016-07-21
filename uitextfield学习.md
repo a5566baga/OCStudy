@@ -179,3 +179,48 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
 }
 ```
 ---
+###编辑文本时，响应的6个方法
+```
+// return NO to disallow editing.
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+ NSLog(@"%s", __func__);
+ return YES;
+}
+
+// became first responder
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+ NSLog(@"%s", __func__);
+}
+
+// return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+ NSLog(@"%s", __func__);
+
+ return YES;
+}
+
+// may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+ NSLog(@"%s", __func__);
+}
+
+ // return NO to not change text
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+ NSLog(@"%s", __func__);
+ NSLog(@"%@",string);
+ return YES;
+}
+
+// called when clear button pressed. return NO to ignore (no notifications)
+- (BOOL)textFieldShouldClear:(UITextField *)textField{
+ NSLog(@"%s", __func__);
+ return YES;
+}
+
+// called when 'return' key pressed. return NO to ignore.
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+ NSLog(@"%s", __func__);
+ [self.textField resignFirstResponder];
+ return YES;
+}
+```
