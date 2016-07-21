@@ -229,4 +229,4 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
 ---
 ##通过代理自定义键盘
 ###自定义功能：键盘自适应文本框
-###代理
+###代理实现键盘的功能
