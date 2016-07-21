@@ -118,5 +118,16 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
 
 #### 右下角enter键的风格(默认状态下)
 ```
-
+ UIReturnKeyDefault,
+ UIReturnKeyGo,
+ UIReturnKeyGoogle,
+ UIReturnKeyJoin,
+ UIReturnKeyNext,
+ UIReturnKeyRoute,
+ UIReturnKeySearch,
+ UIReturnKeySend,
+ UIReturnKeyYahoo,
+ UIReturnKeyDone,
+ UIReturnKeyEmergencyCall,
+ UIReturnKeyContinue NS_ENUM_AVAILABLE_IOS(9_0),
 ```
