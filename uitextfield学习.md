@@ -137,3 +137,11 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
 ####设置键盘上方区域的内容
 > self.textField.inputAccessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Action_ReadSun@2x.png"]]; 
 
+####文本框内显示提示文字
+> self.textField.placeholder = @"请输入姓名:"; 
+
+####文本框自适应并且设置最小字体
+> self.textField.minimumFontSize = 10; 
+
+> self.textField.adjustsFontSizeToFitWidth = YES; 
+
