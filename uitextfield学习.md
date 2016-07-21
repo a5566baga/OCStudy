@@ -116,4 +116,7 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
 #####使用说明代码
 > self.textField.keyboardType = UIKeyboardTypeNamePhonePad; 
 
+#### 右下角enter键的风格(默认状态下)
+```
 
+```
