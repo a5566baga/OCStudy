@@ -113,3 +113,7 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
     与ASCII相同
  UIKeyboardTypeAlphabet = UIKeyboardTypeASCIICapable, // Deprecated
 ```
+#####使用说明代码
+> self.textField.keyboardType = UIKeyboardTypeNamePhonePad; 
+
+
