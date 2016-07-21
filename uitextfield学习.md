@@ -100,8 +100,11 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
  UIKeyboardTypeNumberPad, // A number pad (0-9). Suitable for PIN entry.
     拨号类型
  UIKeyboardTypePhonePad, // A phone pad (1-9, *, 0, #, with letters under the numbers).
+    带字母的拨号界面
  UIKeyboardTypeNamePhonePad, // A type optimized for entering a person's name or phone number.
+    邮箱类型
  UIKeyboardTypeEmailAddress, // A type optimized for multiple email address entry (shows space @ . prominently).
+    
  UIKeyboardTypeDecimalPad NS_ENUM_AVAILABLE_IOS(4_1), // A number pad with a decimal point.
  UIKeyboardTypeTwitter NS_ENUM_AVAILABLE_IOS(5_0), // A type optimized for twitter text entry (easy access to @ #)
  UIKeyboardTypeWebSearch NS_ENUM_AVAILABLE_IOS(7_0), // A default keyboard type with URL-oriented addition (shows space . prominently).
