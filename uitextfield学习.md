@@ -171,3 +171,10 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
 ####对于键盘进入视图自动弹出
 > [self.textField becomeFirstResponder]; 
 
+####对于键盘，点击空白区域，键盘自动消失(重写方法)
+```
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+// 键盘消失
+ [self.textField resignFirstResponder];
+}
+```
