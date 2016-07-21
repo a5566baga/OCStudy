@@ -83,3 +83,10 @@ UIKeyboardAppearanceDark NS_ENUM_AVAILABLE_IOS(7_0),
 UIKeyboardAppearanceLight NS_ENUM_AVAILABLE_IOS(7_0),
 UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
 ```
+#####使用说明代码
+> self.textField.keyboardAppearance = UIKeyboardAppearanceDark; 
+
+#### UIKeyboardType 键盘样式
+```
+
+```
