@@ -159,4 +159,7 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
 #####代码演示
 >  tf.autocapitalizationType = ITextAutocapitalizationTypeAllCharacters;  
 
-####
+####纠正单词拼写
+```
+
+```
