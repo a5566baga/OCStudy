@@ -752,7 +752,8 @@ self.imageView.animationRepeatCount = 1;
     UIViewAnimationOptionOverrideInheritedDuration：忽略嵌套动画时间设置。
     UIViewAnimationOptionOverrideInheritedCurve：忽略嵌套动画速度设置。
     UIViewAnimationOptionAllowAnimatedContent：动画过程中重绘视图（注意仅仅适用于转场动画）。  
-    UIViewAnimationOptionShowHideTransitionViews：视图切换时直接隐藏旧视图、显示新视图，而不是将旧视图从父视图移除（仅仅适用于转场动画）UIViewAnimationOptionOverrideInheritedOptions ：不继承父动画设置或动画类型。
+    UIViewAnimationOptionShowHideTransitionViews：视图切换时直接隐藏旧视图、显示新视图，而不是将旧视图从父视图移除（仅仅适用于转场动画）
+    UIViewAnimationOptionOverrideInheritedOptions ：不继承父动画设置或动画类型。
     2.动画速度控制（可从其中选择一个设置）
     UIViewAnimationOptionCurveEaseInOut：动画先缓慢，然后逐渐加速。
     UIViewAnimationOptionCurveEaseIn ：动画逐渐变慢。
