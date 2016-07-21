@@ -168,3 +168,6 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
 #####代码的展示
 > tf.autocorrectionType = UITextAutocorrectionTypeYes; 
 
+####对于键盘进入视图自动弹出
+> [self.textField becomeFirstResponder]; 
+
