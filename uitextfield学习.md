@@ -94,6 +94,7 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
  UIKeyboardTypeASCIICapable, // Displays a keyboard which can enter ASCII characters, non-ASCII keyboards remain active
     只有数字和符号
  UIKeyboardTypeNumbersAndPunctuation, // Numbers and assorted punctuation.
+    URL样式（字母和/、数字）
  UIKeyboardTypeURL, // A type optimized for URL entry (shows . / .com prominently).
  UIKeyboardTypeNumberPad, // A number pad (0-9). Suitable for PIN entry.
  UIKeyboardTypePhonePad, // A phone pad (1-9, *, 0, #, with letters under the numbers).
