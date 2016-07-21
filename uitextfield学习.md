@@ -92,7 +92,7 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
  UIKeyboardTypeDefault, // Default type for the current input method.
     ASCII码样式
  UIKeyboardTypeASCIICapable, // Displays a keyboard which can enter ASCII characters, non-ASCII keyboards remain active
-    
+    只有数字和符号
  UIKeyboardTypeNumbersAndPunctuation, // Numbers and assorted punctuation.
  UIKeyboardTypeURL, // A type optimized for URL entry (shows . / .com prominently).
  UIKeyboardTypeNumberPad, // A number pad (0-9). Suitable for PIN entry.
