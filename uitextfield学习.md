@@ -96,7 +96,9 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
  UIKeyboardTypeNumbersAndPunctuation, // Numbers and assorted punctuation.
     URL样式（字母和/、数字）
  UIKeyboardTypeURL, // A type optimized for URL entry (shows . / .com prominently).
+    全是数字
  UIKeyboardTypeNumberPad, // A number pad (0-9). Suitable for PIN entry.
+    拨号类型
  UIKeyboardTypePhonePad, // A phone pad (1-9, *, 0, #, with letters under the numbers).
  UIKeyboardTypeNamePhonePad, // A type optimized for entering a person's name or phone number.
  UIKeyboardTypeEmailAddress, // A type optimized for multiple email address entry (shows space @ . prominently).
