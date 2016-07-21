@@ -73,3 +73,4 @@ self.textField.textAlignment = NSTextAlignmentCenter;
 
 > self.textField.leftViewMode = UITextFieldViewModeAlways; 
 
+###键盘的设计
