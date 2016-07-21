@@ -165,3 +165,6 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
  UITextAutocorrectionTypeNo,
  UITextAutocorrectionTypeYes,
 ```
+#####代码的展示
+> tf.autocorrectionType = UITextAutocorrectionTypeYes; 
+
