@@ -161,5 +161,7 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
 
 ####纠正单词拼写
 ```
-
+ UITextAutocorrectionTypeDefault,
+ UITextAutocorrectionTypeNo,
+ UITextAutocorrectionTypeYes,
 ```
