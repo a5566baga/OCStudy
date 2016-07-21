@@ -136,3 +136,4 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
 
 ####设置键盘上方区域的内容
 > self.textField.inputAccessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Action_ReadSun@2x.png"]]; 
+
