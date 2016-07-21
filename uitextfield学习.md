@@ -132,4 +132,5 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
  UIReturnKeyContinue NS_ENUM_AVAILABLE_IOS(9_0),
 ```
 #####使用代码
->
+> self.textField.returnKeyType = UIReturnKeyJoin; 
+
