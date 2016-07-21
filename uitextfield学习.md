@@ -178,3 +178,4 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
  [self.textField resignFirstResponder];
 }
 ```
+---
