@@ -179,7 +179,7 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
 }
 ```
 ---
-###编辑文本时，响应的6个方法
+###编辑文本时，响应的7个方法
 ```
 // return NO to disallow editing.
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
