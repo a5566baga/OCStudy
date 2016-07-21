@@ -29,6 +29,11 @@ self.textField.backgroundColor = [UIColor clearColor];
 > 2、UITextBorderStyleLine 
 > 3、UITextBorderStyleBezel 
 > 4、UITextBorderStyleRoundedRect
+> 
+> 注意： 如果边框设置成了UITextBorderStyleRoundedRect，那么背景图片不起作用
 
+#####示例 
+>self.textField.borderStyle = UITextBorderStyleNone; 
 
+>self.textField.background = [[UIImage imageNamed:@"qb_tenpay_dialog_input_bg@2x"]stretchableImageWithLeftCapWidth:10 topCapHeight:5]; 
 
