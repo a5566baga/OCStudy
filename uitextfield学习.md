@@ -147,5 +147,8 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
 
 ####对于文本框内的单词自动修正
 ```
-
+ ITextAutocapitalizationTypeNone,
+ UITextAutocapitalizationTypeWords,
+ UITextAutocapitalizationTypeSentences,
+ UITextAutocapitalizationTypeAllCharacters,
 ```
