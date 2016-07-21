@@ -20,7 +20,7 @@ self.textField.frame = CGRectMake(100, 50, 250, 50);
 self.textField.backgroundColor = [UIColor clearColor];
 [self.window addSubview:self.textField];
 ```
-
+---
 ### 文本框的外观
 
 #### 边框自带的方法
@@ -43,6 +43,7 @@ self.textField.textColor = [UIColor redColor];
 self.textField.font = [UIFont systemFontOfSize:30];
 self.textField.textAlignment = NSTextAlignmentCenter;
 ```
+---
 ###文本框内部内容
 ####系统自带的删除内容按钮
 ```
@@ -73,4 +74,6 @@ self.textField.textAlignment = NSTextAlignmentCenter;
 
 > self.textField.leftViewMode = UITextFieldViewModeAlways; 
 
+---
 ###键盘的设计
+
