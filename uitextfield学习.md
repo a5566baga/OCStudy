@@ -134,3 +134,5 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
 #####使用代码
 > self.textField.returnKeyType = UIReturnKeyJoin; 
 
+####设置键盘上方区域的内容
+
