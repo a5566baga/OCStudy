@@ -60,3 +60,11 @@ self.textField.textAlignment = NSTextAlignmentCenter;
 ####安全输入（输入全为*）
 > self.textField.secureTextEntry = YES; 
 
+####文本框左边和右边添加图标
+#####自带显示图标属性
+```
+ UITextFieldViewModeNever, 
+ UITextFieldViewModeWhileEditing,
+ UITextFieldViewModeUnlessEditing,
+ UITextFieldViewModeAlways
+```
