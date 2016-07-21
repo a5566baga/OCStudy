@@ -400,7 +400,7 @@ UIView * green = [self.window viewWithTag:1000];
 ####设置速度
 >[UIView setAnimationDuration:0.24];
 
-####动画执行速度
+####动画重复次数
 >[UIView setAnimationRepeatCount:100];
 
 ####自动回复
