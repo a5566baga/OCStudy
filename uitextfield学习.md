@@ -108,6 +108,8 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
  UIKeyboardTypeDecimalPad NS_ENUM_AVAILABLE_IOS(4_1), // A number pad with a decimal point.
     发微博用的
  UIKeyboardTypeTwitter NS_ENUM_AVAILABLE_IOS(5_0), // A type optimized for twitter text entry (easy access to @ #)
+    查询
  UIKeyboardTypeWebSearch NS_ENUM_AVAILABLE_IOS(7_0), // A default keyboard type with URL-oriented addition (shows space . prominently).
+    与ASCII相同
  UIKeyboardTypeAlphabet = UIKeyboardTypeASCIICapable, // Deprecated
 ```
