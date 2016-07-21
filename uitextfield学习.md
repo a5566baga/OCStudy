@@ -25,8 +25,10 @@ self.textField.backgroundColor = [UIColor clearColor];
 
 #### 自带的方法
 
->1、UITextBorderStyleNone  
->2、UITextBorderStyleLine 
->3、UITextBorderStyleBezel 
->4、UITextBorderStyleRoundedRect 
+> 1、UITextBorderStyleNone  
+> 2、UITextBorderStyleLine 
+> 3、UITextBorderStyleBezel 
+> 4、UITextBorderStyleRoundedRect
+
+
 
