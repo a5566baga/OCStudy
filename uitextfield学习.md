@@ -145,3 +145,7 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
 
 > self.textField.adjustsFontSizeToFitWidth = YES; 
 
+####对于文本框内的单词自动修正
+```
+
+```
