@@ -68,3 +68,8 @@ self.textField.textAlignment = NSTextAlignmentCenter;
  UITextFieldViewModeUnlessEditing,
  UITextFieldViewModeAlways
 ```
+#####代码展示
+> self.textField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Action_Alias@2x.png"]]; 
+
+> self.textField.leftViewMode = UITextFieldViewModeAlways; 
+
