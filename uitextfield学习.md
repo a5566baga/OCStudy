@@ -145,10 +145,18 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
 
 > self.textField.adjustsFontSizeToFitWidth = YES; 
 
-####对于文本框内的单词自动修正
+####对于文本框内的单词自动大写
 ```
+    不纠正
  ITextAutocapitalizationTypeNone,
+    纠正单词
  UITextAutocapitalizationTypeWords,
+    纠正首单词句子
  UITextAutocapitalizationTypeSentences,
+    纠正所有单词
  UITextAutocapitalizationTypeAllCharacters,
 ```
+#####代码演示
+>  tf.autocorrectionType = UITextAutocorrectionTypeYes; 
+
+####
