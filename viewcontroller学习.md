@@ -65,7 +65,10 @@
  [self dismissViewControllerAnimated:YES completion:nil];
 }
 ```
-###视图控制器之间
+###视图控制器之间使用代理传值
+```
+
+```
 
 ---
 ##导航控制器
