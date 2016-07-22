@@ -39,7 +39,8 @@
      UIApplication * application = [UIApplication sharedApplication]; 设置一些应用级的程序。
      application.networkActivityIndicatorVisible = YES; 使网速的图标一直转
      application.statusBarStyle = UIStatusBarStyleLightContent; 隐藏状态栏。
-     如果要使statusBarStyle文件起作用，要先改plist文件， View controller-based status bar appearance 显示YES 
+     如果要使statusBarStyle文件起作用，要先改plist文件， View controller-based status bar appearance 显示YES 。
+####注意： 写视图布局，添加控件一般都写在viewDidLoad方法中。 
 
 ###创建视图
 
