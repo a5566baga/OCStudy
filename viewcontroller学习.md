@@ -66,9 +66,124 @@
 }
 ```
 ###视图控制器之间使用代理传值
+######AppDelegate.h
 ```
+#import <UIKit/UIKit.h>
 
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (strong, nonatomic) UIWindow *window;
+
+@end
 ```
+######AppDelegate.m
+```
+#import "AppDelegate.h"
+#import "FirstViewController.h"
 
+@interface AppDelegate ()
+
+@end
+
+@implementation AppDelegate
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+ // Override point for customization after application launch.
+
+ self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+ self.window.backgroundColor = [UIColor grayColor];
+
+ // 创建一个控制器
+ FirstViewController * fVC = [[FirstViewController alloc] init];
+ // 把视图控制器与window联系起来
+ self.window.rootViewController = fVC;
+ fVC.labelTitle = @"I am good boy";
+ [self.window makeKeyAndVisible];
+
+ return YES;
+}
+```
+######FirstViewController.h
+```
+#import <UIKit/UIKit.h>
+#import "SecondViewController.h"
+
+@interface FirstViewController : UIViewController<SecondViewControllerDelegate>
+
+@property(nonatomic, copy)NSString * labelTitle;
+
+@end
+```
+######
+```
+#import "FirstViewController.h"
+#import "SecondViewController.h"
+
+@interface FirstViewController ()
+
+@property(nonatomic, strong)UILabel * label;
+
+@end
+
+@implementation FirstViewController
+
+- (void)viewDidLoad {
+ [super viewDidLoad];
+ // Do any additional setup after loading the view.
+ self.view.backgroundColor = [UIColor orangeColor];
+ [self createLabel];
+ [self createButton];
+// _strPublic = @"xiaoming";
+}
+
+-(void)createButton{
+ UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(20, 40, 20, 20)];
+ btn.backgroundColor = [UIColor blueColor];
+ [self.view addSubview:btn];
+ [btn addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)onClick:(UIButton*)btn{
+ NSLog(@"%s", __func__);
+ SecondViewController * sVC = [[SecondViewController alloc] init];
+
+ sVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+// 代理实现
+ sVC.delegate = self;
+ [sVC setSenderBlcok:^(NSString * string) {
+ self.label.text = string;
+ }];
+
+ [self presentViewController:sVC animated:YES completion:^{
+
+ }];
+
+}
+
+#pragma mark ------------- SecondViewControllerDelegate
+-(void)senderString:(NSString *)string formViewController:(SecondViewController *)secondViewController{
+ self.label.text = string;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+ [super viewWillAppear:animated];
+// self.label.text = self.labelTitle;
+}
+
+
+-(void)createLabel{
+ self.label = [[UILabel alloc] initWithFrame:CGRectMake(100, 40, 200, 50)];
+ self.label.backgroundColor = [UIColor brownColor];
+ self.label.text = self.labelTitle;
+ self.label.textAlignment = NSTextAlignmentCenter;
+ [self.view addSubview:self.label];
+}
+
+- (void)didReceiveMemoryWarning {
+ [super didReceiveMemoryWarning];
+ // Dispose of any resources that can be recreated.
+}
+@end
+```
 ---
 ##导航控制器
