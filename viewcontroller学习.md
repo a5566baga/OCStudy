@@ -13,7 +13,7 @@
 
  [self.window makeKeyAndVisible];
 ```
-
+####注意：主控制器只能创建一个，并且不能够被删除
 
 ---
 ##导航控制器
