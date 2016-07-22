@@ -185,6 +185,27 @@
 }
 @end
 ```
+######SecondViewController.h
+```
+#import <UIKit/UIKit.h>
+
+@class SecondViewController;
+@protocol SecondViewControllerDelegate <NSObject>
+
+-(void)senderString:(NSString *)string formViewController:(SecondViewController *)secondViewController;
+
+@end
+
+@interface SecondViewController : UIViewController
+
+@property(nonatomic, copy)NSString * lableTitle;
+
+@property(nonatomic, assign)id<SecondViewControllerDelegate> delegate;
+
+@property(nonatomic, copy) void (^senderBlcok)(NSString * string);
+
+@end
+```
 
 ---
 ##导航控制器
