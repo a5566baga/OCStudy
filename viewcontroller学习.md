@@ -27,6 +27,12 @@
 > -(void)viewDidAppear:(BOOL)animated 
 >>视图已经出现
 
->
+> -(void)viewWillDisappear:(BOOL)animated 
+>>视图将要消失
+
+> -(void )viewDidDisappear:(BOOL)animated 
+>>视图已经消失
+
+
 ---
 ##导航控制器
