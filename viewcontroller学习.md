@@ -33,6 +33,12 @@
 > -(void )viewDidDisappear:(BOOL)animated 
 >>视图已经消失
 
+####在写东西的时候，一般都在viewDidLoad中写。
+### UIApplication 介绍
+     UIApplication 是真正意义上的单例。
+     UIApplication * application = [UIApplication sharedApplication]; 设置一些应用级的程序
+
+###创建视图
 
 ---
 ##导航控制器
