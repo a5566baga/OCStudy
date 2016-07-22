@@ -55,7 +55,17 @@
 ```
 ####视图控制器的跳转
 ```
-
+-(void)onClick:(UIButton*)btn{
+ NSLog(@"%s", __func__);
+// sVC是指定的跳转的视图控制器
+// animated：是是否有转场动画
+// complete：完成跳转后执行的block
+ [self.delegate showNewText:self.textField.text];
+// 回到上一层视图控制器。根视图不能够销毁
+ [self dismissViewControllerAnimated:YES completion:nil];
+}
 ```
+###视图控制器之间
+
 ---
 ##导航控制器
