@@ -36,7 +36,10 @@
 ####在写东西的时候，一般都在viewDidLoad中写。
 ### UIApplication 介绍
      UIApplication 是真正意义上的单例。
-     UIApplication * application = [UIApplication sharedApplication]; 设置一些应用级的程序
+     UIApplication * application = [UIApplication sharedApplication]; 设置一些应用级的程序。
+     application.networkActivityIndicatorVisible = YES; 使网速的图标一直转
+     application.statusBarStyle = UIStatusBarStyleLightContent; 隐藏状态栏。
+    如果要使statusBarStyle文件起作用，要先改plist文件， View controller-based status bar appearance 显示YES 
 
 ###创建视图
 
