@@ -208,7 +208,71 @@
 ```
 ######SecondViewController.m
 ```
+#import "SecondViewController.h"
+#import "FirstViewController.h"
 
+@interface SecondViewController ()
+
+@property(nonatomic, strong)UITextField * textField;
+
+@end
+
+@implementation SecondViewController
+
+//只会被加载一次
+- (void)viewDidLoad {
+ [super viewDidLoad];
+ // Do any additional setup after loading the view.
+
+ self.view.backgroundColor = [UIColor brownColor];
+
+ [self createButton];
+ [self createTextField];
+}
+
+
+-(void)createTextField{
+ self.textField = [[UITextField alloc] initWithFrame:CGRectMake(100, 60, 200, 50)];
+ self.textField.backgroundColor = [UIColor blueColor];
+ self.textField.textAlignment = NSTextAlignmentCenter;
+ [self.view addSubview:self.textField];
+}
+
+-(void)onClick:(UIButton*)btn{
+ NSLog(@"%s", __func__);
+// FirstViewController * fVC = (FirstViewController *)[self presentedViewController];
+// [self.textField resignFirstResponder];
+// fVC.labelTitle = self.textField.text;
+
+// 回调
+// if (self.delegate != nil && [self.delegate respondsToSelector:@selector(senderString:formViewController:)]) {
+// [self.delegate senderString:self.textField.text formViewController:self];
+// }
+
+// _strPublic = self.textField.text;
+
+ if (self.delegate != nil && [self.delegate respondsToSelector:@selector(senderString:formViewController:)]) {
+ [self.delegate senderString:self.textField.text formViewController:self];
+ }
+ [self dismissViewControllerAnimated:YES completion:^{
+ // 防止产生循环引用
+ // __weak typeof (self) weakSelf = self;
+ // weakSelf.senderBlcok(self.textField.text);
+ }];
+}
+
+-(void)createButton{
+ UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(20, 40, 20, 20)];
+ btn.backgroundColor = [UIColor blueColor];
+ [btn setTitle:@"P" forState:UIControlStateNormal];
+ [self.view addSubview:btn];
+ [btn addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)didReceiveMemoryWarning {
+ [super didReceiveMemoryWarning];
+ // Dispose of any resources that can be recreated.
+}
 ```
 
 ---
