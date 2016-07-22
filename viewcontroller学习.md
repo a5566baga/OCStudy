@@ -18,6 +18,14 @@
 > -(void)viewDidLoad 
 >>在创建的时候就调用一次
 
+> -(void)viewDidUnload 
+>>不加载（现在已经弃用了）
+
+> -(void)viewWillAppear:(BOOL)animated 
+>>视图将要出现
+
+> -(void)viewDidAppear:(BOOL)animated 
+>>视图已经出现
 
 ---
 ##导航控制器
