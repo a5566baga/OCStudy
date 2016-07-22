@@ -43,6 +43,16 @@
 ####注意： 写视图布局，添加控件一般都写在viewDidLoad方法中。 
 
 ###创建视图
+####在viewDidLoad中直接设置背景颜色等属性即可，添加的控件
+```
+- (void)viewDidLoad {
+ [super viewDidLoad];
 
+ self.view.backgroundColor = [UIColor yellowColor];
+ // Do any additional setup after loading the view.
+ [self createButton];
+ [self createTextField];
+}
+```
 ---
 ##导航控制器
