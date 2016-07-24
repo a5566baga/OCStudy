@@ -1,8 +1,11 @@
-#UIViewController学习
+# UIViewController学习
 
 ---
-##视图控制器
-###创建一个控制器
+
+## 视图控制器
+
+### 创建一个控制器
+
 ```
  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
  self.window.backgroundColor = [UIColor grayColor];
@@ -13,37 +16,56 @@
 
  [self.window makeKeyAndVisible];
 ```
-####注意：主控制器只能创建一个，并且不能够被删除。对于控制器编写的代码在AppDelegate.m里面。
-###视图控制器的声明周期
-> -(void)viewDidLoad 
->>在创建的时候就调用一次
 
-> -(void)viewDidUnload 
->>不加载（现在已经弃用了）
+#### 注意：主控制器只能创建一个，并且不能够被删除。对于控制器编写的代码在AppDelegate.m里面。
 
-> -(void)viewWillAppear:(BOOL)animated 
->>视图将要出现
+### 视图控制器的声明周期
 
-> -(void)viewDidAppear:(BOOL)animated 
->>视图已经出现
+> -\(void\)viewDidLoad
+> 
+> > 在创建的时候就调用一次
+> 
+> -\(void\)viewDidUnload
+> 
+> > 不加载（现在已经弃用了）
+> 
+> -\(void\)viewWillAppear:\(BOOL\)animated
+> 
+> > 视图将要出现
+> 
+> -\(void\)viewDidAppear:\(BOOL\)animated
+> 
+> > 视图已经出现
+> 
+> -\(void\)viewWillDisappear:\(BOOL\)animated
+> 
+> > 视图将要消失
+> 
+> -\(void \)viewDidDisappear:\(BOOL\)animated
+> 
+> > 视图已经消失
 
-> -(void)viewWillDisappear:(BOOL)animated 
->>视图将要消失
+#### 在写东西的时候，一般都在viewDidLoad中写。
 
-> -(void )viewDidDisappear:(BOOL)animated 
->>视图已经消失
-
-####在写东西的时候，一般都在viewDidLoad中写。
 ### UIApplication 介绍
-     UIApplication 是真正意义上的单例。
-     UIApplication * application = [UIApplication sharedApplication]; 设置一些应用级的程序。
-     application.networkActivityIndicatorVisible = YES; 使网速的图标一直转
-     application.statusBarStyle = UIStatusBarStyleLightContent; 隐藏状态栏。
-     如果要使statusBarStyle文件起作用，要先改plist文件， View controller-based status bar appearance 显示YES 。
-####注意： 写视图布局，添加控件一般都写在viewDidLoad方法中。 
 
-###创建视图
-####在viewDidLoad中直接设置背景颜色等属性即可，添加的控件也写在里面。
+```
+ UIApplication 是真正意义上的单例。
+ UIApplication * application = [UIApplication sharedApplication]; 设置一些应用级的程序。
+ application.networkActivityIndicatorVisible = YES; 使网速的图标一直转
+ application.statusBarStyle = UIStatusBarStyleLightContent; 状态栏样式。
+ application.statusBarHidden = YES; 隐藏状态栏
+ 如果要使statusBarStyle文件起作用，要先改plist文件， View controller-based status bar appearance 显示YES 。
+```
+
+
+
+#### 注意： 写视图布局，添加控件一般都写在viewDidLoad方法中。
+
+### 创建视图
+
+#### 在viewDidLoad中直接设置背景颜色等属性即可，添加的控件也写在里面。
+
 ```
 - (void)viewDidLoad {
  [super viewDidLoad];
@@ -53,7 +75,9 @@
  [self createTextField];
 }
 ```
-####视图控制器的跳转
+
+#### 视图控制器的跳转
+
 ```
 -(void)onClick:(UIButton*)btn{
  NSLog(@"%s", __func__);
@@ -65,8 +89,11 @@
  [self dismissViewControllerAnimated:YES completion:nil];
 }
 ```
-###视图控制器之间使用代理传值
-######AppDelegate.h
+
+### 视图控制器之间使用代理传值
+
+###### AppDelegate.h
+
 ```
 #import <UIKit/UIKit.h>
 
@@ -76,7 +103,9 @@
 
 @end
 ```
-######AppDelegate.m
+
+###### AppDelegate.m
+
 ```
 #import "AppDelegate.h"
 #import "FirstViewController.h"
@@ -103,7 +132,9 @@
  return YES;
 }
 ```
-######FirstViewController.h
+
+###### FirstViewController.h
+
 ```
 #import <UIKit/UIKit.h>
 #import "SecondViewController.h"
@@ -114,7 +145,9 @@
 
 @end
 ```
-######FirstViewController.m
+
+###### FirstViewController.m
+
 ```
 #import "FirstViewController.h"
 #import "SecondViewController.h"
@@ -185,7 +218,9 @@
 }
 @end
 ```
-######SecondViewController.h
+
+###### SecondViewController.h
+
 ```
 #import <UIKit/UIKit.h>
 
@@ -206,7 +241,9 @@
 
 @end
 ```
-######SecondViewController.m
+
+###### SecondViewController.m
+
 ```
 #import "SecondViewController.h"
 #import "FirstViewController.h"
@@ -278,6 +315,10 @@
 ```
 
 ---
-##导航控制器
-###创建导航控制器
-###创建导航属性
+
+## 导航控制器
+
+### 创建导航控制器
+
+### 创建导航属性
+
