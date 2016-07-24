@@ -20,7 +20,9 @@ self.textField.frame = CGRectMake(100, 50, 250, 50);
 self.textField.backgroundColor = [UIColor clearColor];
 [self.window addSubview:self.textField];
 ```
+
 ---
+
 ### 文本框的外观
 
 #### 边框自带的方法
@@ -32,20 +34,26 @@ self.textField.backgroundColor = [UIColor clearColor];
 > 
 > 注意： 如果边框设置成了UITextBorderStyleRoundedRect，那么背景图片不起作用
 
-#####示例 （通过stretchableImageWithLeftCapWidth设置背景图片）
->self.textField.borderStyle = UITextBorderStyleNone; 
+##### 示例 （通过stretchableImageWithLeftCapWidth设置背景图片）
 
->self.textField.background = [[UIImage imageNamed:@"qb_tenpay_dialog_input_bg@2x"]stretchableImageWithLeftCapWidth:10 topCapHeight:5]; 
+> self.textField.borderStyle = UITextBorderStyleNone;
+> 
+> self.textField.background = \[\[UIImage imageNamed:@"qb\_tenpay\_dialog\_input\_bg@2x"\]stretchableImageWithLeftCapWidth:10 topCapHeight:5\];
 
-####设置文本框内容样式
+#### 设置文本框内容样式
+
 ```
 self.textField.textColor = [UIColor redColor];
 self.textField.font = [UIFont systemFontOfSize:30];
 self.textField.textAlignment = NSTextAlignmentCenter;
 ```
+
 ---
-###文本框内部内容
-####系统自带的删除内容按钮
+
+### 文本框内部内容
+
+#### 系统自带的删除内容按钮
+
 ```
  UITextFieldViewModeNever,
  编辑时显示清除按钮
@@ -55,38 +63,51 @@ self.textField.textAlignment = NSTextAlignmentCenter;
  总是有清除按钮
  UITextFieldViewModeAlways
 ```
-#####使用
-> self.textField.clearButtonMode = UITextFieldViewModeAlways; 
 
-####安全输入（输入全为*）
-> self.textField.secureTextEntry = YES; 
+##### 使用
 
-####文本框左边和右边添加图标
-#####自带显示图标属性
+> self.textField.clearButtonMode = c;
+
+#### 安全输入（输入全为\*）
+
+> self.textField.secureTextEntry = YES;
+
+#### 文本框左边和右边添加图标
+
+##### 自带显示图标属性
+
 ```
  UITextFieldViewModeNever, 
  UITextFieldViewModeWhileEditing,
  UITextFieldViewModeUnlessEditing,
  UITextFieldViewModeAlways
 ```
-#####代码展示
-> self.textField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Action_Alias@2x.png"]]; 
 
-> self.textField.leftViewMode = UITextFieldViewModeAlways; 
+##### 代码展示
+
+> self.textField.leftView = \[\[UIImageView alloc\] initWithImage:\[UIImage imageNamed:@"Action\_Alias@2x.png"\]\];
+> 
+> self.textField.leftViewMode = UITextFieldViewModeAlways;
 
 ---
-###键盘的设计
+
+### 键盘的设计
+
 #### UIKeyboardAppearance 键盘样式
+
 ```
 UIKeyboardAppearanceDefault, // Default apperance for the current input method.
 UIKeyboardAppearanceDark NS_ENUM_AVAILABLE_IOS(7_0),
 UIKeyboardAppearanceLight NS_ENUM_AVAILABLE_IOS(7_0),
 UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
 ```
-#####使用说明代码
-> self.textField.keyboardAppearance = UIKeyboardAppearanceDark; 
+
+##### 使用说明代码
+
+> self.textField.keyboardAppearance = UIKeyboardAppearanceDark;
 
 #### UIKeyboardType 键盘样式
+
 ```
     默认样式
  UIKeyboardTypeDefault, // Default type for the current input method.
@@ -113,10 +134,13 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
     与ASCII相同
  UIKeyboardTypeAlphabet = UIKeyboardTypeASCIICapable, // Deprecated
 ```
-#####使用说明代码
-> self.textField.keyboardType = UIKeyboardTypeNamePhonePad; 
 
-#### 右下角enter键的风格(默认状态下)
+##### 使用说明代码
+
+> self.textField.keyboardType = UIKeyboardTypeNamePhonePad;
+
+#### 右下角enter键的风格\(默认状态下\)
+
 ```
  UIReturnKeyDefault,
  UIReturnKeyGo,
@@ -131,21 +155,27 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
  UIReturnKeyEmergencyCall,
  UIReturnKeyContinue NS_ENUM_AVAILABLE_IOS(9_0),
 ```
-#####使用代码
-> self.textField.returnKeyType = UIReturnKeyJoin; 
 
-####设置键盘上方区域的内容
-> self.textField.inputAccessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Action_ReadSun@2x.png"]]; 
+##### 使用代码
 
-####文本框内显示提示文字
-> self.textField.placeholder = @"请输入姓名:"; 
+> self.textField.returnKeyType = UIReturnKeyJoin;
 
-####文本框自适应并且设置最小字体
-> self.textField.minimumFontSize = 10; 
+#### 设置键盘上方区域的内容
 
-> self.textField.adjustsFontSizeToFitWidth = YES; 
+> self.textField.inputAccessoryView = \[\[UIImageView alloc\] initWithImage:\[UIImage imageNamed:@"Action\_ReadSun@2x.png"\]\];
 
-####对于文本框内的单词自动大写
+#### 文本框内显示提示文字
+
+> self.textField.placeholder = @"请输入姓名:";
+
+#### 文本框自适应并且设置最小字体
+
+> self.textField.minimumFontSize = 10;
+> 
+> self.textField.adjustsFontSizeToFitWidth = YES;
+
+#### 对于文本框内的单词自动大写
+
 ```
     不纠正
  ITextAutocapitalizationTypeNone,
@@ -156,30 +186,40 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
     纠正所有单词
  UITextAutocapitalizationTypeAllCharacters,
 ```
-#####代码演示
->  tf.autocapitalizationType = ITextAutocapitalizationTypeAllCharacters;  
 
-####纠正单词拼写
+##### 代码演示
+
+> tf.autocapitalizationType = ITextAutocapitalizationTypeAllCharacters;
+
+#### 纠正单词拼写
+
 ```
  UITextAutocorrectionTypeDefault,
  UITextAutocorrectionTypeNo,
  UITextAutocorrectionTypeYes,
 ```
-#####代码的展示
-> tf.autocorrectionType = UITextAutocorrectionTypeYes; 
 
-####对于键盘进入视图自动弹出
-> [self.textField becomeFirstResponder]; 
+##### 代码的展示
 
-####对于键盘，点击空白区域，键盘自动消失(重写方法)
+> tf.autocorrectionType = UITextAutocorrectionTypeYes;
+
+#### 对于键盘进入视图自动弹出
+
+> \[self.textField becomeFirstResponder\];
+
+#### 对于键盘，点击空白区域，键盘自动消失\(重写方法\)
+
 ```
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
 // 键盘消失
  [self.textField resignFirstResponder];
 }
 ```
+
 ---
-###编辑文本时，响应的7个方法
+
+### 编辑文本时，响应的7个方法
+
 ```
 // return NO to disallow editing.
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
@@ -224,9 +264,14 @@ UIKeyboardAppearanceAlert = UIKeyboardAppearanceDark, // Deprecated
  return YES;
 }
 ```
+
 ---
 
 ---
-##通过代理自定义键盘
-###自定义功能：键盘自适应文本框
-###代理实现键盘的功能
+
+## 通过代理自定义键盘
+
+### 自定义功能：键盘自适应文本框
+
+### 代理实现键盘的功能
+
