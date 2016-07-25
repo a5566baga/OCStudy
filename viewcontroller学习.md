@@ -317,8 +317,26 @@
 ## 导航控制器
 
 ### 创建导航控制器
+```
+ self.window = [[UIWindow alloc] init];
+ self.window.frame = [UIScreen mainScreen].bounds;
+ self.window.backgroundColor = [UIColor grayColor];
 
+ RootViewController * rVC = [[RootViewController alloc] init];
+ UINavigationController * nvc = [[UINavigationController alloc] initWithRootViewController:rVC];
 
+ [[UINavigationBar appearance] setBackgroundColor:[UIColor orangeColor]];
 
+ [[UINavigationBar appearance] setTintColor:[UIColor redColor]];
+
+ self.window.rootViewController = nvc;
+
+// 总结：
+// 导航栏高44，如果不变背景，如果背景图片大于44，那么渲染上面20的状态栏
+// 小于也会渲染。只有等于44的时候才不渲染状态栏
+ [[UINavigationBar appearance]setBackgroundImage:[UIImage imageNamed:@"Nav_Bg2"] forBarPosition:0 barMetrics:0];
+
+ [self.window makeKeyAndVisible];
+```
 ### 创建导航属性
 
