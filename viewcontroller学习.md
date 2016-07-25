@@ -317,6 +317,7 @@
 ## 导航控制器
 
 ### 创建导航控制器
+#####创建UINavigationBar对象，让它作为控制器
 ```
  self.window = [[UIWindow alloc] init];
  self.window.frame = [UIScreen mainScreen].bounds;
