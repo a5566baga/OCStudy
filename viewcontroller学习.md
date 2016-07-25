@@ -341,5 +341,6 @@
 ```
 ###创建Button
 ###创建多个ViewController视图
+###通过Button的事件跳转视图
 ### 创建导航属性
 
