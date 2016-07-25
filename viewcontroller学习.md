@@ -340,7 +340,25 @@
  [self.window makeKeyAndVisible];
 ```
 ###创建Button
+```
+ UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(30, 80, 100, 40)];
+ [btn setTitle:@"切下个页面" forState:UIControlStateNormal];
+ [btn setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+ [btn addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
+ btn.backgroundColor = [UIColor blueColor];
+ btn.tag = 100;
+ [self.view addSubview:btn];
+
+ UIButton * btn2 = [[UIButton alloc] initWithFrame:CGRectMake(150, 80, 100, 40)];
+ [btn2 setTitle:@"返回前页面" forState:UIControlStateNormal];
+ [btn2 setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+ [btn2 addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
+ btn2.backgroundColor = [UIColor blueColor];
+ btn2.tag = 101;
+ [self.view addSubview:btn2];
+```
 ###创建多个ViewController视图
+
 ###通过Button的事件跳转视图
 ### 创建导航属性
 
