@@ -339,5 +339,7 @@
 
  [self.window makeKeyAndVisible];
 ```
+###创建Button
+###创建多个ViewController视图
 ### 创建导航属性
 
