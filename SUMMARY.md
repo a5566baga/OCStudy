@@ -20,4 +20,5 @@
     * [UITextField学习](uitextfield学习.md)
     * [UIViewController学习](viewcontroller学习.md)
     * [常用控件](常用控件.md)
+    * [触摸事件和常用手势](触摸事件和常用手势.md)
 
