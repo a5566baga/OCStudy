@@ -9,4 +9,7 @@
 ##UITextField
 
 ##UIViewController
+##常用控件使用
+##触摸事件和手势
+
 
