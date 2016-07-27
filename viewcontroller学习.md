@@ -468,3 +468,12 @@ self.navigationItem.rightBarButtonItem = btnItem;
  [self.view addSubview:toolbar];
 ```
 
+######自定义导航头的大小，颜色，位置
+```
+ UILabel * label = [[UILabel alloc] init];
+ label.backgroundColor = [UIColor redColor];
+ label.frame = CGRectMake(0, 40, CGRectGetWidth([UIScreen mainScreen].bounds), 40);
+ label.text = @"MY ROOT";
+self.navigationItem.titleView = label;
+```
+
