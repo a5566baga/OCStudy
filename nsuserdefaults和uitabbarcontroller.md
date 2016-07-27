@@ -195,6 +195,7 @@ UITabbarController创建的是一个底部的工具栏
 >显示消息内容
 >> nvc.tabBarItem.badgeValue = @"New"; 
 
+###### UINavigationController 
 >
 >>
 
