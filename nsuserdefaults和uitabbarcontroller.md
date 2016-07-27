@@ -201,6 +201,8 @@ UITabbarController创建的是一个底部的工具栏
 >标题颜色设置
 >>``` [UINavigationBar appearance].titleTextAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:30], NSForegroundColorAttributeName:[UIColor whiteColor]}; ```
 
+>背景色
+>>``` [UINavigationBar appearance].barTintColor = [UIColor blackColor]; ```
 
 ### 自定义
 
