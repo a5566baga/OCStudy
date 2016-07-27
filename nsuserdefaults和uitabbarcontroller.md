@@ -194,9 +194,13 @@ UITabbarController创建的是一个底部的工具栏
 >显示消息内容
 >> nvc.tabBarItem.badgeValue = @"New"; 
 
-###### UINavigationController 
->
->>
+###### UINavigationController 属性
+>返回按钮处的字体颜色
+>>``` [UINavigationBar appearance].tintColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:0.5]; ```
+
+>标题颜色设置
+>>``` [UINavigationBar appearance].titleTextAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:30], NSForegroundColorAttributeName:[UIColor whiteColor]}; ```
+
 
 ### 自定义
 
