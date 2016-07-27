@@ -175,9 +175,27 @@ UITabbarController创建的是一个底部的工具栏
 >添加view视图
 >> tabBarController.viewControllers = viewControllersArray; 
 
-
-
 ### 修改属性
+>背景颜色
+>> [UITabBar appearance].barTintColor = [UIColor orangeColor]; 
+
+>设置默认背景图片
+>> nvc.tabBarItem.image = [[UIImage imageNamed:@"tabbar_icon_found_normal@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]; 
+
+>设置选中状态下的图片背景
+>> nvc.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_icon_found_highlight@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]; 
+
+>设置tabBar的neir
+>> nvc.title = @"开灯"; 
+
+>
+>>
+
+>
+>>
+
+>
+>>
 
 ### 自定义
 
