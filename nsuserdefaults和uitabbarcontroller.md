@@ -243,6 +243,11 @@ UITabbarController创建的是一个底部的工具栏
  tabBarController.viewControllers = tmpArray;
  }
 ```
+
+######完整代码
+```
+
+```
 ### 自定义
 #####自定义一个tabBar
 ```
