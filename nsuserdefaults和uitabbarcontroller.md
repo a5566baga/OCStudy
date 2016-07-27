@@ -490,9 +490,13 @@ UITabbarController创建的是一个底部的工具栏
 ##### 自定义一个底部导航栏
 
 ###### 1、创建继承于 UITabBarController 的类
-######2、隐藏系统默认的导航栏
-######3、写实现方法
-######具体代码
+
+###### 2、隐藏系统默认的导航栏
+
+###### 3、写实现方法
+
+###### 具体代码
+
 > CustomerViewController.h
 
 ```
@@ -508,6 +512,7 @@ UITabbarController创建的是一个底部的工具栏
 
 @end
 ```
+
 > CustomerViewController.m
 
 ```
@@ -645,4 +650,7 @@ UITabbarController创建的是一个底部的工具栏
 @End
 ```
 
-######效果图
+###### 效果图
+
+![](assets/CustomerTabBar.png)
+
