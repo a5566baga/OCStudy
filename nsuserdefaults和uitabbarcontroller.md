@@ -638,8 +638,6 @@ UITabbarController创建的是一个底部的工具栏
  }
 }
 
-
-
 - (void)didReceiveMemoryWarning {
  [super didReceiveMemoryWarning];
  // Dispose of any resources that can be recreated.
