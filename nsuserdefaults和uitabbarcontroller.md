@@ -204,6 +204,9 @@ UITabbarController创建的是一个底部的工具栏
 >背景色
 >>``` [UINavigationBar appearance].barTintColor = [UIColor blackColor]; ```
 
+>默认启动选择的按钮
+>> tabBarController.selectedIndex = 2; 
+
 ###利用数据持久化，让每次打开tabbar的时候，下面按钮的位置与上次自定义过后的位置相同
 #####1、先存储内容
 ```
