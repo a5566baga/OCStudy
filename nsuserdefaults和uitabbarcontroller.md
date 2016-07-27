@@ -204,7 +204,7 @@ UITabbarController创建的是一个底部的工具栏
 >背景色
 >>``` [UINavigationBar appearance].barTintColor = [UIColor blackColor]; ```
 
->默认启动选择的按钮
+>默认启动选择的按钮（ 注意位置在添加bar之后 ）
 >> tabBarController.selectedIndex = 2; 
 
 ###利用数据持久化，让每次打开tabbar的时候，下面按钮的位置与上次自定义过后的位置相同
@@ -214,4 +214,14 @@ UITabbarController创建的是一个底部的工具栏
 ```
 #####2、拿出来，遍历排序
 ### 自定义
+#####自定义一个tabBar
+```
+//创建一个UITabBarItem
+ UITabBarItem * viewTabBar = [[UITabBarItem alloc] initWithTitle:@"我是谁" image:[[UIImage imageNamed:@"tabbar_icon_found_normal@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] tag:100];
+ // 自己创建的UITabBarItem同样可以设置属性
+ viewTabBar.selectedImage = [[UIImage imageNamed:@"tabbar_icon_found_highlight@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+ // 创建好的要放在view的tabBarItem中
+ avc.tabBarItem = viewTabBar;
+```
+
 
