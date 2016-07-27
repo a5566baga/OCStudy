@@ -378,3 +378,11 @@
 
 >设置背景图片
 >> [[UINavigationBar appearance]setBackgroundImage:[UIImage imageNamed:@"Nav_Bg2"] forBarPosition:0 barMetrics:0]; 
+
+>注意：
+>> 导航栏高44，如果不变背景，如果背景图片大于44，那么渲染上面20的状态栏; 小于也会渲染。只有等于44的时候才不渲染状态栏。
+
+###创建 UIBarButtonItem 
+#####左边的BarButton
+#####右边的BarButton
+#####自定义的BarButton
