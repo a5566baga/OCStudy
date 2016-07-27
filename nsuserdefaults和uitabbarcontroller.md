@@ -169,6 +169,13 @@ UITabbarController创建的是一个底部的工具栏
 ```
 
 ### 创建联系
+>创建数组
+>> NSArray * viewControllersArray = @[nvc, avc,bvc,cvc,dvc,evc]; 
+
+>添加view视图
+>> tabBarController.viewControllers = viewControllersArray; 
+
+
 
 ### 修改属性
 
