@@ -384,5 +384,72 @@
 
 ###创建 UIBarButtonItem 
 #####左边的BarButton
+```
+UIBarButtonItem * leftBarbtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(action)];
+self.navigationItem.leftBarButtonItems = @[leftBarbtn, leftBarbtn2];
+```
 #####右边的BarButton
+```
+UIBarButtonItem * rightBarbtn = [[UIBarButtonItem alloc] initWithTitle:@"WO" style:UIBarButtonItemStylePlain target:self action:@selector(action)];
+self.navigationItem.rightBarButtonItem = rightBarbtn;
+self.navigationItem.rightBarButtonItems = @[rightBarbtn, rightBarbtn2];
+```
+######系统自带的barbutton属性
+>样式
+>>```UIBarButtonSystemItemDone, 
+ UIBarButtonSystemItemCancel,
+ UIBarButtonSystemItemEdit,
+ UIBarButtonSystemItemSave,
+ UIBarButtonSystemItemAdd,
+ UIBarButtonSystemItemFlexibleSpace,
+ UIBarButtonSystemItemFixedSpace,
+ UIBarButtonSystemItemCompose,
+ UIBarButtonSystemItemReply,
+ UIBarButtonSystemItemAction,
+ UIBarButtonSystemItemOrganize,
+ UIBarButtonSystemItemBookmarks,
+ UIBarButtonSystemItemSearch,
+ UIBarButtonSystemItemRefresh,
+ UIBarButtonSystemItemStop,
+ UIBarButtonSystemItemCamera,
+ UIBarButtonSystemItemTrash,
+ UIBarButtonSystemItemPlay,
+ UIBarButtonSystemItemPause,
+ UIBarButtonSystemItemRewind,
+ UIBarButtonSystemItemFastForward,
+ UIBarButtonSystemItemUndo NS_ENUM_AVAILABLE_IOS(3_0),
+ UIBarButtonSystemItemRedo NS_ENUM_AVAILABLE_IOS(3_0),
+ UIBarButtonSystemItemPageCurl NS_ENUM_AVAILABLE_IOS(4_0),```
+
+>风格
+>>```UIBarButtonItemStylePlain, 
+ UIBarButtonItemStyleBordered NS_ENUM_DEPRECATED_IOS(2_0, 8_0, "Use UIBarButtonItemStylePlain when minimum deployment target is iOS7 or later"),
+ UIBarButtonItemStyleDone,```
+
 #####自定义的BarButton
+```
+UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
+ btn.backgroundColor = [UIColor orangeColor];
+UIBarButtonItem * btnItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+self.navigationItem.rightBarButtonItem = btnItem;
+```
+#####自定义toolbar
+######默认toolbar位置
+```
+ UIBarPositionAny = 0,
+ UIBarPositionBottom = 1, // The bar is at the bottom of its local context, and directional decoration draws accordingly (e.g., shadow above the bar).
+ UIBarPositionTop = 2, // The bar is at the top of its local context, and directional decoration draws accordingly (e.g., shadow below the bar)
+ UIBarPositionTopAttached = 3, // The bar is at the top of the screen (as well as its local context), and its background extends upward—currently only enough for the status bar.
+```
+######默认toolbar样式
+```
+ UIBarMetricsDefault,
+ UIBarMetricsCompact,
+ UIBarMetricsDefaultPrompt = 101, // Applicable only in bars with the prompt property, such as UINavigationBar and UISearchBar
+ UIBarMetricsCompactPrompt,
+
+ UIBarMetricsLandscapePhone NS_ENUM_DEPRECATED_IOS(5_0, 8_0, "Use UIBarMetricsCompact instead") = UIBarMetricsCompact,
+ UIBarMetricsLandscapePhonePrompt NS_ENUM_DEPRECATED_IOS(7_0, 8_0, "Use UIBarMetricsCompactPrompt") = UIBarMetricsCompactPrompt,
+```
+
+
