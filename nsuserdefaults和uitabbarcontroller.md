@@ -136,8 +136,7 @@ UITabbarController创建的是一个底部的工具栏
 > 
 > 创建导航控制栏
 > 
-> > ViewController _ vc = _**_\[_**_\[_**_ViewController alloc\]_**_ init\]\_\_; 
-> >  UINavigationController _ nvc = \[\[UINavigationController alloc\] initWithRootViewController:vc\];
+> >  ViewController * vc = [[ViewController alloc] init]; 
 
 ### 页面添加
 
