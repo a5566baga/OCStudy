@@ -457,5 +457,6 @@ UITabbarController创建的是一个底部的工具栏
  // 创建好的要放在view的tabBarItem中
  avc.tabBarItem = viewTabBar;
 ```
-
+#####自定义一个底部导航栏
+######1、创建
 
