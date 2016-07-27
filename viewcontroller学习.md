@@ -317,7 +317,9 @@
 ## 导航控制器
 
 ### 创建导航控制器
-#####创建UINavigationBar对象，让它作为控制器
+
+##### 创建UINavigationBar对象，让它作为控制器
+
 ```
  self.window = [[UIWindow alloc] init];
  self.window.frame = [UIScreen mainScreen].bounds;
@@ -339,7 +341,9 @@
 
  [self.window makeKeyAndVisible];
 ```
-###创建Button
+
+### 创建Button
+
 ```
  UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(30, 80, 100, 40)];
  [btn setTitle:@"切下个页面" forState:UIControlStateNormal];
@@ -357,8 +361,20 @@
  btn2.tag = 101;
  [self.view addSubview:btn2];
 ```
-###创建多个ViewController视图
 
-###通过Button的事件跳转视图
-### 创建导航属性
+### 创建多个ViewController视图
 
+### 通过Button的事件跳转视图
+---
+
+## 导航工具栏
+###创建工具按钮
+#####设置工具栏的背景
+>设置背景颜色
+>> [[UINavigationBar appearance] setBackgroundColor:[UIColor orangeColor]]; 
+
+>设置填充颜色
+>>[[UINavigationBar appearance] setTintColor:[UIColor redColor]];
+
+>设置背景图片
+>> [[UINavigationBar appearance]setBackgroundImage:[UIImage imageNamed:@"Nav_Bg2"] forBarPosition:0 barMetrics:0]; 
