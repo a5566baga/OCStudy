@@ -117,6 +117,9 @@
     UITabbarController创建的是一个底部的工具栏
 
 ### 创建
+>创建对象
+>> UITabBarController * tabBarController = [[UITabBarController alloc] init]; 
+ self.window.rootViewController = tabBarController;
 
 ### 页面添加
 
