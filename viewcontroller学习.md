@@ -451,5 +451,20 @@ self.navigationItem.rightBarButtonItem = btnItem;
  UIBarMetricsLandscapePhone NS_ENUM_DEPRECATED_IOS(5_0, 8_0, "Use UIBarMetricsCompact instead") = UIBarMetricsCompact,
  UIBarMetricsLandscapePhonePrompt NS_ENUM_DEPRECATED_IOS(7_0, 8_0, "Use UIBarMetricsCompactPrompt") = UIBarMetricsCompactPrompt,
 ```
+######第一种方式定义
+```
+[self.navigationController setToolbarHidden:NO];
 
+ [self.navigationController.toolbar setBackgroundImage:[[UIImage imageNamed:@"header_bg64"] stretchableImageWithLeftCapWidth:10 topCapHeight:10] forToolbarPosition:UIBarPositionBottom barMetrics:0];
+
+ self.toolbarItems = @[rightBarbtn2, rightBarbtn];
+```
+
+######第二种方式定义
+```
+ UIToolbar * toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, CGRectGetHeight([UIScreen mainScreen].bounds)/1.17, CGRectGetWidth(self.view.frame), 44)];
+ toolbar.items = @[leftBarbtn, btnItem];
+ toolbar.backgroundColor = [UIColor blackColor];
+ [self.view addSubview:toolbar];
+```
 
