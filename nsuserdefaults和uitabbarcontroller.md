@@ -13,10 +13,11 @@
 > > 通过`NSHomeDirectory()`方法就能够打印出当前工程的路径。
 > > 
 > > ![](/assets/NSUerDefault存储的数据路径.png)
->>
->>3、内容删除一次之后，如果没有再存，那么就没有了
+> > 
+> > 3、内容删除一次之后，如果没有再存，那么就没有了
 
-#####代码实现
+##### 代码实现
+
 ```
 // NSUserDefaults是个单例
  // 可以持久化数据
@@ -29,8 +30,11 @@
  // 删除一次就没了。通过key删除内容
  [userDefaults removeObjectForKey:@"array"];
 ```
-#####利用代理传值
-######ViewController.m
+
+##### 利用代理传值
+
+###### ViewController.m
+
 ```
 - (void)viewDidLoad {
  [super viewDidLoad];
@@ -82,7 +86,9 @@
  // Dispose of any resources that can be recreated.
 }
 ```
-######AViewController.m
+
+###### AViewController.m
+
 ```
 - (void)viewDidLoad {
  [super viewDidLoad];
@@ -106,30 +112,39 @@
  // Dispose of any resources that can be recreated.
 }
 ```
-######注意：
->在传值的时候，要注意值输出和修改的位置。
+
+###### 注意：
+
+> 在传值的时候，要注意值输出和修改的位置。
 
 ---
 
 ## UITabbarController
 
 ### 功能
-    UITabbarController创建的是一个底部的工具栏
+
+```
+UITabbarController创建的是一个底部的工具栏
+```
 
 ### 创建
->创建对象
->> UITabBarController * tabBarController = [[UITabBarController alloc] init]; 
- self.window.rootViewController = tabBarController;
 
->创建导航控制栏
->> ViewController * vc = [[ViewController alloc] init]; 
- UINavigationController * nvc = [[UINavigationController alloc] initWithRootViewController:vc];
-
+> 创建对象
+> 
+> > UITabBarController \* tabBarController = \[\[UITabBarController alloc\] init\]; 
+> >  self.window.rootViewController = tabBarController;
+> 
+> 创建导航控制栏
+> 
+> > ViewController _ vc = _**_\[_**_\[_**_ViewController alloc\]_**_ init\]\_\_; 
+> >  UINavigationController _ nvc = \[\[UINavigationController alloc\] initWithRootViewController:vc\];
 
 ### 页面添加
->创建多个继承于 UIViewController 的视图
->>
-```AViewController * avc = [[AViewController alloc] init]; 
+
+> 创建多个继承于 UIViewController 的视图
+
+```
+ AViewController * avc = [[AViewController alloc] init]; 
  // [tabBarController addChildViewController:avc];
  avc.tabBarItem.image = [[UIImage imageNamed:@"tabbar_icon_me_normal@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
  avc.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_icon_me_highlight@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
