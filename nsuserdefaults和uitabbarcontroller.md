@@ -120,12 +120,38 @@
 >创建对象
 >> UITabBarController * tabBarController = [[UITabBarController alloc] init]; 
  self.window.rootViewController = tabBarController;
+
 >创建导航控制栏
 >> ViewController * vc = [[ViewController alloc] init]; 
  UINavigationController * nvc = [[UINavigationController alloc] initWithRootViewController:vc];
 
 
 ### 页面添加
+>创建多个继承于 UIViewController 的视图
+>>
+```AViewController * avc = [[AViewController alloc] init]; 
+ // [tabBarController addChildViewController:avc];
+ avc.tabBarItem.image = [[UIImage imageNamed:@"tabbar_icon_me_normal@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+ avc.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_icon_me_highlight@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+ avc.title = @"好友";
+ BViewController * bvc = [[BViewController alloc] init];
+ // [tabBarController addChildViewController:bvc];
+ bvc.tabBarItem.image = [[UIImage imageNamed:@"tabbar_icon_news_normal@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+ bvc.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_icon_news_highlight@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+ bvc.title = @"新闻";
+ CViewController * cvc = [[CViewController alloc]init];
+ cvc.tabBarItem.image = [[UIImage imageNamed:@"tabbar_icon_media_normal@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+ cvc.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_icon_media_highlight@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+ cvc.title = @"视频";
+ DViewController * dvc = [[DViewController alloc]init];
+ dvc.tabBarItem.image = [[UIImage imageNamed:@"tabbar_icon_reader_normal@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+ dvc.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_icon_reader_highlight@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+ dvc.title = @"阅读";
+ EViewController * evc = [[EViewController alloc]init];
+ evc.tabBarItem.image = [[UIImage imageNamed:@"tabbar_icon_me_normal@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+ evc.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_icon_me_highlight@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+ evc.title = @"联系人";
+```
 
 ### 创建联系
 
