@@ -493,7 +493,157 @@ UITabbarController创建的是一个底部的工具栏
 ######2、隐藏系统默认的导航栏
 ######3、写实现方法
 ######具体代码
-```
+> CustomerViewController.h
 
+```
+#import <UIKit/UIKit.h>
+
+@interface CustomerViewController : UITabBarController
+
+-(void)addViewControllers:(NSArray<UIViewController *> *) array;
+
+-(void)setShowIndex:(NSInteger)index;
+
+-(void)addViewController:(UIViewController *)vc;
+
+@end
+```
+> CustomerViewController.m
+
+```
+#import "CustomerViewController.h"
+
+@interface CustomerViewController ()
+
+@property(nonatomic, strong)NSMutableArray<UIButton *>* btns;
+
+@property(nonatomic, strong)NSMutableArray<UIViewController *>* VCS;
+
+@end
+
+@implementation CustomerViewController
+
+- (instancetype)init
+{
+ self = [super init];
+ if (self) {
+ self.btns = [NSMutableArray array];
+ }
+ return self;
+}
+
+- (void)viewDidLoad {
+ [super viewDidLoad];
+ // Do any additional setup after loading the view.
+ self.btns = [NSMutableArray array];
+ self.VCS = [NSMutableArray array];
+ [self hiddenTabBar];
+}
+
+//隐藏系统的tabBar
+-(void)hiddenTabBar{
+ self.tabBar.hidden = YES;
+}
+
+//通过数组添加UIViewController
+-(void)addViewControllers:(NSArray<UIViewController *> *)array{
+ [self clearScreenAndDate];
+
+ [self hiddenTabBar];
+
+ [self.VCS addObjectsFromArray:array];
+
+ self.viewControllers = self.VCS;
+
+ [self showTabBarViewControllers:self.VCS];
+
+}
+
+//添加单个的viewController
+-(void)addViewController:(UIViewController *)vc{
+ [self clearScreenAndDate];
+
+ [self.VCS addObject:vc];
+
+ self.viewControllers = self.VCS;
+ [self showTabBarViewControllers:self.VCS];
+}
+
+-(void)clearScreenAndDate{
+ [self.btns removeAllObjects];
+ for (UIView * view in [self.view subviews]) {
+ if ([view isKindOfClass:[UIImageView class]]) {
+ [view removeFromSuperview];
+ }
+ }
+}
+
+//显示tabbar
+-(void)showTabBarViewControllers:(NSArray<UIViewController *> *)array{
+// [self clearScreenAndDate];
+
+ float screenWidth = CGRectGetWidth(self.view.frame);
+ float sceenHeight = CGRectGetHeight(self.view.frame);
+ UIImageView * imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tabbg"]];
+ imageView.frame = CGRectMake(0, sceenHeight-49, screenWidth, 49);
+ [self.view addSubview:imageView];
+
+ NSArray * btnImages = @[@"tab_0", @"tab_1", @"tab_2", @"tab_3"];
+ NSArray * btnImagesH = @[@"tab_c0", @"tab_c1", @"tab_c2", @"tab_c3"];
+
+ float btnWidth = screenWidth/array.count;
+ for (NSInteger i = 0; i < array.count; i++) {
+
+ UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(i*btnWidth, 1, btnWidth, 48)];
+ btn.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:0.5];
+
+
+ [btn setImage:[UIImage imageNamed:btnImages[i]] forState:UIControlStateNormal];
+ [btn setImage:[UIImage imageNamed:btnImagesH[i]] forState:UIControlStateSelected];
+
+ btn.tag = 100 + i;
+ [btn addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
+ // 修改图片在Button中的位置
+ btn.imageEdgeInsets = UIEdgeInsetsMake(-1, -1, -1, -1);
+ // btn.selected = YES;
+
+ [imageView addSubview:btn];
+ [self.btns addObject:btn];
+ imageView.userInteractionEnabled = YES;
+ }
+
+ // 要把View添加到tabBarController上
+// self.viewControllers = array;
+ self.btns[0].selected = YES;
+}
+
+-(void)onClick:(UIButton *)btn{
+ [self cleatSelectedBtn];
+ btn.selected = YES;
+
+ self.selectedIndex = [self.btns indexOfObject:btn];
+}
+
+-(void)cleatSelectedBtn{
+ for (UIButton * button in self.btns) {
+ button.selected = NO;
+ }
+}
+
+-(void)setShowIndex:(NSInteger)index{
+ if(index < self.btns.count){
+ [self cleatSelectedBtn];
+ self.btns[index].selected = YES;
+ self.selectedIndex = index;
+ }
+}
+
+
+
+- (void)didReceiveMemoryWarning {
+ [super didReceiveMemoryWarning];
+ // Dispose of any resources that can be recreated.
+}
+@End
 ```
 
