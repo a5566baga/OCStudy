@@ -120,6 +120,10 @@
 >创建对象
 >> UITabBarController * tabBarController = [[UITabBarController alloc] init]; 
  self.window.rootViewController = tabBarController;
+>创建导航控制栏
+>> ViewController * vc = [[ViewController alloc] init]; 
+ UINavigationController * nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+
 
 ### 页面添加
 
