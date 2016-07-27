@@ -210,9 +210,39 @@ UITabbarController创建的是一个底部的工具栏
 ###利用数据持久化，让每次打开tabbar的时候，下面按钮的位置与上次自定义过后的位置相同
 #####1、先存储内容
 ```
-
+- (void)tabBarController:(UITabBarController *)tabBarController willEndCustomizingViewControllers:(NSArray<__kindof UIViewController *> *)viewControllers changed:(BOOL)changed {
+ NSLog(@"编辑将要结束 %@", viewControllers);
+ // 把新的顺序存储起来
+ NSMutableArray * vctitles = [NSMutableArray array];
+ for (UIViewController * vc in viewControllers) {
+ [vctitles addObject:vc.tabBarItem.title];
+ }
+ NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+ [userDefaults setObject:vctitles forKey:@"order"];
+ [userDefaults synchronize];
+ NSLog(@"%@", NSHomeDirectory());
+}
 ```
 #####2、拿出来，遍历排序
+```
+把记录好的tabBarController上的item写上
+ NSArray * viewControllersArray = @[nvc, avc,bvc,cvc,dvc,evc];
+ NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+ NSArray * titlesArray = [userDefaults arrayForKey:@"order"];
+ NSMutableArray * tmpArray = [NSMutableArray array];
+ if (titlesArray.count == 0) {
+ tabBarController.viewControllers = viewControllersArray;
+ }else{
+ for (NSString * title in titlesArray) {
+ for (UIViewController * vc in viewControllersArray) {
+ if ([vc.tabBarItem.title isEqualToString: title]) {
+ [tmpArray addObject:vc];
+ }
+ }
+ }
+ tabBarController.viewControllers = tmpArray;
+ }
+```
 ### 自定义
 #####自定义一个tabBar
 ```
