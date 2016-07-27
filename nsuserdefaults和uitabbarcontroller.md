@@ -112,9 +112,9 @@
 ---
 
 ## UITabbarController
-    UITabbarController创建的是
 
 ### 功能
+ UITabbarController创建的是一个底部的工具栏
 
 ### 创建
 
