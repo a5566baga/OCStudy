@@ -66,7 +66,7 @@ self.textField.textAlignment = NSTextAlignmentCenter;
 
 ##### 使用
 
-> self.textField.clearButtonMode = c;
+> self.textField.clearButtonMode = UITextFieldViewModeAlways;
 
 #### 安全输入（输入全为\*）
 
