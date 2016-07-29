@@ -134,7 +134,8 @@ targetContentOffset:(inout CGPoint *)targetContentOffset NS_AVAILABLE_IOS(5_0);
 ```
 ######结束缩放
 ```
-
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(nullable UIView *)view atScale:(CGFloat)scale; 
+// scale between minimum and maximum. called after any 'bounce' animations
 ```
 ---
 
