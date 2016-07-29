@@ -54,7 +54,6 @@
 > self.scrollView.decelerationRate = 0.1; 
 
 
-
 ####缩放
 #####缩放的最小值
 >self.scrollView.minimumZoomScale = 0.01;
