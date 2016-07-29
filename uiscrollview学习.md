@@ -24,11 +24,14 @@
 #####内容与边框的距离(现用现测，起点都是根据周围出发)
 > self.scrollView.contentInset = UIEdgeInsetsMake(<#CGFloat top#>, <#CGFloat left#>, <#CGFloat bottom#>, <#CGFloat right#>); 
 
-#####
->
+#####是否启用拉出边界后的弹簧效果
+> self.scrollView.bounces = YES; 
 
-#####
->
+#####滚动条样式
+> self.scrollView.indicatorStyle = UIScrollViewIndicatorStyleBlack; 
+```
+
+```
 
 #####
 >
