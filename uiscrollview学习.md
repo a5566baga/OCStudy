@@ -18,11 +18,11 @@
 ######基本显示的大小（即可以拖动的尺寸）
 > self.scrollView.contentSize = imgSize; 
 
-#####
->
+#####偏移的位置
+> [self.scrollView setContentOffset:CGPointMake(200, 100)]; 
 
-#####
->
+#####内容与边框的距离(现用现测，起点都是根据周围出发)
+> self.scrollView.contentInset = UIEdgeInsetsMake(<#CGFloat top#>, <#CGFloat left#>, <#CGFloat bottom#>, <#CGFloat right#>); 
 
 #####
 >
