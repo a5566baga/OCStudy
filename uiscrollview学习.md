@@ -72,13 +72,15 @@
 > UIPageControl * pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 0, 150, 39)]; 
 
 ######圆点的个数
->
+> pageControl.numberOfPages = 5; 
 
 ######圆点的默认颜色
->
+> pageControl.pageIndicatorTintColor = [UIColor whiteColor]; 
 
 ######当前圆点的颜色
->
+> pageControl.currentPageIndicatorTintColor = [UIColor purpleColor]; 
+
+######
 
 ---
 
