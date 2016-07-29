@@ -98,11 +98,18 @@
  NSLog(@"scroll................");
 }
 ```
+######将要开始拖拽
+```
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView;
+```
+######将要结束拖拽
+```
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset NS_AVAILABLE_IOS(5_0);
+```
 ######
+```
 
-######
-
-######
+```
 
 ######
 
