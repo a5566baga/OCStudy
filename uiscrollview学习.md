@@ -53,16 +53,14 @@
 #####减速，值为0.0-1.0，值越小越好
 > self.scrollView.decelerationRate = 0.1; 
 
-#####
->
 
-#####
->
-
-#####
->
 
 ####缩放
+#####缩放的最小值
+>self.scrollView.minimumZoomScale = 0.01;
+
+#####缩放的最大倍数
+>self.scrollView.maximumZoomScale = 30;
 
 #### UIPageControl 的使用
 #####属性
