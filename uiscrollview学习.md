@@ -30,8 +30,31 @@
 #####滚动条样式
 > self.scrollView.indicatorStyle = UIScrollViewIndicatorStyleBlack; 
 ```
-
+ UIScrollViewIndicatorStyleDefault, // black with white border. good against any background
+ UIScrollViewIndicatorStyleBlack, // black only. smaller. good against a white background
+ UIScrollViewIndicatorStyleWhite // white only. smaller. good against a black background 
 ```
+
+#####横向的滚动条是否显示
+> self.scrollView.showsHorizontalScrollIndicator = YES; 
+
+#####竖向的滚动条是否演示
+> self.scrollView.showsVerticalScrollIndicator = NO; 
+
+#####滚动条距离边界的位置(边界是起点)
+> self.scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(100, 100, 100, 100); 
+
+#####
+>
+
+#####
+>
+
+#####
+>
+
+#####
+>
 
 #####
 >
