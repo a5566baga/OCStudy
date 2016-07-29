@@ -137,6 +137,11 @@ targetContentOffset:(inout CGPoint *)targetContentOffset NS_AVAILABLE_IOS(5_0);
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(nullable UIView *)view atScale:(CGFloat)scale; 
 // scale between minimum and maximum. called after any 'bounce' animations
 ```
+######视图是否返回到顶部
+```
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView; 
+// return a yes if you want to scroll to the top. if not defined, assumes YES
+```
 ---
 
 ## UIScrollView 与计时器的结合
