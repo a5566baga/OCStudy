@@ -80,7 +80,8 @@
 ######当前圆点的颜色
 > pageControl.currentPageIndicatorTintColor = [UIColor purpleColor]; 
 
-######
+######默认圆点的位置圆点
+> pageControl.currentPage = 2; 
 
 ---
 
