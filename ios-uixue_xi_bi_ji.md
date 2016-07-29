@@ -4,12 +4,15 @@
 
 ## UIButton
 
-##UIView
+## UIView
 
-##UITextField
+## UITextField
 
-##UIViewController
-##常用控件使用
-##触摸事件和手势
+## UIViewController
 
+## 常用控件使用
+
+## 触摸事件和手势
+
+## NSUserDefaults和UITabbarController
 
