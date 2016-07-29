@@ -104,7 +104,8 @@
 ```
 ######将要结束拖拽
 ```
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset NS_AVAILABLE_IOS(5_0);
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity 
+targetContentOffset:(inout CGPoint *)targetContentOffset NS_AVAILABLE_IOS(5_0);
 ```
 ######完成拖拽
 ```
@@ -132,6 +133,7 @@
 // called before the scroll view begins zooming its content
 ```
 ######结束缩放
+>
 ---
 
 ## UIScrollView 与计时器的结合
