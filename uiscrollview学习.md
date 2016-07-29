@@ -110,13 +110,18 @@
 ```
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
 ```
-
-######
-
-######
-
-######
-
+######开始减速
+```
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView;
+```
+######减速结束
+```
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;
+```
+######动画结束
+```
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView;
+```
 ######
 
 ---
