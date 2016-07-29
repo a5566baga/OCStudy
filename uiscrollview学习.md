@@ -122,7 +122,10 @@
 ```
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView;
 ```
-######
+######缩放
+```
+- (nullable UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView;
+```
 
 ---
 
