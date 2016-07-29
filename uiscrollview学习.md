@@ -63,6 +63,7 @@
 #####缩放的最小值
 >self.scrollView.minimumZoomScale = 0.01;
 
+
 #####缩放的最大倍数
 >self.scrollView.maximumZoomScale = 30;
 
