@@ -153,3 +153,9 @@ targetContentOffset:(inout CGPoint *)targetContentOffset NS_AVAILABLE_IOS(5_0);
     1、定时器在控制器的视图转换下是不会停止的
     2、要计时器停止(声明周期结束要用) 
         [self.timer invalidate]; 
+
+#####实现图片自动轮播的效果
+######代码如下:
+```
+
+```
