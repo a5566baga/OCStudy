@@ -15,7 +15,10 @@
 ```
 
 ####拖拽
+
 ####缩放
+
+#### UIPageControl 的使用
 ---
 
 ## UIScrollView 与计时器的结合
