@@ -353,9 +353,7 @@ targetContentOffset:(inout CGPoint *)targetContentOffset NS_AVAILABLE_IOS(5_0);
 @end
 ```
 
-\#\#\#\#\#效果图
+#####效果图
 
 ![](assets/UIScrollView效果图.png)
-
-
 
