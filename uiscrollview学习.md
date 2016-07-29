@@ -19,6 +19,7 @@
 ####缩放
 
 #### UIPageControl 的使用
+####属性
 ---
 
 ## UIScrollView 与计时器的结合
