@@ -157,5 +157,135 @@ targetContentOffset:(inout CGPoint *)targetContentOffset NS_AVAILABLE_IOS(5_0);
 #####实现图片自动轮播的效果
 ######代码如下:
 ```
+#import "ViewController.h"
 
+#define SCREEN_WIDTH CGRectGetWidth(self.view.frame)
+#define PICTURE_COUNT 10
+
+@interface ViewController ()<UIScrollViewDelegate>
+@property(nonatomic, strong)UIScrollView * scrollView;
+@property(nonatomic, strong)UIPageControl * pageControl;
+@property(nonatomic, strong)NSTimer * timer;
+//显示图片信息
+@property(nonatomic, strong)UILabel * picInfo;
+@property(nonatomic, strong)NSArray * infoArray;
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+ [super viewDidLoad];
+ // Do any additional setup after loading the view, typically from a nib.
+
+ // self.view.backgroundColor = [UIColor blueColor];
+
+ [self createForView];
+ [self scrollViewAddPic];
+ [self createPageControl];
+ [self createTimer];
+ [self createInformation];
+}
+
+-(void)createPageControl{
+
+ _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/5*3, 535, 100, 39)];
+ _pageControl.numberOfPages = PICTURE_COUNT;
+ _pageControl.pageIndicatorTintColor = [UIColor whiteColor];
+ _pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
+
+ [self.view addSubview:_pageControl];
+}
+
+-(void)createForView{
+ _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 65, CGRectGetWidth(self.view.frame), 500)];
+ _scrollView.backgroundColor = [UIColor redColor];
+ [self.view addSubview:self.scrollView];
+
+}
+
+-(void)scrollViewAddPic{
+
+ NSMutableArray<UIImage *> * imgArray = [NSMutableArray array];
+ for (NSInteger i = 0; i < PICTURE_COUNT; i++) {
+ NSString * path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"41_%ld", i] ofType:@"jpg"];
+ UIImage * image = [UIImage imageWithContentsOfFile:path];
+ [imgArray addObject:image];
+ }
+ [imgArray insertObject:[imgArray lastObject] atIndex:0];
+ [imgArray addObject:imgArray[1]];
+ // float SCREEN_WIDTH = CGRectGetWidth(self.view.frame);
+ self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH*imgArray.count, 500);
+ self.scrollView.pagingEnabled = YES;
+
+ for (NSInteger j = 0; j < imgArray.count; j++) {
+ UIImageView * imgView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH*j, 0, SCREEN_WIDTH, 500)];
+ imgView.image = imgArray[j];
+ [self.scrollView addSubview:imgView];
+ }
+
+ [_scrollView setContentOffset:CGPointMake(SCREEN_WIDTH, 0)];
+
+ self.scrollView.delegate = self;
+
+}
+#pragma mark
+#pragma mark =========== UIScrollViewDelegate
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+ if (scrollView.contentOffset.x/SCREEN_WIDTH == 0) {
+ scrollView.contentOffset = CGPointMake(PICTURE_COUNT*SCREEN_WIDTH, 0);
+ }else if(scrollView.contentOffset.x/SCREEN_WIDTH == 11){
+ scrollView.contentOffset = CGPointMake(SCREEN_WIDTH, 0);
+ }
+ NSInteger index = (_scrollView.contentOffset.x/SCREEN_WIDTH)-1;
+ self.pageControl.currentPage = index;
+ self.picInfo.text = self.infoArray[index];
+
+ NSLog(@"%@", NSStringFromCGSize(scrollView.contentSize));
+
+}
+
+-(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+ if (scrollView.contentOffset.x/SCREEN_WIDTH == 0) {
+ scrollView.contentOffset = CGPointMake(PICTURE_COUNT*SCREEN_WIDTH, 0);
+ }else if(scrollView.contentOffset.x/SCREEN_WIDTH == 11){
+ scrollView.contentOffset = CGPointMake(SCREEN_WIDTH, 0);
+ }
+ NSInteger index = (_scrollView.contentOffset.x/SCREEN_WIDTH)-1;
+ self.pageControl.currentPage = index;
+ self.picInfo.text = self.infoArray[index];
+}
+-(void)createInformation{
+ _infoArray = @[@"美女1", @"美女2", @"美女3", @"美女4", @"美女5", @"美女6", @"美女7", @"美女8", @"美女9", @"美女10"];
+ _picInfo = [[UILabel alloc] initWithFrame:CGRectMake(30, 500, 200, 50)];
+ _picInfo.font = [UIFont systemFontOfSize:30];
+
+ [self.view addSubview:self.picInfo];
+ _picInfo.text = _infoArray[0];
+}
+
+#pragma mark
+#pragma mark ========== timer
+-(void)createTimer{
+ _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(changePic) userInfo:nil repeats:YES];
+}
+
+-(void)changePic{
+ float _X = self.scrollView.contentOffset.x + SCREEN_WIDTH;
+ [self.scrollView setContentOffset:CGPointMake(_X, 0) animated:YES];
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+ self.timer.fireDate = [NSDate distantFuture];
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+ self.timer.fireDate = [NSDate distantPast];
+}
+
+- (void)didReceiveMemoryWarning {
+ [super didReceiveMemoryWarning];
+ // Dispose of any resources that can be recreated.
+}
+
+@end
 ```
