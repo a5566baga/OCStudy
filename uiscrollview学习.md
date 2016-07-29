@@ -91,8 +91,13 @@
 > UIScrollViewDelegate 
 
 #####协议中的方法
-######
-
+######已经滚动状态
+```
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+// 打印多的
+ NSLog(@"scroll................");
+}
+```
 ######
 
 ######
