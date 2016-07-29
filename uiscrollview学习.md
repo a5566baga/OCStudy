@@ -83,6 +83,7 @@
 ######默认圆点的位置圆点
 > pageControl.currentPage = 2; 
 
+
 ---
 
 ##UIScrollView的代理
