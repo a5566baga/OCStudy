@@ -133,7 +133,9 @@ targetContentOffset:(inout CGPoint *)targetContentOffset NS_AVAILABLE_IOS(5_0);
 // called before the scroll view begins zooming its content
 ```
 ######结束缩放
->
+```
+
+```
 ---
 
 ## UIScrollView 与计时器的结合
