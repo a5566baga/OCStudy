@@ -53,6 +53,11 @@
 #####减速，值为0.0-1.0，值越小越好
 > self.scrollView.decelerationRate = 0.1; 
 
+#####返回顶部，默认为YES。
+######注意：
+    当多个scrollView在一个ViewController中的时候，那么通过这个属性可以看出谁是能够返回顶部。
+
+> self.scrollView.scrollsToTop = YES; 
 
 ####缩放
 #####缩放的最小值
