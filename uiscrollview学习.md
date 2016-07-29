@@ -44,14 +44,14 @@
 #####滚动条距离边界的位置(边界是起点)
 > self.scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(100, 100, 100, 100); 
 
-#####
->
+#####页面是否可以滚动
+> self.scrollView.scrollEnabled = YES; 
 
-#####
->
+#####设置显示为一页一页的显示(即设置的scrollView的大小为一页)
+> self.scrollView.pagingEnabled = NO; 
 
-#####
->
+#####减速，值为0.0-1.0，值越小越好
+> self.scrollView.decelerationRate = 0.1; 
 
 #####
 >
