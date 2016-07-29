@@ -126,7 +126,12 @@
 ```
 - (nullable UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView;
 ```
-
+######将要开始缩放
+```
+- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(nullable UIView *)view NS_AVAILABLE_IOS(3_2); 
+// called before the scroll view begins zooming its content
+```
+######结束缩放
 ---
 
 ## UIScrollView 与计时器的结合
