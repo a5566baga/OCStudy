@@ -64,6 +64,12 @@
 
 #### UIPageControl 的使用
 #####属性
+
+---
+
+##UIScrollView的代理
+
+
 ---
 
 ## UIScrollView 与计时器的结合
