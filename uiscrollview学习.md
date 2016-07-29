@@ -68,7 +68,17 @@
 
 #### UIPageControl 的使用
 #####属性
+######创建
+> UIPageControl * pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 0, 150, 39)]; 
 
+######圆点的个数
+>
+
+######圆点的默认颜色
+>
+
+######当前圆点的颜色
+>
 
 ---
 
