@@ -142,6 +142,10 @@ targetContentOffset:(inout CGPoint *)targetContentOffset NS_AVAILABLE_IOS(5_0);
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView; 
 // return a yes if you want to scroll to the top. if not defined, assumes YES
 ```
+######视图已经返回到顶部
+```
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView; // called when scrolling animation finished. may be called immediately if already at top
+```
 ---
 
 ## UIScrollView 与计时器的结合
