@@ -80,6 +80,9 @@
 
 > self.scrollView.scrollsToTop = YES;
 
+    对于当有UINavtionController的控制器的时候，要设定self的值使视图不能被拉伸.
+> self.automaticallyAdjustsScrollViewInsets = NO; 
+
 #### 缩放
 
 ##### 缩放的最小值
@@ -353,7 +356,7 @@ targetContentOffset:(inout CGPoint *)targetContentOffset NS_AVAILABLE_IOS(5_0);
 @end
 ```
 
-#####效果图
+##### 效果图
 
 ![](assets/UIScrollView效果图.png)
 
