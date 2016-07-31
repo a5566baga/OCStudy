@@ -105,4 +105,14 @@ if (nil == cell) {
 ```
 
 ####属性设置
+>右侧属性样式
+```
+UITableViewCellAccessoryNone, // don't show any accessory view
+ UITableViewCellAccessoryDisclosureIndicator, // regular chevron. doesn't track
 
+ UITableViewCellAccessoryDetailDisclosureButton __TVOS_PROHIBITED, // info button w/ chevron. tracks
+
+ UITableViewCellAccessoryCheckmark, // checkmark. doesn't track
+
+ UITableViewCellAccessoryDetailButton NS_ENUM_AVAILABLE_IOS(7_0) __TVOS_PROHIBITED // info button. tracks
+```
