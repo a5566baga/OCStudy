@@ -34,11 +34,27 @@ UIView * headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWi
 
 >设置分割线的颜色
 
+```
+tableView.separatorColor = [UIColor redColor];
+```
+
 >是否可编辑
+
+```
+
+```
 
 >row的高度
 
+```
+tableView.rowHeight = 20;
+```
+
 >是否可以被选中
+
+```
+ tableView.allowsSelection = NO;
+```
 
 
 ##代理
