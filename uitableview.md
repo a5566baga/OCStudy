@@ -12,6 +12,19 @@
 >风格，tableView的风格
 >>``` UITableViewStylePlain, // regular table view 
       UITableViewStyleGrouped // preferences style table view```
+
+
 ##常用属性
+>设置headerView
+
+>设置footerView
+
+>设置分割线的颜色
+
+>是否可编辑
+
+>row的高度
+
+    
 
 ##代理
