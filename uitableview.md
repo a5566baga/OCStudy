@@ -117,7 +117,7 @@ if (nil == cell) {
 
  UITableViewCellAccessoryDetailButton NS_ENUM_AVAILABLE_IOS(7_0) __TVOS_PROHIBITED // info button. tracks
 ```
-#######使用
+######使用
 ```
 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 ```
