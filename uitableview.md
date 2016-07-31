@@ -90,5 +90,18 @@ if (nil == cell) {
  cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cellId"];
 }
 ```
+######cell的样式
+```
+ UITableViewCellStyleDefault, // Simple cell with text label and optional image view (behavior of UITableViewCell in iPhoneOS 2.x)
+ imageView textLabel detailTextLabel
+
+ UITableViewCellStyleValue1, // Left aligned label on left and right aligned label on right with blue text (Used in Settings)
+ textLabel detailTextLabel
+
+ UITableViewCellStyleValue2, // Right aligned label on left with blue text and left aligned label on right (Used in Phone/Contacts)
+ image textLabel detailTextLabel(在textLabel下面)
+
+ UITableViewCellStyleSubtitle // Left aligned label on top and left aligned label on bottom with gray text (Used in iPod).
+```
 
 ####属性设置
