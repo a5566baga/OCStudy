@@ -121,3 +121,11 @@ if (nil == cell) {
 ```
 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 ```
+
+>编辑的样式
+
+```
+UITableViewCellEditingStyleNone,
+ UITableViewCellEditingStyleDelete,
+ UITableViewCellEditingStyleInsert
+```
