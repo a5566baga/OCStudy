@@ -76,6 +76,12 @@ tableView.rowHeight = 20;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 ```
 
+##实用方式
+######刷新tableView
+```
+[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
+```
+
 ## UITableViewCell 使用
 ####创建方式
 ######要写的代理方法
