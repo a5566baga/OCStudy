@@ -80,7 +80,15 @@ tableView.rowHeight = 20;
 ####创建方式
 ######要写的代理方法
 ```
-
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+```
+######复用池的使用
+```
+static NSString * identifer = @"cellId";
+UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifer];
+if (nil == cell) {
+ cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cellId"];
+}
 ```
 
 ####属性设置
