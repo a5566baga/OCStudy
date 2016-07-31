@@ -78,5 +78,9 @@ tableView.rowHeight = 20;
 
 ## UITableViewCell 使用
 ####创建方式
+######要写的代理方法
+```
+
+```
 
 ####属性设置
