@@ -17,6 +17,10 @@
 ##常用属性
 >设置headerView
 
+``` UIView * headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200)]; 
+ headerView.backgroundColor = [UIColor grayColor];
+ tableView.tableHeaderView = headerView;```
+
 >设置footerView
 
 >设置分割线的颜色
