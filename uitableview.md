@@ -63,6 +63,9 @@ tableView.rowHeight = 20;
 
 
 ##代理
+######遵循的协议
+UITableViewDelegate
+UITableViewDataSource
 
 ## UITableViewCell 使用
 ####创建方式
