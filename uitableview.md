@@ -26,6 +26,10 @@ UIView * headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWi
 
 >设置footerView
 
+```
+
+```
+
 >设置分割线的颜色
 
 >是否可编辑
