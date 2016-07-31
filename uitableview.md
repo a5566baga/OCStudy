@@ -6,8 +6,12 @@
     self.automaticallyAdjustsScrollViewInsets = YES;
 
 ##创建
+>创建语句
+>>```UITableView * tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight(self.view.frame)) style:UITableViewStyleGrouped]; ```
 
-
+>风格，tableView的风格
+>>``` UITableViewStylePlain, // regular table view 
+      UITableViewStyleGrouped // preferences style table view```
 ##常用属性
 
 ##代理
