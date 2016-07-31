@@ -64,8 +64,17 @@ tableView.rowHeight = 20;
 
 ##代理
 ######遵循的协议
-UITableViewDelegate
-UITableViewDataSource
+>UITableViewDelegate
+
+>UITableViewDataSource
+
+必须要实现的方法：
+```
+ - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section; 
+```
+```
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+```
 
 ## UITableViewCell 使用
 ####创建方式
