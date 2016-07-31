@@ -41,7 +41,7 @@ tableView.separatorColor = [UIColor redColor];
 > 设置分割线的样式 
 
 ```
-UITableViewCellSeparatorStyleNone,
+ UITableViewCellSeparatorStyleNone,
  UITableViewCellSeparatorStyleSingleLine,
  UITableViewCellSeparatorStyleSingleLineEtched
 ```
