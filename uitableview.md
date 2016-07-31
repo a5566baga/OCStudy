@@ -38,10 +38,10 @@ UIView * headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWi
 tableView.separatorColor = [UIColor redColor];
 ```
 
->是否可编辑
+> 设置分割线的样式 
 
 ```
-
+tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 ```
 
 >row的高度
