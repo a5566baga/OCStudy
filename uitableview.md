@@ -17,9 +17,12 @@
 ##常用属性
 >设置headerView
 
-``` UIView * headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200)]; 
+######注意： header如果不设置tableHeaderView的高度，由视图本身大小决定。 
+``` 
+UIView * headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200)]; 
  headerView.backgroundColor = [UIColor grayColor];
- tableView.tableHeaderView = headerView;```
+ tableView.tableHeaderView = headerView;
+```
 
 >设置footerView
 
