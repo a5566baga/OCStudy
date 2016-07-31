@@ -27,7 +27,7 @@ UIView * headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWi
 >设置footerView
 
 ```
-UIView * footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 100)];
+ UIView * footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 100)];
  footerView.backgroundColor = [UIColor brownColor];
  tableView.tableFooterView = footerView;
 ```
