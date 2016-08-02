@@ -71,7 +71,7 @@ self.tableView.allowsMultipleSelectionDuringEditing = YES;
 }
 ```
 
-![](选中删除状态.png)
+![](assets/选中删除状态.png)
 
 ## 折叠效果
 
