@@ -1,21 +1,30 @@
-#UITableView学习-02
+# UITableView学习-02
 
 ---
 
-##多选编辑
-####需要实现的代理方法
+## 多选编辑
+
+#### 需要实现的代理方法
+
 ```
 -(void)mulDelete:(UIBarButtonItem *)barbutton
 ```
-####需要设置的tableView的属性
+
+#### 需要设置的tableView的属性
+
 ```
 self.tableView.allowsMultipleSelectionDuringEditing = YES;
 ```
-####删除数据的思路
-    1、获取数据源（最好用model）
-    2、获取到要删除的行和组
-    3、要从序号大的开始删，这样不影响前面序号小的数据
-    4、刷新数据页面
+
+#### 删除数据的思路
+
+```
+1、获取数据源（最好用model）
+2、获取到要删除的行和组
+3、要从序号大的开始删，这样不影响前面序号小的数据
+4、刷新数据页面
+```
+
 ```
 //删除数据
 -(void)deleteData:(UIBarButtonItem *)batbutton{
@@ -30,8 +39,11 @@ self.tableView.allowsMultipleSelectionDuringEditing = YES;
  [self.tableView reloadData];
 }
 ```
-####右侧快速定位的索引设置
-######常用设置的颜色属性
+
+#### 右侧快速定位的索引设置
+
+###### 常用设置的颜色属性
+
 ```
 // TODO:sectionIndexColor设置文字颜色
  self.tableView.sectionIndexColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:0.5];
@@ -40,24 +52,39 @@ self.tableView.allowsMultipleSelectionDuringEditing = YES;
 // 轨迹颜色
  self.tableView.sectionIndexTrackingBackgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:0.5];
 ```
-######设置索引的内容
+
+###### 设置索引的内容
+
 ```
 -(NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView{
  return self.sectionTitles;
 }
 ```
-    返回值为header的标题的数组
+
+```
+返回值为header的标题的数组
+```
+
 ```
 -(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index{
  return index;
 }
 ```
-##折叠效果
-####思路解析
-    1、要对每个section中的数据设置BOOL值标记
-    2、在代理方法中动态显示row的数量
-    3、自定义headerView，添加Button事件
-######设是否要折叠的标识
+
+![](选中删除状态.png)
+
+## 折叠效果
+
+#### 思路解析
+
+```
+1、要对每个section中的数据设置BOOL值标记
+2、在代理方法中动态显示row的数量
+3、自定义headerView，添加Button事件
+```
+
+###### 设是否要折叠的标识
+
 ```
 //属性
 @property(nonatomic, strong)NSMutableArray * showSection;
@@ -65,7 +92,9 @@ self.tableView.allowsMultipleSelectionDuringEditing = YES;
 [self.showSection addObject:@(YES)];
 
 ```
-######显示每组的row的数量、分组的数量
+
+###### 显示每组的row的数量、分组的数量
+
 ```
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
  if ([self.showSection[section] boolValue]) {
@@ -77,8 +106,13 @@ self.tableView.allowsMultipleSelectionDuringEditing = YES;
  return self.dataSource.count;
 }
 ```
-######设置headerView
-    注意，要设定高度，实现代理中的方法
+
+###### 设置headerView
+
+```
+注意，要设定高度，实现代理中的方法
+```
+
 ```
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
  // 添加一个Button
@@ -96,12 +130,15 @@ self.tableView.allowsMultipleSelectionDuringEditing = YES;
  return button;
 }
 ```
+
 ```
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
  return 50;
 }
 ```
-######BUTTON事件响应
+
+###### BUTTON事件响应
+
 ```
 -(void)foldSection:(UIButton *)button{
 // 折叠
@@ -121,20 +158,26 @@ self.tableView.allowsMultipleSelectionDuringEditing = YES;
 }
 ```
 
-####小技巧
-######对于默认出现的footer的高度，可以设置它为很小的值
+#### 小技巧
+
+###### 对于默认出现的footer的高度，可以设置它为很小的值
+
 ```
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
  return 0.01;
 }
 ```
-######内容的缩进
+
+###### 内容的缩进
+
 ```
 -(NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath{
  return 3;
 }
 ```
-####全部代码
+
+#### 全部代码
+
 ```
 #import "ViewController.h"
 #import "ImageModel.h"
@@ -385,74 +428,108 @@ self.tableView.allowsMultipleSelectionDuringEditing = YES;
 }
 @end
 ```
+
+![](assets/tableView折叠.png)
+
 ---
 
 ## UISearchBar 和  UISearchDisplayController 的使用
 
-####功能
-    1、实现查找
-    2、通过代理实现不同方式的查找
-####UISearchBar
-#####创建
+#### 功能
+
+```
+1、实现查找
+2、通过代理实现不同方式的查找
+```
+
+#### UISearchBar
+
+##### 创建
+
 ```
 _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 70)];
 ```
-#####基本设置属性
-######提示文字
+
+##### 基本设置属性
+
+###### 提示文字
+
 ```
 _searchBar.placeholder = @"请输入查询内容";
 ```
-######提示信息
+
+###### 提示信息
+
 ```
 _searchBar.prompt = @"提示";
 ```
-######搜索内容（一般不写）
+
+###### 搜索内容（一般不写）
+
 ```
 _searchBar.text = @"猪猪侠";
 ```
-######搜索分组
+
+###### 搜索分组
+
 ```
 _searchBar.scopeButtonTitles = @[@"按姓", @"按名"];
 ```
 
-####UISearchDisplayController
-#####创建
+#### UISearchDisplayController
+
+##### 创建
+
 ```
 _searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:_searchBar contentsController:self];
 ```
-#####设置代理
-######searchDisplayController 的代理
+
+##### 设置代理
+
+###### searchDisplayController 的代理
+
 ```
  _searchDisplayController.delegate = self;
 ```
-######这两个代理都是UITableViewDelegate
+
+###### 这两个代理都是UITableViewDelegate
+
 ```
  _searchDisplayController.searchResultsDelegate = self;
  _searchDisplayController.searchResultsDataSource = self;
 ```
-#####代理方法
-###### 搜索开始状态，要设置搜索的数据内容为YES 
+
+##### 代理方法
+
+###### 搜索开始状态，要设置搜索的数据内容为YES
+
 ```
 - (void) searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller{
  self.showFilterData = YES;
  NSLog(@"搜索将要开始");
 }
 ```
-###### 搜索结束后。不让搜索的数据内容能够显示 
+
+###### 搜索结束后。不让搜索的数据内容能够显示
+
 ```
 - (void) searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller{
  self.showFilterData = NO;
  NSLog(@"搜索结束");
 }
 ```
-###### 当搜索内容发生变化时，会回调这个方法。 
+
+###### 当搜索内容发生变化时，会回调这个方法。
+
 ```
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(nullable NSString *)searchString{
     [self filterDataByTextString:searchString optionScope:[controller.searchBar.scopeButtonTitles         objectAtIndex:controller.searchBar.selectedScopeButtonIndex]];
      return YES;
 }
 ```
-###### 当搜索过滤器发生变化时会回调这个方法 
+
+###### 当搜索过滤器发生变化时会回调这个方法
+
 ```
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption{
  // controller.searchBar.text 是搜索的内容
@@ -463,9 +540,14 @@ _searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:
  return YES;
 }
 ```
-######核心搜索代码
-    1、根据不同的类型，选不同的查询方式
-    2、通过匹配字符串来返回类型
+
+###### 核心搜索代码
+
+```
+1、根据不同的类型，选不同的查询方式
+2、通过匹配字符串来返回类型
+```
+
 ```
 -(void)filterDataByTextString:(NSString *)text optionScope:(NSString *)scopeTitle{
 // 先删除全部的查找出来的元素
@@ -487,9 +569,14 @@ _searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:
 
 }
 ```
-######数据的显示
-    1、自己设定的tableView和搜索出来的tableView不是同一个view
-    2、通过判断是哪个tableView，之后确认上面的数据
+
+###### 数据的显示
+
+```
+1、自己设定的tableView和搜索出来的tableView不是同一个view
+2、通过判断是哪个tableView，之后确认上面的数据
+```
+
 ```
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
  static NSString * identifer = @"cellID";
@@ -515,7 +602,9 @@ _searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:
  return cell;
 }
 ```
-######通过不同的数组中的数据个数获取ROWS
+
+###### 通过不同的数组中的数据个数获取ROWS
+
 ```
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
  if (self.showFilterData) {
@@ -525,3 +614,4 @@ _searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:
      return self.dataSource.count;
 }
 ```
+
