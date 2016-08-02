@@ -65,8 +65,67 @@ self.tableView.allowsMultipleSelectionDuringEditing = YES;
 [self.showSection addObject:@(YES)];
 
 ```
-######
+######显示每组的row的数量、分组的数量
+```
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+ if ([self.showSection[section] boolValue]) {
+ return [self.dataSource[section] count];
+ }else
+ return 0;
+}
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+ return self.dataSource.count;
+}
+```
+######设置headerView
+    注意，要设定高度，实现代理中的方法
+```
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+ // 添加一个Button
+ UIButton * button = [[UIButton alloc ] init];
+ [button setTitle:self.sectionTitles[section] forState:UIControlStateNormal];
+ [button setTitleColor:[UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1] forState:UIControlStateHighlighted];
+ button.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1] ;
+ button.layer.borderWidth = 3;
+ button.layer.cornerRadius = 25;
+// button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+ [button addTarget:self action:@selector(foldSection:) forControlEvents:UIControlEventTouchUpInside
+ ];
+ button.tag = 100+section;
 
+ return button;
+}
+```
+```
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+ return 50;
+}
+```
+######BUTTON事件响应
+```
+-(void)foldSection:(UIButton *)button{
+// 折叠
+ // 1、要获取是哪一个组
+ NSInteger section = button.tag-100;
+ if ([self.showSection[section] boolValue] == YES) {
+ // 2、希望对应的section的行为0
+ [self.showSection replaceObjectAtIndex:section withObject:@(NO)];
+ }else{
+ // 2、希望对应的section的行为0
+ [self.showSectiosin replaceObjectAtIndex:section withObject:@(YES)];
+ }
+ // 3、刷新分区的数据
+ [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationTop];
+
+ NSLog(@"");
+}
+```
+
+####小技巧
+######对于默认出现的footer的高度，可以设置它为很小的值
+```
+
+```
 
 ---
 
