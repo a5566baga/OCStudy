@@ -452,3 +452,76 @@ _searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:
      return YES;
 }
 ```
+###### 当搜索过滤器发生变化时会回调这个方法 
+```
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption{
+ // controller.searchBar.text 是搜索的内容
+ // searchOption选中的第几个按钮
+ [self filterDataByTextString:controller.searchBar.text optionScope:[controller.searchBar.scopeButtonTitles objectAtIndex:searchOption]];
+ NSLog(@"%s", __func__);
+// NSLog(@"%ld", searchOption);
+ return YES;
+}
+```
+######核心搜索代码
+    1、根据不同的类型，选不同的查询方式
+    2、通过匹配字符串来返回类型
+```
+-(void)filterDataByTextString:(NSString *)text optionScope:(NSString *)scopeTitle{
+// 先删除全部的查找出来的元素
+ [self.filterArray removeAllObjects];
+// TODO:两种查找方式
+ if ([scopeTitle isEqualToString:@"按姓"]) {
+ for (NSDictionary * dic in self.dataSource) {
+ if ([dic[@"姓"] containsString:text]) {
+ [self.filterArray addObject:dic];
+ }
+ }
+ }else{
+ for (NSDictionary * dic in self.dataSource) {
+ if ([dic[@"名"] containsString:text]) {
+ [self.filterArray addObject:dic];
+ }
+ }
+ }
+
+}
+```
+######数据的显示
+    1、自己设定的tableView和搜索出来的tableView不是同一个view
+    2、通过判断是哪个tableView，之后确认上面的数据
+```
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+ static NSString * identifer = @"cellID";
+ UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifer];
+
+// searchResultTableView是获取显示搜索结果的tableView
+// 通过不同的tableView的地址确定显示的该是哪一个tableView
+ if (tableView == self.searchDisplayController.searchResultsTableView) {
+ if (cell == nil) {
+     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifer];
+ }
+ cell.textLabel.text = self.filterArray[indexPath.row][@"姓"];
+ cell.detailTextLabel.text = self.filterArray[indexPath.row][@"名"];
+ }else{
+     if (cell == nil) {
+         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:identifer];
+ }
+
+ cell.textLabel.text = self.dataSource[indexPath.row][@"姓"];
+ cell.detailTextLabel.text = self.dataSource[indexPath.row][@"名"];
+ }
+
+ return cell;
+}
+```
+######通过不同的数组中的数据个数获取ROWS
+```
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+ if (self.showFilterData) {
+// 返回的rows的数量
+     return self.filterArray.count;
+ }else
+     return self.dataSource.count;
+}
+```
