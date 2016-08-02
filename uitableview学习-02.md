@@ -124,7 +124,15 @@ self.tableView.allowsMultipleSelectionDuringEditing = YES;
 ####小技巧
 ######对于默认出现的footer的高度，可以设置它为很小的值
 ```
-
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+ return 0.01;
+}
+```
+######内容的缩进
+```
+-(NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath{
+ return 3;
+}
 ```
 
 ---
