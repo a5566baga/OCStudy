@@ -23,5 +23,6 @@
     * [触摸事件和常用手势](触摸事件和常用手势.md)
     * [NSUserDefaults和UITabbarController](nsuserdefaults和uitabbarcontroller.md)
     * [UIScrollView学习](uiscrollview学习.md)
-    * [UITableView学习](uitableview.md)
+    * [UITableView学习-01](uitableview.md)
+    * [UITableView学习-02](uitableview学习-02.md)
 
