@@ -430,3 +430,25 @@ _searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:
  _searchDisplayController.searchResultsDelegate = self;
  _searchDisplayController.searchResultsDataSource = self;
 ```
+#####代理方法
+###### 搜索开始状态，要设置搜索的数据内容为YES 
+```
+- (void) searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller{
+ self.showFilterData = YES;
+ NSLog(@"搜索将要开始");
+}
+```
+###### 搜索结束后。不让搜索的数据内容能够显示 
+```
+- (void) searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller{
+ self.showFilterData = NO;
+ NSLog(@"搜索结束");
+}
+```
+###### 当搜索内容发生变化时，会回调这个方法。 
+```
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(nullable NSString *)searchString{
+    [self filterDataByTextString:searchString optionScope:[controller.searchBar.scopeButtonTitles         objectAtIndex:controller.searchBar.selectedScopeButtonIndex]];
+     return YES;
+}
+```
