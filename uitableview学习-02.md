@@ -414,3 +414,19 @@ _searchBar.text = @"猪猪侠";
 ```
 _searchBar.scopeButtonTitles = @[@"按姓", @"按名"];
 ```
+
+####UISearchDisplayController
+#####创建
+```
+_searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:_searchBar contentsController:self];
+```
+#####设置代理
+```
+// searchDisplayController 的代理
+ _searchDisplayController.delegate = self;
+```
+######这两个代理都是UITableViewDelegate
+```
+ _searchDisplayController.searchResultsDelegate = self;
+ _searchDisplayController.searchResultsDataSource = self;
+```
