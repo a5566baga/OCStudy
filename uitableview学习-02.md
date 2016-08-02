@@ -30,7 +30,42 @@ self.tableView.allowsMultipleSelectionDuringEditing = YES;
  [self.tableView reloadData];
 }
 ```
+####右侧快速定位的索引设置
+######常用设置的颜色属性
+```
+// TODO:sectionIndexColor设置文字颜色
+ self.tableView.sectionIndexColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:0.5];
+// sectionIndexBackgroundColor设置背景颜色
+ self.tableView.sectionIndexBackgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:0.8];
+// 轨迹颜色
+ self.tableView.sectionIndexTrackingBackgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:0.5];
+```
+######设置索引的内容
+```
+-(NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView{
+ return self.sectionTitles;
+}
+```
+    返回值为header的标题的数组
+```
+-(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index{
+ return index;
+}
+```
 ##折叠效果
+####思路解析
+    1、要对每个section中的数据设置BOOL值标记
+    2、在代理方法中动态显示row的数量
+    3、自定义headerView，添加Button事件
+######设是否要折叠的标识
+```
+//属性
+@property(nonatomic, strong)NSMutableArray * showSection;
+//添加BOOL值
+[self.showSection addObject:@(YES)];
+
+```
+######
 
 
 ---
