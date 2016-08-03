@@ -38,25 +38,15 @@
 
 #import "BookCell2.h"
 
-
-
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
-
-
 
 @property(nonatomic, strong)UITableView * tableView;
 
 @property(nonatomic, strong)NSMutableArray<Book *> * dataModels;
 
-
-
 @end
 
-
-
 @implementation ViewController
-
-
 
 - (void)viewDidLoad {
 
@@ -74,17 +64,11 @@
 
 - (IBAction)jumpSwip:(id)sender {
 
-
-
 }
-
-
 
 -(void)initForData{
 
  _dataModels = [NSMutableArray array];
-
-
 
  NSString * path = [[NSBundle mainBundle] pathForResource:@"bookData" ofType:@"plist"];
 
@@ -97,26 +81,15 @@
  [_dataModels addObject:bookModel];
 
  }
-
-
-
 }
-
-
 
 -(void)initForView{
 
  _tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
 
-
-
 // 注册cell
 
  [self.tableView registerNib:[UINib nibWithNibName:@"BookCell2" bundle:nil] forCellReuseIdentifier:@"xibCell"];
-
-
-
-
 
  _tableView.delegate = self;
 
@@ -125,15 +98,7 @@
  [self.view addSubview:_tableView];
 
  self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-
-
-
-
-
 }
-
-
-
 #pragma mark
 
 #pragma mark =============== delegate
@@ -143,9 +108,6 @@
  return _dataModels.count;
 
 }
-
-
-
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
 #if 1
@@ -160,8 +122,6 @@
 
  }
 
-
-
  cell.book = self.dataModels[indexPath.row];
 
 //#else
@@ -173,15 +133,8 @@
 #endif
 
  return cell;
-
 }
-
-
-
 #if 1
-
-
-
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
  return [self rowHeightByString:self.dataModels[indexPath.row].detail font:[UIFont systemFontOfSize:20]] + 80;
@@ -190,30 +143,18 @@
 
 }
 
-
-
 -(float)rowHeightByString:(NSString *)content font:(UIFont *)font{
 
  CGSize mySize = CGSizeMake(CGRectGetWidth(self.view.frame), CGFLOAT_MAX);
 
  CGSize size = [content boundingRectWithSize:mySize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:20]} context:nil].size;
-
  return size.height;
-
 }
-
 #endif
-
 - (void)didReceiveMemoryWarning {
-
  [super didReceiveMemoryWarning];
-
  // Dispose of any resources that can be recreated.
-
 }
-
-
-
 @end
 
 ```
