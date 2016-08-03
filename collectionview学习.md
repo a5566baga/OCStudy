@@ -51,7 +51,7 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
 ```
     [self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:@"collectionCellID"];
 ```
-######通过xib创建的cell
+######通过xib创建的cell注册
 ``` 
     [self.collectionView registerNib:[UINib nibWithNibName:@"MyCollectionCell" bundle:nil] forCellWithReuseIdentifier:@"myConllectionCellID"];
 ```
