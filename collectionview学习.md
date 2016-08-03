@@ -174,4 +174,7 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
 ---
 ##自定义CollectionCell实现瀑布流效果
 #####明确目的
-######需要写两个类，一个是继承于
+######需要写两个类，一个是继承于UICollectionViewCell的类；一个是继承UICollectionViewLayout的类
+
+####步骤
+#####1、
