@@ -363,5 +363,33 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
 ```
 #####7、自定义找最大长度的下标和最小的下标
 ```
+//在高度数组中，找出最低的Y值，记录下标，返回
+-(NSInteger)miniHeightIndex{
+//    重新赋值要加上 __block
+    __block NSInteger index = 0;
+    __block float minNumber = CGFLOAT_MAX;
+    [self.heightArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj floatValue] < minNumber) {
+            minNumber = [obj floatValue];
+            index = idx;
+        }
+    }];
+    
+    return index;
+}
 
+//在高度数组中，找出最高的Y值，记录下标，返回
+-(NSInteger)maxiHeightIndex{
+    //    重新赋值要加上 __block
+    __block NSInteger index = 0;
+    __block float maxNumber = CGFLOAT_MIN;
+    [self.heightArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj floatValue] > maxNumber) {
+            maxNumber = [obj floatValue];
+            index = idx;
+        }
+    }];
+    
+    return index;
+}
 ```
