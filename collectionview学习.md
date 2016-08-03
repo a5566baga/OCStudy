@@ -246,4 +246,7 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
 
 @end
 ```
+#####3、初始化行数、空行大小、距边界距离大小
+```
 
+```
