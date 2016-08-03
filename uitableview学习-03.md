@@ -11,4 +11,4 @@
 
 ###model层的设置
 ######1、通过对要解析的内容设置属性值
-######2、-(instancetype)initWithDictionary:(NSDictionary *)dic;这个方法，把对应的值附到属性上。通过
+######2、-(instancetype)initWithDictionary:(NSDictionary *)dic;这个方法，把对应的值附到属性上。通过[self setValuesForKeysWithDictionary:dic];这个方法完成赋值，然后再把对象传到数组中去。
