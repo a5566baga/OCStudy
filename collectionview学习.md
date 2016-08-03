@@ -393,3 +393,6 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
     return index;
 }
 ```
+#####8、无数据下，直接创建视图(代理方法、cell的设置都要写)
+```
+```
