@@ -169,5 +169,8 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
     NSLog(@"section %ld,  item: %ld",indexPath.section, indexPath.row);
 }
 ```
+![](/assets/collectionCell表现.png)
 
+---
+##自定义CollectionCell实现瀑布流效果
 
