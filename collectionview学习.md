@@ -57,3 +57,4 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
 ```
 
 ###代理
+
