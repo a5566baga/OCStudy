@@ -189,5 +189,25 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
 ```
 #####2、实现初始化方法和layoutSubviews方法
 ```
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        _numberLabel = [[UILabel alloc] init];
+        _numberLabel.font = [UIFont systemFontOfSize:30];
+        _numberLabel.textAlignment = NSTextAlignmentCenter;
+        [self.contentView addSubview:_numberLabel];
+        
+        _imageView = [[UIImageView alloc] init];
+        [self.contentView addSubview:_imageView];
+    }
+    return self;
+}
 
+-(void)layoutSubviews{
+    self.numberLabel.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
+    
+    self.imageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
+}
 ```
+#####3、
