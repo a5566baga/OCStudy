@@ -247,6 +247,7 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
 @end
 ```
 #####3、初始化行数、空行大小、距边界距离大小
+######列数
 ```
 //初始化列
 
@@ -264,6 +265,7 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
 
 }
 ```
+######空行大小
 ```
 //初始化空行大小
 
@@ -279,6 +281,7 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
 
 }
 ```
+###### 距边界的大小
 ```
 //初始化边界距离
 
@@ -293,5 +296,9 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
  }
 
 }
+
+```
+###### 4、准备刷新的方法（系统要求重写的）
+```
 
 ```
