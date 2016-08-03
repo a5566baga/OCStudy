@@ -10,4 +10,5 @@
 
 
 ###model层的设置
-######通过对
+######1、通过对要解析的内容设置属性值
+######2、-(instancetype)initWithDictionary:(NSDictionary *)dic;这个方法，把对应的值附到属性上。通过
