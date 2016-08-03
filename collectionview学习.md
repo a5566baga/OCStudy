@@ -298,7 +298,50 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
 }
 
 ```
-###### 4、准备刷新的方法（系统要求重写的）
+##### 4、准备刷新的方法（系统要求重写的）
+######主要实现的内容：两个数据数组的初始化和赋值、找出每个item的高度坐标并且记录、通过代理获取高度、创建
 ```
+-(void)prepareLayout{
+    _heightArray = [[NSMutableArray alloc] initWithCapacity:_colm];
+    _attributeArray = [[NSMutableArray alloc] init];
+//    初始化每列高度
+    for (NSInteger i = 0; i < self.colm; i++) {
+        _heightArray[i] = @(self.inset.top);
+    }
+//    获取总宽度
+    float totalWidth = self.collectionView.bounds.size.width;
+//    获取每个item的宽度
+    float itemWidth = (totalWidth - _inset.left - _inset.right - _spacing * (_colm - 1))/_colm;
+//    获取collectionView上的item的个数。
+    NSInteger totalsItem = [self.collectionView numberOfItemsInSection:0];
+    for (NSInteger i = 0; i < totalsItem; i++) {
+//        找到当前高度最小的。
+        NSUInteger current = [self miniHeightIndex];
+//        确定item的X，Y坐标
+        CGFloat itemX = _inset.left + (itemWidth + _spacing)*current;
+        CGFloat itemY = [_heightArray[current] floatValue];
+//        为item设置最小高度
+        CGFloat itemHeight = 0;
+//        设置当前item的位置
+        NSIndexPath * indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+//        通过代理设置判断是否有代理对象和代理的方法
+        if (self.delegate != nil && [self.delegate respondsToSelector:@selector(itemHeightLayout:indexPath:)]) {
+            itemHeight = [self.delegate itemHeightLayout:self indexPath:indexPath];
+        }
+//        设置item的位置大小
+        CGRect rect = CGRectMake(itemX, itemY, itemWidth, itemHeight);
+//        设置attribute，因为下面要重写的方法中要返回  UICollectionViewLayoutAttributes
+        UICollectionViewLayoutAttributes * attribute = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+        
+        attribute.frame = rect;
+//        把每个item中的attribute存入到数组中
+        [self.attributeArray addObject:attribute];
+        
+//        重新设置每一列的高度
+//        当前高度+item的高度+空行的高度，得出的是当前列的高度的Y值
+        CGFloat colNumHeight = [self.heightArray[current] floatValue] + itemHeight + _spacing;
+        self.heightArray[current] = @(colNumHeight);
+    }
+}
 
 ```
