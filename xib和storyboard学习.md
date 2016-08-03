@@ -39,3 +39,8 @@
 
 #####创建步骤
 ######1、创建
+![](/assets/storyBoard创建.png)
+######2、拖控件与之前xib类似
+######3、添加nativcationBar和tabBar
+        1、选中一个ViewController
+        2、点击【Editor】->【Embed In】
