@@ -299,7 +299,7 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
 
 ```
 ##### 4、准备刷新的方法（系统要求重写的）
-######主要实现的内容：两个数据数组的初始化和赋值、找出每个item的高度坐标并且记录、通过代理获取高度、创建
+######主要实现的内容：两个数据数组的初始化和赋值、找出每个item的高度坐标并且记录、通过代理获取高度、创建UICollectionViewLayoutAttributes。
 ```
 -(void)prepareLayout{
     _heightArray = [[NSMutableArray alloc] initWithCapacity:_colm];
