@@ -69,3 +69,6 @@
 }
 ```
 ######5、每个ViewController都要对应一个文件，在文件中进行相关修改
+
+#####多个视图在同一storyBoard中表现
+![](/assets/多层视图在storyBoard.png)

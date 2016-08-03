@@ -27,6 +27,6 @@
     * [UITableView学习-02](uitableview学习-02.md)
     * [UITableView学习-03](uitableview学习-03.md)
     * [xib和storyboard学习](xib和storyboard学习.md)
-    * CollectionView学习
+    * [CollectionView学习](collectionview学习.md)
     * KVC&KVO学习
 
