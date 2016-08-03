@@ -56,7 +56,7 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
     [self.collectionView registerNib:[UINib nibWithNibName:@"MyCollectionCell" bundle:nil] forCellWithReuseIdentifier:@"myConllectionCellID"];
 ```
 
-###代理
+###4、代理
 ######代理delegate
      self.collectionView.dataSource = self; 
      self.collectionView.delegate = self;
@@ -65,9 +65,109 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
     UICollectionViewDataSource
     UICollectionViewDelegateFlowLayout
 
-###头视图和尾视图的注册
+###5、头视图和尾视图的注册
 ```
+[self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headersID"];
+```
+```
+[self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footersID"];
+```
+###6、头尾视图的回调方法
+```
+//设置头尾视图尺寸
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+//    宽度不管用
+    return CGSizeMake(200, 100);
+}
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
+    return CGSizeMake(200, 100);
+}
+//item的大小
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+//    设置重写设置item大小的方法，那么设置的属性就不管用了，无效
+    return CGSizeMake(100, 100);
+}
+//内部边距
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+//    设置内容与边界的距离
+    return UIEdgeInsetsMake(110, 20, 30, 20);
+}
 
+//返回headerview和footerview
+-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+    if ([kind isEqualToString: UICollectionElementKindSectionHeader]) {
+//        UICollectionReusableView * headerView = [collectionView dequeueReusableCellWithReuseIdentifier:@"headersID" forIndexPath:indexPath];
+        
+        UICollectionReusableView * headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headersID" forIndexPath:indexPath];
+        
+        headerView.backgroundColor = [UIColor colorWithRed:0.0 green:1.0 blue:1.0 alpha:1.0];
+        return headerView;
+    }else{
+//        UICollectionReusableView * foorterView = [collectionView dequeueReusableCellWithReuseIdentifier:@"footersID" forIndexPath:indexPath];
+        
+        UICollectionReusableView * footerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footersID" forIndexPath:indexPath];
+        footerView.backgroundColor = [UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:1.0];
+        return footerView;
+    }
+}
+```
+###7、设置cell
+```
+//返回每个section的row的数量
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return self.dataSource.count;
+}
+//返回section的大小
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 1;
+}
+//返回的是cell
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row %2 == 0) {
+#if 1
+        UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionID" forIndexPath:indexPath];
+        
+        cell.backgroundColor = [UIColor redColor];
+        
+        UIView * selectView = [[UIView alloc] init];
+        selectView.backgroundColor = [UIColor grayColor];
+        cell.selectedBackgroundView = selectView;
+        
+        UILabel * label = [[UILabel alloc] init];
+        label.text = [NSString stringWithFormat:@"%ld", indexPath.row];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.backgroundColor = [UIColor redColor];
+        label.alpha = 0.5;
+        cell.backgroundView = label;
+//        cell.selectedBackgroundView = label;
+        
+//        UIImageView * imgView = [[UIImageView alloc] initWithImage:self.dataSource[indexPath.row]];
+//        cell.backgroundView = imgView;
+#endif
+        return cell;
+    }else if (indexPath.row%3 == 0){
+        CollectionViewCell * myCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionCellID" forIndexPath:indexPath];
+        myCell.imageView.image = self.dataSource[indexPath.row];
+        return myCell;
+    }else{
+        MyCollectionCell * xibCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"myConllectionCellID" forIndexPath:indexPath ];
+        xibCell.imageView.image = self.dataSource[indexPath.row];
+        
+        return xibCell;
+    }
+}
+
+//是否能选择,设置item是否可选
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row%2 == 0) {
+        return YES;
+    }else
+        return  NO;
+}
+//选择是调用
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"section %ld,  item: %ld",indexPath.section, indexPath.row);
+}
 ```
 
 
