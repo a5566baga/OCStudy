@@ -395,5 +395,74 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
 ```
 #####8、无数据下，直接创建视图(代理方法、cell的设置都要写)
 ```
+#import "ViewController.h"
+#import "CollectionViewCell.h"
+#import "MyCollectionViewLayout.h"
 
+@interface ViewController ()<UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource, MyCollectionViewDelegate>
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view, typically from a nib.
+    
+    [self initForView];
+    
+}
+
+-(void)initForView{
+    MyCollectionViewLayout * flowLayout = [[MyCollectionViewLayout alloc] init];
+    flowLayout.colm = 4;
+    flowLayout.spacing = 10;
+    flowLayout.inset = UIEdgeInsetsMake(10, 10, 10, 10);
+    flowLayout.delegate = self;
+    
+    UICollectionView * collection = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:flowLayout];
+    
+    [collection registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:@"collectionID"];
+    
+    collection.delegate = self;
+    collection.dataSource = self;
+    collection.backgroundColor = [UIColor colorWithRed:1.0 green:0.502 blue:0.0 alpha:1.0];
+    [self.view addSubview:collection];
+}
+
+#pragma mark
+#pragma mark ========== MyCollectionViewLayout代理方法
+-(float)itemHeightLayout:(MyCollectionViewLayout *)layout indexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row%3 == 2) {
+        return 400;
+    }
+    return 100 + arc4random()%200;
+}
+
+#pragma mark
+#pragma mark ============== collectionViewDelegate
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return 50;
+}
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    CollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionID" forIndexPath:indexPath];
+    
+    cell.numberLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row];
+    cell.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:0.5];
+    
+//    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.JPG", arc4random()%51]];
+    
+    return cell;
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end
 ```
+
+#####最终效果图
+
