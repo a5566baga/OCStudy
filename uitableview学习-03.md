@@ -1,4 +1,4 @@
-#UITableView的自定义
+#UITableViewCell的自定义
 
 ---
 ##MVC模式下的自定义
@@ -156,5 +156,22 @@
  // Dispose of any resources that can be recreated.
 }
 @end
+
+```
+###view层
+#####这里是自定义tableViewCell
+######1、声明要显示的内容，声明属性
+```
+@property(nonatomic, strong)UIImageView * iconImage;
+
+@property(nonatomic, strong)UILabel * titleLabel;
+
+@property(nonatomic, strong)UILabel * detailLabel;
+
+@property(nonatomic, strong)UILabel * priceLabel;
+
+@property(nonatomic, strong)UILabel * seperatedLabel;
+
+@property(nonatomic, strong)Book * book;
 
 ```
