@@ -177,4 +177,17 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
 ######需要写两个类，一个是继承于UICollectionViewCell的类；一个是继承UICollectionViewLayout的类
 
 ####步骤
-#####1、
+#####1、声明属性（放在cell上的内容）
+```
+@interface CollectionViewCell : UICollectionViewCell
+
+@property(nonatomic, strong)UILabel * numberLabel;
+
+@property(nonatomic, strong)UIImageView * imageView;
+
+@end
+```
+#####2、实现初始化方法和layoutSubviews方法
+```
+
+```
