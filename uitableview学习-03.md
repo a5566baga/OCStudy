@@ -30,5 +30,190 @@
 ######1、控制层，主要是和model层与view层的联系
 ######2、完成数据初始化和界面上数据显示的赋值
 ```
+#import "ViewController.h"
+
+#import "Book.h"
+
+#import "BookCell.h"
+
+#import "BookCell2.h"
+
+
+
+@interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
+
+
+
+@property(nonatomic, strong)UITableView * tableView;
+
+@property(nonatomic, strong)NSMutableArray<Book *> * dataModels;
+
+
+
+@end
+
+
+
+@implementation ViewController
+
+
+
+- (void)viewDidLoad {
+
+ [super viewDidLoad];
+
+ // Do any additional setup after loading the view, typically from a nib.
+
+ self.title = @"自定义cell";
+
+ [self initForData];
+
+ [self initForView];
+
+}
+
+- (IBAction)jumpSwip:(id)sender {
+
+
+
+}
+
+
+
+-(void)initForData{
+
+ _dataModels = [NSMutableArray array];
+
+
+
+ NSString * path = [[NSBundle mainBundle] pathForResource:@"bookData" ofType:@"plist"];
+
+ NSArray * array = [NSArray arrayWithContentsOfFile:path];
+
+ for (NSDictionary * dic in array) {
+
+ Book * bookModel = [[Book alloc] initWithDictionary:dic];
+
+ [_dataModels addObject:bookModel];
+
+ }
+
+
+
+}
+
+
+
+-(void)initForView{
+
+ _tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
+
+
+
+// 注册cell
+
+ [self.tableView registerNib:[UINib nibWithNibName:@"BookCell2" bundle:nil] forCellReuseIdentifier:@"xibCell"];
+
+
+
+
+
+ _tableView.delegate = self;
+
+ _tableView.dataSource = self;
+
+ [self.view addSubview:_tableView];
+
+ self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
+
+
+
+
+}
+
+
+
+#pragma mark
+
+#pragma mark =============== delegate
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+
+ return _dataModels.count;
+
+}
+
+
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+#if 1
+
+ static NSString * identifer = @"cellID";
+
+ BookCell * cell = [tableView dequeueReusableCellWithIdentifier:identifer];
+
+ if (nil == cell) {
+
+ cell = [[BookCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifer];
+
+ }
+
+
+
+ cell.book = self.dataModels[indexPath.row];
+
+//#else
+
+// BookCell2 * cell = [tableView dequeueReusableCellWithIdentifier:@"xibCell"];
+
+// cell.model = self.dataModels[indexPath.row];
+
+#endif
+
+ return cell;
+
+}
+
+
+
+#if 1
+
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+ return [self rowHeightByString:self.dataModels[indexPath.row].detail font:[UIFont systemFontOfSize:20]] + 80;
+
+// return 100;
+
+}
+
+
+
+-(float)rowHeightByString:(NSString *)content font:(UIFont *)font{
+
+ CGSize mySize = CGSizeMake(CGRectGetWidth(self.view.frame), CGFLOAT_MAX);
+
+ CGSize size = [content boundingRectWithSize:mySize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:20]} context:nil].size;
+
+ return size.height;
+
+}
+
+#endif
+
+- (void)didReceiveMemoryWarning {
+
+ [super didReceiveMemoryWarning];
+
+ // Dispose of any resources that can be recreated.
+
+}
+
+
+
+@end
 
 ```
