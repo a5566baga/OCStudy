@@ -213,5 +213,37 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
 #####3、声明布局文件的属性和方法
 ######因为要实现高度的随机性，需要代理
 ```
+#import <UIKit/UIKit.h>
+@class MyCollectionViewLayout;
 
+@protocol MyCollectionViewDelegate <NSObject>
+
+-(float)itemHeightLayout:(MyCollectionViewLayout *)layout indexPath:(NSIndexPath*)indexPath;
+
+@end
+
+@interface MyCollectionViewLayout : UICollectionViewLayout
+
+@property(nonatomic, weak)id<MyCollectionViewDelegate>delegate;
+
+//行数
+@property(nonatomic, assign)NSInteger colm;
+//间距
+@property(nonatomic, assign)NSInteger spacing;
+//离边界的宽度
+@property(nonatomic, assign)UIEdgeInsets inset;
+
+@end
 ```
+#######写在.m文件中的匿名类属性
+```
+@interface MyCollectionViewLayout ()
+
+    /**存储数组每列的高度*/
+@property(nonatomic, strong)NSMutableArray * heightArray;
+    /**存储每个item的attribute*/
+@property(nonatomic, strong)NSMutableArray * attributeArray;
+
+@end
+```
+
