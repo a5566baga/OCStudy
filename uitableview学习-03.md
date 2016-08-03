@@ -6,5 +6,7 @@
     2、创建controller层(控制层)
     3、创建view层(显示层)
     4、创建source层(放图片、plist文件)
-    5、Supporting Files (系统自带)
+    5、Supporting Files (系统自带目录，放一些其它的内容)
+
+
 
