@@ -65,4 +65,9 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
     UICollectionViewDataSource
     UICollectionViewDelegateFlowLayout
 
+###头视图和尾视图的注册
+```
+
+```
+
 
