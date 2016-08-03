@@ -191,8 +191,10 @@
 @property(nonatomic, strong)Book * book;
 
 ```
-######2、初始化方法
-``` 
+
+###### 2、初始化方法
+
+```
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier 
 {
  self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -202,3 +204,31 @@
  return self;
 }
 ```
+
+###### 3、初始化控件，将控件添加到视图中
+
+```
+-(void)initForView{
+    _iconImage = [[UIImageView alloc] initWithFrame:CGRectMake(DISTANCE, DISTANCE, 60, 60)];
+    self.iconImage.backgroundColor = [UIColor redColor];
+//    cell的内部view是contentView
+    [self.contentView addSubview:self.iconImage];
+    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX( self.iconImage.frame)+DISTANCE, DISTANCE, CGRectGetWidth(self.frame)-80-30, 30)];
+    _titleLabel.backgroundColor = [UIColor blueColor];
+
+    [self.contentView addSubview:_titleLabel];
+    _detailLabel = [[UILabel alloc] init];
+
+    [self.contentView addSubview:_detailLabel];
+
+    _priceLabel = [[UILabel alloc] init];
+    [self.contentView addSubview:_priceLabel];
+
+    _seperatedLabel = [[UILabel alloc] init];
+    _seperatedLabel.backgroundColor = [UIColor blackColor];
+    [self.contentView addSubview:_seperatedLabel];
+}
+```
+
+
+
