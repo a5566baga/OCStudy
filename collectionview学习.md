@@ -16,8 +16,10 @@
 
 ###创建collectionView
 #####1、布局文件
-######在写collectionView之前要先写布局文件
+######在写collectionView之前要先写布局文件UICollectionViewFlowLayout
+```
+
+```
 #####2、注册cell
-#####3、基本属性
 
 ###代理
