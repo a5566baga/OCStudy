@@ -353,3 +353,15 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
     return self.attributeArray;
 }
 ```
+#####6、系统返回总大小的方法
+```
+-(CGSize)collectionViewContentSize{
+    
+    NSInteger index = [self maxiHeightIndex];
+    return CGSizeMake(self.collectionView.bounds.size.width, [self.heightArray[index] floatValue]);
+}
+```
+#####7、自定义找最大长度的下标和最小的下标
+```
+
+```
