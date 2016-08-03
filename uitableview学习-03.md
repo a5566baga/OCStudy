@@ -12,3 +12,11 @@
 ###model层的设置
 ######1、通过对要解析的内容设置属性值
 ######2、-(instancetype)initWithDictionary:(NSDictionary *)dic;这个方法，把对应的值附到属性上。通过[self setValuesForKeysWithDictionary:dic];这个方法完成赋值，然后再把对象传到数组中去。
+######3、如果要是找不到对应的key，需要用系统的方法进行来判断
+```
+//找不到则执行这个方法
+-(void)setValue:(id)value forUndefinedKey:(NSString *)key{
+// 可以对对象找不到的key进行一定的处理
+}
+
+```
