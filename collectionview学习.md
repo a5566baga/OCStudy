@@ -345,3 +345,10 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
 }
 
 ```
+#####5、返回UICollectionViewLayoutAttributes的属性数组
+###### 里面包含着大小，位置，透明等等属性
+```
+-(NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect{
+    return self.attributeArray;
+}
+```
