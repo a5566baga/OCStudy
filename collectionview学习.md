@@ -210,4 +210,8 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
     self.imageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
 }
 ```
-#####3、
+#####3、声明布局文件的属性和方法
+######因为要实现高度的随机性，需要代理
+```
+
+```
