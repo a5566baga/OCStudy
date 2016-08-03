@@ -229,6 +229,39 @@
     [self.contentView addSubview:_seperatedLabel];
 }
 ```
+######4、写layoutSubviews方法，设定fream值
+```
+-(void)layoutSubviews{
+    _seperatedLabel.frame =CGRectMake(0, CGRectGetMaxY(self.contentView.frame)-1, CGRectGetWidth(self.contentView.frame), 1);
+    
+    float height = [self rowHeightByString:self.detailLabel.text font:self.detailLabel.font];
+    
+    _detailLabel.frame = CGRectMake(CGRectGetMinX(_titleLabel.frame), CGRectGetMaxY(_titleLabel.frame)+DISTANCE, CGRectGetWidth(self.frame)-CGRectGetMaxX(self.iconImage.frame)-2*DISTANCE, height );
+    _detailLabel.font = [UIFont systemFontOfSize:20];
+    _detailLabel.backgroundColor = [UIColor redColor];
+    _detailLabel.numberOfLines = 0;
+    
+    _priceLabel.frame = CGRectMake(CGRectGetMaxX(self.iconImage.frame), CGRectGetMaxY(self.detailLabel.frame)+DISTANCE, 60, 20);
+}
+
+```
+######5、setter方法，为model赋值
+```
+-(void)setBook:(Book *)book{
+    self.iconImage.image = [UIImage imageNamed:book.icon];
+    self.titleLabel.text  = book.title;
+    self.detailLabel.text = book.detail;
+    self.priceLabel.text = book.price;
+}
+```
+######6、重写系统自带返回高度的方法，让高度自适应
+```
+-(float)rowHeightByString:(NSString *)content font:(UIFont *)font{
+    CGSize mySize = CGSizeMake(CGRectGetWidth(self.frame), CGFLOAT_MAX);
+    CGSize size = [content boundingRectWithSize:mySize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:20]} context:nil].size;
+    return size.height;
+}
+```
 
 
 
