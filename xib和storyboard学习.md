@@ -41,6 +41,31 @@
 ######1、创建
 ![](/assets/storyBoard创建.png)
 ######2、拖控件与之前xib类似
-######3、添加nativcationBar和tabBar
+######3、添加navigationController和tabBar
         1、选中一个ViewController
         2、点击【Editor】->【Embed In】
+        3、选择要用的，一般要是都用的话，只创建一个tabBar，多个view创建多个navigationController
+![](/assets/navcationbar创建.png)
+######4、注册使用
+```
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Override point for customization after application launch.
+    _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor redColor];
+//    ViewController * Vc = [[ViewController alloc] init];
+//    获取storyBoard文件
+    UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    获取
+//    UIViewController * vc = [storyBoard instantiateInitialViewController];
+    
+//    UIViewController * vc = [storyBoard instantiateViewControllerWithIdentifier:@"BlueViewController"];
+    
+    ViewController * vc = [storyBoard instantiateInitialViewController];
+    self.window.rootViewController = vc;
+    
+    [self.window makeKeyAndVisible];
+    
+    return YES;
+}
+```
+######5、每个ViewController都要对应一个文件，在文件中进行相关修改
