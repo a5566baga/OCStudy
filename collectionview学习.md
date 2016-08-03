@@ -466,3 +466,4 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
 
 #####最终效果图
 
+![](/assets/自定义collectionCell的瀑布流效果.png)
