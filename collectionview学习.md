@@ -248,5 +248,50 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
 ```
 #####3、初始化行数、空行大小、距边界距离大小
 ```
+//初始化列
+
+-(void)setColm:(NSInteger)colm{
+
+ if (_colm != colm) {
+
+ _colm = colm;
+
+// 如果希望刷新，布局对象。可以通过invalidateLayout来完成
+
+ [self invalidateLayout];
+
+ }
+
+}
+```
+```
+//初始化空行大小
+
+-(void)setSpacing:(NSInteger)spacing{
+
+ if (_spacing != spacing) {
+
+ _spacing = spacing;
+
+ [self invalidateLayout];
+
+ }
+
+}
+```
+```
+//初始化边界距离
+
+-(void)setInset:(UIEdgeInsets)inset{
+
+ if (!UIEdgeInsetsEqualToEdgeInsets(_inset, inset)) {
+
+ _inset = inset;
+
+ [self invalidateLayout];
+
+ }
+
+}
 
 ```
