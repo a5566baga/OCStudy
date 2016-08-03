@@ -57,4 +57,12 @@ _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collec
 ```
 
 ###代理
+######代理delegate
+     self.collectionView.dataSource = self; 
+     self.collectionView.delegate = self;
+######代理所需要的协议
+    UICollectionViewDelegate
+    UICollectionViewDataSource
+    UICollectionViewDelegateFlowLayout
+
 
