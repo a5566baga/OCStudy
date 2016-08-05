@@ -99,4 +99,11 @@ NSKeyValueObservingOptionOld = 0x02,
 [_person addObserver:self forKeyPath:@"age" options:NSKeyValueObservingOptionNew context:nil];
 ```
 
+######删除要观察的对象(写在dealloc方法中)
+```
+删除指定的
+[_person removeObserver:self forKeyPath:@"name"];
+```
+```
 
+```
