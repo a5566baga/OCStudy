@@ -110,3 +110,65 @@ static MyNotificationCenter * notification = nil;
 
 @end
 ```
+- MyNotificationCenter.m
+
+```
+#import "MyNotificationCenter.h"
+
+static MyNotificationCenter * notification = nil;
+
+@interface MyNotificationCenter ()
+
+@property(nonatomic, strong)NSMutableArray<Model *> * modelArray;
+
+@end
+
+@implementation MyNotificationCenter
+
++(instancetype)defaultCenter{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        notification = [[MyNotificationCenter alloc] init];
+    });
+    
+//    @synchronized () {
+//        if (nil == notification) {
+//        }
+//        return notification;
+//    }
+    return notification;
+}
+
+-(void)addObserver:(id)observer selector:(SEL)aSelector name:(NSString *)aName object:(id)anObject{
+    
+    Model * model = [[Model alloc] initWithObserver:observer selecto:aSelector name:aName object:anObject];
+    [self.modelArray addObject:model];
+    
+}
+
+-(void)postNotificationName:(NSString *)aName object:(id)anObject userInfo:(NSDictionary *)aUserInfo{
+    for (Model * model in self.modelArray) {
+        if ([model.aName isEqualToString:aName]) {
+            [model.observer performSelector:model.aSelector withObject:aUserInfo];
+        }
+    }
+}
+
+-(void)removeObserver:(id)observer{
+    for (NSInteger i = self.modelArray.count-1; i >= 0; i--) {
+        if (self.modelArray[i].observer == observer) {
+            [self.modelArray removeObjectAtIndex:i];
+        }
+    }
+}
+
+-(NSMutableArray *)modelArray{
+    if (nil == _modelArray) {
+        _modelArray = [[NSMutableArray alloc] init];
+    }
+    return _modelArray;
+}
+
+@end
+```
+
