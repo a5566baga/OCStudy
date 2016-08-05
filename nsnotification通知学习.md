@@ -29,6 +29,12 @@
 ```
 [[NSNotificationCenter defaultCenter] removeObserver:self name:@"notification" object:nil];
 ```
-####3、作用
 
+####3、作用
+    1、用作逆向传值使用
+    2、可以解耦合    
 ####4、注意事项
+    如果@selecter中的方法有参数，那么参数类型是NSNotification; 
+        name是通知的名字,可以区分是哪一个通知；
+        obj如果存放了一对象，那么你发送通知时也必须有一个相同的对象。否则通知发送不成功。
+    发送通知，通过name判断，name名字一样就发送消息。
