@@ -93,6 +93,7 @@ static MyNotificationCenter * notification = nil;
 ######之后的使用方式如同系统使用一样
 #######全部代码如下
 - MyNotificationCenter.h
+
 ```
 #import <Foundation/Foundation.h>
 #import "Model.h"
