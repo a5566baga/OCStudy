@@ -30,6 +30,6 @@
     * [UICollectionView学习](collectionview学习.md)
     * [KVC&KVO学习](kvckvo学习.md)
     * [补充动画\(转场动画\)](补充动画转场动画.md)
-    * NSNotification通知学习
+    * [NSNotification通知学习](nsnotification通知学习.md)
     * [常用的属性、易犯错误、提示点、封装的方法](常用的属性、易犯错误、提示点、封装的方法.md)
 
