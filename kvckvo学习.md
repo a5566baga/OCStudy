@@ -82,3 +82,14 @@ forKeyPath：被观察者的属性；
 options：回调方法获取什么样的参数；
 context：nil
 ```
+######当添加观察对象对应的key值发生改变的时候，这时候会调用方法,显示更改的值
+```
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
+    NSLog(@"%@", change);
+}
+```
+######两种看change值的属性
+```
+NSKeyValueObservingOptionNew = 0x01,
+NSKeyValueObservingOptionOld = 0x02,
+```
