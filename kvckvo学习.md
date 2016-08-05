@@ -67,3 +67,5 @@ NSDictionary * dic = @{@"banner":@"AUTO", @"speed":@300};
     NSLog(@"%@", value);
 }
 ```
+---
+
