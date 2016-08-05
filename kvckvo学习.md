@@ -93,3 +93,8 @@ context：nil
 NSKeyValueObservingOptionNew = 0x01,
 NSKeyValueObservingOptionOld = 0x02,
 ```
+>使用
+```
+[_person addObserver:self forKeyPath:@"name" options:NSKeyValueObservingOptionOld context:nil];
+[_person addObserver:self forKeyPath:@"age" options:NSKeyValueObservingOptionNew context:nil];
+```
