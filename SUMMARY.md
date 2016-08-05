@@ -28,5 +28,6 @@
     * [UITableView学习-03](uitableview学习-03.md)
     * [xib和storyboard学习](xib和storyboard学习.md)
     * [CollectionView学习](collectionview学习.md)
-    * KVC&KVO学习
+    * [KVC&KVO学习](kvckvo学习.md)
+    * 补充动画\(转场动画\)
 
