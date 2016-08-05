@@ -20,3 +20,12 @@
 
 ## UITableView
 
+## xib和storyboard
+
+## UICollectionView
+
+## 导航栏转场动画
+
+## NSNotification
+
+## KVC&KVO
