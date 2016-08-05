@@ -92,3 +92,20 @@ static MyNotificationCenter * notification = nil;
 
 ######之后的使用方式如同系统使用一样
 #######全部代码如下
+- MyNotificationCenter.h
+```
+#import <Foundation/Foundation.h>
+#import "Model.h"
+
+@interface MyNotificationCenter : NSObject
+
++(instancetype)defaultCenter;
+
+- (void)addObserver:(id)observer selector:(SEL)aSelector name:(nullable NSString *)aName object:(nullable id)anObject;
+
+- (void)postNotificationName:(NSString *)aName object:(nullable id)anObject userInfo:(nullable NSDictionary *)aUserInfo;
+
+- (void)removeObserver:(id)observer;
+
+@end
+```
