@@ -70,6 +70,8 @@ NSDictionary * dic = @{@"banner":@"AUTO", @"speed":@300};
 ---
 
 #KVO
+    作用当被观察对象的属性被修改了，允许对象接收到通知
+    最好不要添加多个观察者，这个极耗性能
 >KVO (NSKeyValueObserving)
 
 ```
