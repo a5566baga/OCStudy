@@ -90,3 +90,4 @@ static MyNotificationCenter * notification = nil;
 }
 ```
 
+######之后的使用方式如同系统使用一样
