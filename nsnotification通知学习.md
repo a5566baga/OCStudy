@@ -38,3 +38,20 @@
         name是通知的名字,可以区分是哪一个通知；
         obj如果存放了一对象，那么你发送通知时也必须有一个相同的对象。否则通知发送不成功。
     发送通知，通过name判断，name名字一样就发送消息。
+
+---
+
+##自定义通知
+####思路：
+#####1、创建一个单例
+```
+static MyNotificationCenter * notification = nil;
++(instancetype)defaultCenter{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        notification = [[MyNotificationCenter alloc] init];
+    });
+    return notification;
+}
+```
+#####2、仿照系统创建方法
