@@ -52,5 +52,18 @@ NSDictionary * dic = @{@"banner":@"AUTO", @"speed":@300};
 
 #####自定义
 ```
+//自定义的setValue forKey 的简单实现原理
+-(void)mySetValue:(id)value forKey:(NSString *)key{
+    NSString * selStr = [NSString stringWithFormat:@"set%@:", [key capitalizedString]];
+    SEL sel = NSSelectorFromString(selStr);
+    if ([self respondsToSelector:sel]) {
+        [self performSelector:sel withObject:value];
+    }else{
+        [self mySetValue:value forUnderFindKey:key];
+    }
+}
 
+-(void)mySetValue:(id)value forUnderFindKey:(NSString *)key{
+    NSLog(@"%@", value);
+}
 ```
