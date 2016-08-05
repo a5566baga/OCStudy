@@ -18,7 +18,17 @@
 ```
 ######通过字典进行赋值
 ```
+NSDictionary * dic = @{@"banner":@"AUTO", @"speed":@300};
+[car setValuesForKeysWithDictionary:dic];
+```
+######注意：
+>1、当通过此方法添加不存在的key的时候，要重写此方法
 
 ```
+-(void)setValue:(id)value forUndefinedKey:(NSString *)key{
+    
+}
+```
+>
 #####2、可以通过嵌套赋值setValue:forKeyPath,里面可以用.语法
 
