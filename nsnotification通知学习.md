@@ -171,4 +171,42 @@ static MyNotificationCenter * notification = nil;
 
 @end
 ```
+- Model.h
+
+```
+#import <Foundation/Foundation.h>
+
+//- (void)addObserver:(id)observer selector:(SEL)aSelector name:(nullable NSString *)aName object:(nullable id)anObject;
+@interface Model : NSObject
+
+@property(nonatomic, strong)id observer;
+@property(nonatomic, assign)SEL aSelector;
+@property(nonatomic, copy)NSString * aName;
+@property(nonatomic, strong)id anObject;
+
+-(instancetype)initWithObserver:(id)observer selecto:(SEL)aSelector name:(NSString * )aName object:(id)anObject;
+
+@end
+```
+- Model.m
+
+```
+#import "Model.h"
+
+@implementation Model
+
+-(instancetype)initWithObserver:(id)observer selecto:(SEL)aSelector name:(NSString *)aName object:(id)anObject{
+    self = [super init];
+    if (self) {
+        self.observer = observer;
+        self.aSelector = aSelector;
+        self.aName = aName;
+        self.anObject = anObject;
+    }
+    return self;
+}
+
+@end
+```
+
 
