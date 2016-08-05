@@ -55,5 +55,20 @@ static MyNotificationCenter * notification = nil;
 }
 ```
 #####2、仿照系统创建方法
->- (void)addObserver:(id)observer selector:(SEL)aSelector name:(nullable NSString *)aName object:(nullable id)anObject;
+> -(void)addObserver:(id)observer selector:(SEL)aSelector name:(nullable NSString *)aName object:(nullable id)anObject;
 
+```
+
+```
+
+>-(void)postNotificationName:(NSString *)aName object:(nullable id)anObject userInfo:(nullable NSDictionary *)aUserInfo;
+
+```
+
+```
+
+>-(void)removeObserver:(id)observer;
+
+```
+
+```
