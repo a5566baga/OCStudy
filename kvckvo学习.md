@@ -13,6 +13,11 @@
 ```
 ######在外面可以通过KVC方式进行赋值
 ```
+[car setValue:@"BMW" forKey:@"banner"];
+[car setValue:@120 forKey:@"speed"];
+```
+######通过字典进行赋值
+```
 
 ```
 #####2、可以通过嵌套赋值setValue:forKeyPath,里面可以用.语法
