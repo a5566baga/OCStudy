@@ -37,4 +37,4 @@ NSDictionary * dic = @{@"banner":@"AUTO", @"speed":@300};
 }
 ```
 #####2、可以通过嵌套赋值setValue:forKeyPath,里面可以用.语法
-
+######
