@@ -70,3 +70,4 @@ NSDictionary * dic = @{@"banner":@"AUTO", @"speed":@300};
 ---
 
 #KVO
+    KVO (NSKeyValueObserving)
