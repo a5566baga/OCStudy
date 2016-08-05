@@ -29,5 +29,5 @@
     * [xib和storyboard学习](xib和storyboard学习.md)
     * [CollectionView学习](collectionview学习.md)
     * [KVC&KVO学习](kvckvo学习.md)
-    * 补充动画\(转场动画\)
+    * [补充动画\(转场动画\)](补充动画转场动画.md)
 
