@@ -71,3 +71,12 @@ NSDictionary * dic = @{@"banner":@"AUTO", @"speed":@300};
 
 #KVO
     KVO (NSKeyValueObserving)
+```
+[self addObserver:<#(nonnull NSObject *)#> forKeyPath:<#(nonnull NSString *)#> options:<#(NSKeyValueObservingOptions)#> context:<#(nullable void *)#>]
+```
+
+```
+
+self：被观察者；addObserver：观察者；forKeyPath：被观察者的属性；options：回调方法获取什么样的参数；context：nil
+
+```
