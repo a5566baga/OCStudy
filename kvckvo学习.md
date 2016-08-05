@@ -106,6 +106,4 @@ NSKeyValueObservingOptionOld = 0x02,
 删除指定的
 [_person removeObserver:self forKeyPath:@"name"];
 ```
-```
 
-```
