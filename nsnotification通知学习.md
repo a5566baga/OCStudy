@@ -20,5 +20,11 @@
 ```
 [[NSNotificationCenter defaultCenter] postNotificationName:@"notification" object:nil userInfo:@{@"key":@"value"}];
 ```
+######删除
+>删除一个通知
+```
+[[NSNotificationCenter defaultCenter] removeObserver:self];
+```
+>
 ####3、作用
 ####4、注意事项
