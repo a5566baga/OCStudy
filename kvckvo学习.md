@@ -45,4 +45,7 @@ NSDictionary * dic = @{@"banner":@"AUTO", @"speed":@300};
 ```
 @property(nonatomic, strong)NSNumber * power;
 ```
-
+######通过path传递，能把engine对象中的属性赋值
+```
+[car setValue:@300 forKeyPath:@"engine.power"];
+```
