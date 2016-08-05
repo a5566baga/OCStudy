@@ -37,4 +37,12 @@ NSDictionary * dic = @{@"banner":@"AUTO", @"speed":@300};
 }
 ```
 #####2、可以通过嵌套赋值setValue:forKeyPath,里面可以用.语法
-######
+######为Car类中添加一个Engine属性
+```
+@property(nonatomic, strong)Engine * engine;
+```
+#####为Engine定义一个属性
+```
+@property(nonatomic, strong)NSNumber * power;
+```
+
