@@ -32,7 +32,9 @@ NSDictionary * dic = @{@"banner":@"AUTO", @"speed":@300};
 >2、当如果传递数组的时候，不会赋值，这时候要重写这个方法
 
 ```
-
+-(void)setValue:(id)value forKey:(NSString *)key{
+    这里判断数组，并且给数组赋值
+}
 ```
 #####2、可以通过嵌套赋值setValue:forKeyPath,里面可以用.语法
 
