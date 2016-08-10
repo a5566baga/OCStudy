@@ -79,4 +79,9 @@ _thread = [[FCThread alloc] initWithTarget:self selector:@selector(run) object:n
 ```
 [[NSRunLoop currentRunLoop] addPort:[NSPort port] forMode:NSDefaultRunLoopMode];
 ```
-__注意__:
+__注意__:RunLoop 不可以自己创建，每个线程都会有一个Runloop;一开始runloop是静止的，启动一次，就进入循环了.
+
+- 启动Runloop
+```
+一开始runloop是静止的，启动一次，就进入循环了
+```
