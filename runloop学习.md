@@ -17,4 +17,4 @@
 
 ## 使用
 ###NSRunLoop（Foundation中的）
-###CFRunLoopRef（Core Foundation）
+###CFRunLoopRef（Core Foundation中的）
