@@ -16,3 +16,5 @@
 ---
 
 ## 使用
+###NSRunLoop（Foundation中的）
+###CFRunLoopRef（Core Foundation）
