@@ -75,3 +75,8 @@ _thread = [[FCThread alloc] initWithTarget:self selector:@selector(run) object:n
 [_thread start];
 ```
 
+- 为runloop添加信息
+```
+[[NSRunLoop currentRunLoop] addPort:[NSPort port] forMode:NSDefaultRunLoopMode];
+```
+__注意__:
