@@ -56,6 +56,7 @@ CFRunLoopObserverRef observer = CFRunLoopObserverCreateWithHandler(CFAllocatorGe
 ```
 
 - 将创建的observer添加到当前loop中
+
 ```
 CFRunLoopAddObserver(CFRunLoopGetCurrent(), observer, kCFRunLoopDefaultMode);
 ```
