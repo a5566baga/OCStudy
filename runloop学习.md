@@ -71,7 +71,7 @@ CFRelease(observer);
 ```
 _thread = [[FCThread alloc] initWithTarget:self selector:@selector(run) object:nil];
 ```
-
 ```
 [_thread start];
 ```
+
