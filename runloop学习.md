@@ -32,6 +32,19 @@ self.imageView.image = [UIImage imageNamed:@"QQ20160805-0.png"];
 
 ###NSRunLoop与线程之间的使用
 #####观察者（观察runloop的使用情况）
+- 创建一个观察者
+```
+CFRunLoopObserverRef observer = CFRunLoopObserverCreateWithHandler(CFAllocatorGetDefault(), kCFRunLoopAllActivities, YES, 0, ^(CFRunLoopObserverRef observer, CFRunLoopActivity activity) {
+        NSLog(@"------ 活动的状态 -----%zd", activity);
+    });
 ```
 
+- 将创建的observer添加到当前loop中
+```
+CFRunLoopAddObserver(CFRunLoopGetCurrent(), observer, kCFRunLoopDefaultMode);
+```
+
+- 手动release（CF开头，有create的要删除。即使是在ARC）
+```
+CFRelease(observer);
 ```
