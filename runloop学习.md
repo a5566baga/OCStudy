@@ -21,3 +21,15 @@
 - NSRunLoop和CFRunLoopRef都代表着RunLoop对象。
 - NSRunLoop是基于CFRunLoopRef的一层OC包装，所以要了解RunLoop内部结构，需要多研究CFRunLoopRef层面的API（Core Foundation层面）。
 
+######简单的例子（计时器）
+
+```
+NSTimer * timer = [NSTimer timerWithTimeInterval:3 target:self selector:@selector(run) userInfo:nil repeats:YES];
+ [[NSRunLoop currentRunLoop] addTimer:timer forMode:UITrackingRunLoopMode];
+self.imageView.image = [UIImage imageNamed:@"QQ20160805-0.png"];
+```
+
+###NSRunLoop与线程之间的使用
+```
+
+```
