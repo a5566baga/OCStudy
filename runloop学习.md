@@ -66,7 +66,11 @@ CFRelease(observer);
 ```
 
 #####创建一个子线程，并且让子线程加入Runloop
-- 1.创建一个线程
+- 1.创建一个线程，并且start
 ```
 _thread = [[FCThread alloc] initWithTarget:self selector:@selector(run) object:nil];
+```
+
+```
+[_thread start];
 ```
