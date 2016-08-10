@@ -34,7 +34,12 @@ self.imageView.image = [UIImage imageNamed:@"QQ20160805-0.png"];
 #####观察者（观察runloop的使用情况）
 #####CFRunLoopActivity状态返回
 - kCFRunLoopEntry = (1UL << 0)   <tr>返回值为1
-- kCFRunLoopBeforeTimers = (1UL << 1)    <br>返回值为2
+- kCFRunLoopBeforeTimers = (1UL << 1)    <tr>返回值为2
+- kCFRunLoopBeforeSources = (1UL << 2)  <tr>返回值为4
+- kCFRunLoopBeforeWaiting = (1UL << 5)  <tr>返回值为32
+- kCFRunLoopAfterWaiting = (1UL << 6)   <tr>返回值64
+- kCFRunLoopExit = (1UL << 7)     <tr>返回值为128
+- kCFRunLoopAllActivities = 0x0FFFFFFFU
 
 - 创建一个观察者
 ```
