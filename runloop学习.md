@@ -22,7 +22,8 @@
 - NSRunLoop是基于CFRunLoopRef的一层OC包装，所以要了解RunLoop内部结构，需要多研究CFRunLoopRef层面的API（Core Foundation层面）。
 
 ######简单的例子（计时器）
-
+- 在textView中拖动时，才会调用run里面的方法。
+- UITrackingRunLoopMode scrollView的拖动不受影响
 ```
 NSTimer * timer = [NSTimer timerWithTimeInterval:3 target:self selector:@selector(run) userInfo:nil repeats:YES];
  [[NSRunLoop currentRunLoop] addTimer:timer forMode:UITrackingRunLoopMode];
