@@ -32,7 +32,9 @@ self.imageView.image = [UIImage imageNamed:@"QQ20160805-0.png"];
 
 ###NSRunLoop与线程之间的使用
 #####观察者（观察runloop的使用情况）
-#####
+#####CFRunLoopActivity状态返回
+- kCFRunLoopEntry = (1UL << 0)   <tr>返回值为1
+- kCFRunLoopBeforeTimers = (1UL << 1)    <br>返回值为2
 
 - 创建一个观察者
 ```
