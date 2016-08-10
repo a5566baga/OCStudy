@@ -32,6 +32,8 @@ self.imageView.image = [UIImage imageNamed:@"QQ20160805-0.png"];
 
 ###NSRunLoop与线程之间的使用
 #####观察者（观察runloop的使用情况）
+#####
+
 - 创建一个观察者
 ```
 CFRunLoopObserverRef observer = CFRunLoopObserverCreateWithHandler(CFAllocatorGetDefault(), kCFRunLoopAllActivities, YES, 0, ^(CFRunLoopObserverRef observer, CFRunLoopActivity activity) {
