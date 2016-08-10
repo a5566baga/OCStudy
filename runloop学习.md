@@ -21,6 +21,9 @@
 - NSRunLoop和CFRunLoopRef都代表着RunLoop对象。
 - NSRunLoop是基于CFRunLoopRef的一层OC包装，所以要了解RunLoop内部结构，需要多研究CFRunLoopRef层面的API（Core Foundation层面）。
 
+#####CFRunLoopModeRef 列表
+
+
 ######简单的例子（计时器）
 - 在textView中拖动时，才会调用run里面的方法。
 - UITrackingRunLoopMode scrollView的拖动不受影响
