@@ -22,7 +22,11 @@
 - NSRunLoop是基于CFRunLoopRef的一层OC包装，所以要了解RunLoop内部结构，需要多研究CFRunLoopRef层面的API（Core Foundation层面）。
 
 #####CFRunLoopModeRef 列表
-
+- kCFRunLoopDefaultMode <tr>App的默认Mode，通常主线程是在这个Mode下运行
+- UITrackingRunLoopMode <tr>界面跟踪 Mode，用于 ScrollView 追踪触摸滑动，保证界面滑动时不受其他 Mode 影响
+- UIInitializationRunLoopMode <tr> 在刚启动 App 时第进入的第一个 Mode，启动完成后就不再使用
+- GSEventReceiveRunLoopMode <tr> 接受系统事件的内部 Mode，通常用不到
+- kCFRunLoopCommonModes  <tr> 这是一个占位用的Mode，不是一种真正的Mode
 
 ######简单的例子（计时器）
 - 在textView中拖动时，才会调用run里面的方法。
