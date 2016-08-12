@@ -53,7 +53,7 @@ NSURLConnection * connect = [[NSURLConnection alloc] initWithRequest:request del
     NSError * err = nil;
     //    注：response会获取响应头中的数据
     NSData * data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&err];
-    
+
     UIImage * image = [UIImage imageWithData:data];
     self.imageVIew.image = image;
 }
@@ -68,7 +68,7 @@ NSURLConnection * connect = [[NSURLConnection alloc] initWithRequest:request del
     //    2、创建一个请求对象(注：创建对象是就会有请求头中的参数)
     //    默认是get请求
     //    NSURLRequest * request = [[NSURLRequest alloc] initWithURL:url];
-    
+
     //    如果规定是post，那么就创建
     //    NSMutableURLRequest * request = [[NSMutableURLRequest alloc] initWithURL:url];
     //    我们可以设置超时的时间,要开plist
@@ -76,7 +76,7 @@ NSURLConnection * connect = [[NSURLConnection alloc] initWithRequest:request del
     [request setHTTPMethod:@"GET"];
     //    request.HTTPBody post请求时需要用到
     [request setValue:@"image/png" forHTTPHeaderField:@"Accept-Encoding"];
-    
+
     //    3、发送请求
     [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
         NSLog(@"%@", [NSThread currentThread]);
@@ -85,7 +85,7 @@ NSURLConnection * connect = [[NSURLConnection alloc] initWithRequest:request del
             self.imageVIew.image = image;
         }];
     }];
-    
+
     //    [NSThread sleepForTimeInterval:1];
     NSLog(@"---------");
     NSLog(@"--------%@", [NSThread currentThread]);
@@ -106,22 +106,22 @@ NSURLConnection * connect = [[NSURLConnection alloc] initWithRequest:request del
 -(void)connectionDelegate{
     //    创建
     _downData = [[NSMutableData alloc] init];
-    
+
     //    1、请求的URL
     NSURL * url = [NSURL URLWithString:@"http://4k.znds.com/20140314/8kznds1.jpg"];
     //    2、创建一个请求对象(注：创建对象是就会有请求头中的参数)
     NSURLRequest * request = [[NSURLRequest alloc] initWithURL:url];
-    
+
     //    [NSURLConnection connectionWithRequest:request delegate:self];
-    
+
     //    [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
-    
+
     NSURLConnection * connect = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
     //    如果不是立即执行。我们必须手动启动它
     [connect start];
     //    取消
 //    [connect cancel];
-    
+
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
 ```
@@ -147,7 +147,7 @@ NSURLConnection * connect = [[NSURLConnection alloc] initWithRequest:request del
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection{
     NSLog(@"%s", __func__);
     UIImage * image = [UIImage imageWithData:self.downData];
-    
+
     self.imageVIew.image = image;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
@@ -160,4 +160,15 @@ NSURLConnection * connect = [[NSURLConnection alloc] initWithRequest:request del
     NSLog(@"%s", __func__);
 }
 ```
+
+#### 发送请求的步骤：
+
+> 1.设置请求路径
+> 2.创建请求对象
+> 3.发送请求
+>     3.1发送同步请求（一直在等待服务器返回数据，这行代码会卡住，如果服务器，没有返回数据，那么在主线程UI会卡住不能继续执行操作）有返回值
+>     3.2发送异步请求：没有返回值
+> 
+> 说明：任何NSURLRequest默认都是get请求。
+> 注意：GET请求中不存在请求体，因为所有的信息都写在URL里面。在IOS里面，请求行和请求头都不用写。
 
