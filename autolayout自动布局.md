@@ -46,4 +46,77 @@
 > #### 要用代码关闭AutoreSizing
 > 
 > #### 约束条件不要重复，要都约束完整
+> 
+> #### AutoLayout添加约束，一定要明确地让系统知道控件的大小和位置
+
+#### 视图中布局：
+
+![](/assets/StoryBoard中设置布局.png)
+
+#### 代码布局：
+
+> #### 1、声明view
+> 
+> #### 2、禁用autoresizing
+> 
+> #### 3、添加到当前view中
+> 
+> #### 4、设置NSLayoutConstraint
+> 
+> #### 5、将约束条件添加到view中
+
+![](/assets/代码自动布局.png)
+
+#### 代码实现：
+
+> #### 注意对应，和约束条件要完整，不同视图之间的约束要加在他们共同的父视图上
+
+```
+    //蓝色View
+    UIView * blueView = [[UIView alloc]init];
+    blueView.backgroundColor = [UIColor blueColor];
+    blueView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:blueView];
+    
+    //高
+    NSLayoutConstraint * bHeightConstraint = [NSLayoutConstraint constraintWithItem:blueView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0 constant:60];
+    [blueView addConstraint:bHeightConstraint];
+    
+    //左
+    NSLayoutConstraint * bLeftConstraint = [NSLayoutConstraint constraintWithItem:blueView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:20];
+    
+    //顶
+    NSLayoutConstraint * bTopConstraint = [NSLayoutConstraint constraintWithItem:blueView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:64];
+    
+    //右
+    NSLayoutConstraint * bRightConstraint = [NSLayoutConstraint constraintWithItem:blueView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:-20];
+    
+    [self.view addConstraints:@[bLeftConstraint,bTopConstraint,bRightConstraint]];
+    
+    
+    //----------------设置红色View
+    
+    //红色View
+    UIView * redView = [[UIView alloc]init];
+    redView.backgroundColor = [UIColor redColor];
+    redView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:redView];
+    
+    //上
+    NSLayoutConstraint * rTopConstrain = [NSLayoutConstraint constraintWithItem:redView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:blueView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:20];
+    
+    
+    //左
+    NSLayoutConstraint * rleftConstraint = [NSLayoutConstraint constraintWithItem:redView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:blueView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    
+    //右
+    NSLayoutConstraint * rRightConstraint = [NSLayoutConstraint constraintWithItem:redView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:blueView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0];
+    
+    //高度
+    NSLayoutConstraint * rHeightConstraint = [NSLayoutConstraint constraintWithItem:redView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:blueView attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0];
+    
+    [self.view addConstraints:@[rleftConstraint,rTopConstrain,rRightConstraint,rHeightConstraint]];
+    
+
+```
 
