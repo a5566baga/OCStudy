@@ -234,3 +234,33 @@ NSURLConnection * connect = [[NSURLConnection alloc] initWithRequest:request del
 
 #### 4、数据下载多次的调用的代理方法（在这里写数据的拼接）
 
+```
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
+//    下载数据，多次
+    [self.picData appendData:data];
+//     加上data去文件后面
+    [self.handle writeData:data];
+    NSLog(@"%ld", data.length);
+    float precent = 1.0*[self.picData length] / [self.fileTotle integerValue];
+    self.progress.progress = precent;
+}
+```
+
+#### 5、数据下载完毕
+
+```
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection{
+//    结束下载
+    UIImage * image = [UIImage imageWithData:self.picData];
+    self.imageView.image = image;
+    NSLog(@"==========");
+    
+    float precent = 1.0*[self.picData length] / [self.fileTotle integerValue];
+    self.progress.progress = precent;
+    
+    //    关闭文件
+    [self.handle closeFile];
+//    [self.handle synchronizeFile];
+}
+```
+
