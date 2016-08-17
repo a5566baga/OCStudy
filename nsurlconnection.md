@@ -186,7 +186,7 @@ NSURLConnection * connect = [[NSURLConnection alloc] initWithRequest:request del
 -(void)startRequest{
     _urlStr = @"http://img.zcool.cn/community/033ef53557121b80000004383e36a19.jpg";
     //    NSString * string = @"http://img.zcool.cn/community/033ef53557121b80000004383e36a19.jpg";
-    
+
 //    创建文件
     _fm = [NSFileManager defaultManager];
     if (![_fm fileExistsAtPath:[self memoryPath]]) {
@@ -195,12 +195,12 @@ NSURLConnection * connect = [[NSURLConnection alloc] initWithRequest:request del
     _handle = [NSFileHandle fileHandleForUpdatingAtPath:[self memoryPath]];
     [self.picData setData:[_handle readDataToEndOfFile]];
     [_handle seekToEndOfFile];
-    
+
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:_urlStr] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10];
-    
+
     NSString * rangStr = [NSString stringWithFormat:@"bytes=%ld-", [self.picData length]];
     [request setValue:rangStr forHTTPHeaderField:@"Range"];
-    
+
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         _connect = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
 //        self.runloop = [NSRunLoop currentRunLoop];
@@ -220,5 +220,15 @@ NSURLConnection * connect = [[NSURLConnection alloc] initWithRequest:request del
 }
 ```
 
-#### 3、
+#### 3、开始下载的代理方法
+
+```
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
+//    开始下载
+    [_connect start];
+    self.fileTotle = [NSNumber numberWithInteger: response.expectedContentLength + [self.picData length]];
+}
+```
+
+#### 4、数据下载多次的调用的代理方法（在这里写数据的拼接）
 
