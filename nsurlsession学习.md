@@ -160,8 +160,6 @@ didReceiveResponse:(NSURLResponse *)response
 }
 ```
 
-
-
 ---
 
 ## Session的断点续传
@@ -186,7 +184,7 @@ didReceiveResponse:(NSURLResponse *)response
     self.session = [NSURLSession sessionWithConfiguration:congfiguration delegate:self delegateQueue:[[NSOperationQueue alloc] init]];
 //    对session的描述
     self.session.sessionDescription = @"defaultSession";
-    
+
 }
 ```
 
@@ -210,7 +208,7 @@ didReceiveResponse:(NSURLResponse *)response
         self.downloadTask = [self.session downloadTaskWithRequest:request];
     }
     [self.downloadTask resume];
-    
+
 }
 ```
 
@@ -277,5 +275,145 @@ didFinishDownloadingToURL:(NSURL *)location{
         self.bgImage.image = [UIImage imageWithData:self.data];
     });
 }
+```
+
+
+
+---
+
+### 完整代码
+
+```
+#import "ViewController.h"
+
+@interface ViewController ()<NSURLSessionDownloadDelegate>
+
+@property (weak, nonatomic) IBOutlet UIImageView *bgImage;
+@property(nonatomic, strong)NSURLSessionDownloadTask * downloadTask;
+@property(nonatomic, strong)NSURLSession * session;
+//存储下载的数据
+@property(nonatomic, strong)NSData * data;
+
+//后台下载
+@property(nonatomic, strong)NSURLSession * backGroundSession;
+@property(nonatomic, strong)NSURLSessionDownloadTask * backGroundTask;
+
+
+@property (weak, nonatomic) IBOutlet UIProgressView *progress;
+- (IBAction)downloadTask:(id)sender;
+- (IBAction)intruptDownTask:(id)sender;
+- (IBAction)backGroundDown:(id)sender;
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view, typically from a nib.
+//    [self createDefaultSession];
+}
+
+-(void)createDefaultSession{
+    NSURLSessionConfiguration * congfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    self.session = [NSURLSession sessionWithConfiguration:congfiguration delegate:self delegateQueue:[[NSOperationQueue alloc] init]];
+//    对session的描述
+    self.session.sessionDescription = @"defaultSession";
+    
+}
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)downloadTask:(id)sender {
+//    1、确定存在一个会话
+    if (self.session == nil) {
+        [self createDefaultSession];
+    }
+//    创建一个任务
+    NSURL * url = [NSURL URLWithString:@"http://attach.bbs.miui.com/forum/201501/29/154842zxxna28m7i3nhadj.jpg"];
+//    NSURL * url = [NSURL URLWithString:@"http://desk.fd.zol-img.com.cn/t_s2560x1600c5/g5/M00/05/07/ChMkJleprBSIcf7rAAmFKP43miEAAUS_wNrOtsACYVA923.jpg"];
+    NSURLRequest * request = [NSURLRequest requestWithURL:url];
+//     创建一个下载任务
+//    self.data = [NSData data];
+    if (self.data) {
+        self.downloadTask = [self.session downloadTaskWithResumeData:self.data];
+    }else{
+        self.downloadTask = [self.session downloadTaskWithRequest:request];
+    }
+    [self.downloadTask resume];
+    
+}
+
+- (IBAction)intruptDownTask:(id)sender {
+    if (self.downloadTask) {
+//        获取取消值时，下载的数据
+        [self.downloadTask cancelByProducingResumeData:^(NSData * _Nullable resumeData) {
+            self.data = resumeData;
+        }];
+        self.downloadTask = nil;
+    }
+//    取消下载
+//    [self.downloadTask cancel];
+}
+
+//后台下载数据
+- (IBAction)backGroundDown:(id)sender {
+    NSURL * url = [NSURL URLWithString:@"http://attach.bbs.miui.com/forum/201501/29/154842zxxna28m7i3nhadj.jpg"];
+    NSURLRequest * request = [NSURLRequest requestWithURL:url];
+    self.backGroundTask = [self.backGroundSession downloadTaskWithRequest:request];
+    [self.backGroundTask resume];
+}
+-(NSURLSession *)backGroundSession{
+    //    要保证在程序进入后台运行时，存在所以写一个静态对象。
+    static NSURLSession * backgroundSession = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSURLSessionConfiguration * config = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"com.ben.back"];
+        backgroundSession = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
+    });
+    return backgroundSession;
+}
+
+//下载结束
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
+didFinishDownloadingToURL:(NSURL *)location{
+    NSLog(@"下载完成");
+    NSLog(@"%@", location);
+    self.data = [NSData dataWithContentsOfURL:location];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.bgImage.image = [UIImage imageWithData:self.data];
+    });
+}
+//可能会被调用多次
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
+      didWriteData:(int64_t)bytesWritten
+ totalBytesWritten:(int64_t)totalBytesWritten
+totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite{
+//    self.data appendBytes:<#(nonnull const void *)#> length:<#(NSUInteger)#>
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.progress.progress = 1.0*totalBytesWritten/totalBytesExpectedToWrite;
+    });
+    NSLog(@"%lld ------------- %lld _____________ %lld", bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
+}
+//恢复下载的时候调用方法
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
+ didResumeAtOffset:(int64_t)fileOffset
+expectedTotalBytes:(int64_t)expectedTotalBytes{
+    NSLog(@"%s", __func__);
+//    当前下载的数量， 总大小
+    NSLog(@"%lld ========= %lld", fileOffset, expectedTotalBytes);
+}
+#pragma mark
+#pragma mark ============ NSURLSessionDelegate
+//在后台下载完毕后
+- (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session{
+    NSLog(@"++++++++++++++++++++++");
+}
+@end
 ```
 
