@@ -134,8 +134,8 @@
     NSLayoutAttributeBaseline,
     NSLayoutAttributeLastBaseline = NSLayoutAttributeBaseline,
     NSLayoutAttributeFirstBaseline NS_ENUM_AVAILABLE_IOS(8_0),
-    
-    
+
+
     NSLayoutAttributeLeftMargin NS_ENUM_AVAILABLE_IOS(8_0),
     NSLayoutAttributeRightMargin NS_ENUM_AVAILABLE_IOS(8_0),
     NSLayoutAttributeTopMargin NS_ENUM_AVAILABLE_IOS(8_0),
@@ -144,7 +144,17 @@
     NSLayoutAttributeTrailingMargin NS_ENUM_AVAILABLE_IOS(8_0),
     NSLayoutAttributeCenterXWithinMargins NS_ENUM_AVAILABLE_IOS(8_0),
     NSLayoutAttributeCenterYWithinMargins NS_ENUM_AVAILABLE_IOS(8_0),
-    
+
     NSLayoutAttributeNotAnAttribute = 0
 ```
+
+##### 大小条件
+
+```
+    NSLayoutRelationLessThanOrEqual = -1,
+    NSLayoutRelationEqual = 0,
+    NSLayoutRelationGreaterThanOrEqual = 1,
+```
+
+
 
