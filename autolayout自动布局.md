@@ -35,11 +35,15 @@
     [self.view addSubview:_blueView];
 ```
 
-
-
 ---
 
 ## AutoLayout自动布局
 
+### 介绍：
 
+> #### 比停靠方式更加强大的布局方式
+> 
+> #### 要用代码关闭AutoreSizing
+> 
+> #### 约束条件不要重复，要都约束完整
 
