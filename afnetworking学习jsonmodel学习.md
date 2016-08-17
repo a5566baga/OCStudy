@@ -184,9 +184,15 @@
 
 ## JSONModel学习
 
-#### 说明：
+### 说明：
 
 > #### 1、这个主要是在创建model的时候不同，有了很强大的功能
 > 
 > #### 2、使用第三方库，注意看文档
+
+### 官方说明：
+
+> https:\/\/github.com\/jsonmodel\/jsonmodel
+
+![](/assets/JSONModel.md)
 
