@@ -70,57 +70,81 @@
 #### 代码实现：
 
 > #### 注意对应，和约束条件要完整，不同视图之间的约束要加在他们共同的父视图上
-> 
-> ```
-> 
-> 
->     //蓝色View
->     UIView * blueView = [[UIView alloc]init];
->     blueView.backgroundColor = [UIColor blueColor];
->     blueView.translatesAutoresizingMaskIntoConstraints = NO;
->     [self.view addSubview:blueView];
-> 
->     //高
->     NSLayoutConstraint * bHeightConstraint = [NSLayoutConstraint constraintWithItem:blueView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0 constant:60];
->     [blueView addConstraint:bHeightConstraint];
-> 
->     //左
->     NSLayoutConstraint * bLeftConstraint = [NSLayoutConstraint constraintWithItem:blueView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:20];
-> 
->     //顶
->     NSLayoutConstraint * bTopConstraint = [NSLayoutConstraint constraintWithItem:blueView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:64];
-> 
->     //右
->     NSLayoutConstraint * bRightConstraint = [NSLayoutConstraint constraintWithItem:blueView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:-20];
-> 
->     [self.view addConstraints:@[bLeftConstraint,bTopConstraint,bRightConstraint]];
-> 
-> 
->     //----------------设置红色View
-> 
->     //红色View
->     UIView * redView = [[UIView alloc]init];
->     redView.backgroundColor = [UIColor redColor];
->     redView.translatesAutoresizingMaskIntoConstraints = NO;
->     [self.view addSubview:redView];
-> 
->     //上
->     NSLayoutConstraint * rTopConstrain = [NSLayoutConstraint constraintWithItem:redView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:blueView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:20];
-> 
-> 
->     //左
->     NSLayoutConstraint * rleftConstraint = [NSLayoutConstraint constraintWithItem:redView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:blueView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
-> 
->     //右
->     NSLayoutConstraint * rRightConstraint = [NSLayoutConstraint constraintWithItem:redView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:blueView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0];
-> 
->     //高度
->     NSLayoutConstraint * rHeightConstraint = [NSLayoutConstraint constraintWithItem:redView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:blueView attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0];
-> 
->     [self.view addConstraints:@[rleftConstraint,rTopConstrain,rRightConstraint,rHeightConstraint]];
-> 
-> 
-> ```
+
+```
+ //蓝色View
+    UIView * blueView = [[UIView alloc]init];
+    blueView.backgroundColor = [UIColor blueColor];
+    blueView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:blueView];
+
+    //高
+    NSLayoutConstraint * bHeightConstraint = [NSLayoutConstraint constraintWithItem:blueView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0 constant:60];
+    [blueView addConstraint:bHeightConstraint];
+
+    //左
+    NSLayoutConstraint * bLeftConstraint = [NSLayoutConstraint constraintWithItem:blueView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:20];
+
+    //顶
+    NSLayoutConstraint * bTopConstraint = [NSLayoutConstraint constraintWithItem:blueView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:64];
+
+    //右
+    NSLayoutConstraint * bRightConstraint = [NSLayoutConstraint constraintWithItem:blueView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:-20];
+
+    [self.view addConstraints:@[bLeftConstraint,bTopConstraint,bRightConstraint]];
 
 
+    //----------------设置红色View
+
+    //红色View
+    UIView * redView = [[UIView alloc]init];
+    redView.backgroundColor = [UIColor redColor];
+    redView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:redView];
+
+    //上
+    NSLayoutConstraint * rTopConstrain = [NSLayoutConstraint constraintWithItem:redView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:blueView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:20];
+
+
+    //左
+    NSLayoutConstraint * rleftConstraint = [NSLayoutConstraint constraintWithItem:redView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:blueView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+
+    //右
+    NSLayoutConstraint * rRightConstraint = [NSLayoutConstraint constraintWithItem:redView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:blueView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0];
+
+    //高度
+    NSLayoutConstraint * rHeightConstraint = [NSLayoutConstraint constraintWithItem:redView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:blueView attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0];
+
+    [self.view addConstraints:@[rleftConstraint,rTopConstrain,rRightConstraint,rHeightConstraint]];
+```
+
+##### 约束条件
+
+```
+    NSLayoutAttributeLeft = 1,
+    NSLayoutAttributeRight,
+    NSLayoutAttributeTop,
+    NSLayoutAttributeBottom,
+    NSLayoutAttributeLeading,
+    NSLayoutAttributeTrailing,
+    NSLayoutAttributeWidth,
+    NSLayoutAttributeHeight,
+    NSLayoutAttributeCenterX,
+    NSLayoutAttributeCenterY,
+    NSLayoutAttributeBaseline,
+    NSLayoutAttributeLastBaseline = NSLayoutAttributeBaseline,
+    NSLayoutAttributeFirstBaseline NS_ENUM_AVAILABLE_IOS(8_0),
+    
+    
+    NSLayoutAttributeLeftMargin NS_ENUM_AVAILABLE_IOS(8_0),
+    NSLayoutAttributeRightMargin NS_ENUM_AVAILABLE_IOS(8_0),
+    NSLayoutAttributeTopMargin NS_ENUM_AVAILABLE_IOS(8_0),
+    NSLayoutAttributeBottomMargin NS_ENUM_AVAILABLE_IOS(8_0),
+    NSLayoutAttributeLeadingMargin NS_ENUM_AVAILABLE_IOS(8_0),
+    NSLayoutAttributeTrailingMargin NS_ENUM_AVAILABLE_IOS(8_0),
+    NSLayoutAttributeCenterXWithinMargins NS_ENUM_AVAILABLE_IOS(8_0),
+    NSLayoutAttributeCenterYWithinMargins NS_ENUM_AVAILABLE_IOS(8_0),
+    
+    NSLayoutAttributeNotAnAttribute = 0
+```
 
