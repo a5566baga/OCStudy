@@ -172,3 +172,11 @@ NSURLConnection * connect = [[NSURLConnection alloc] initWithRequest:request del
 > 说明：任何NSURLRequest默认都是get请求。
 > 注意：GET请求中不存在请求体，因为所有的信息都写在URL里面。在IOS里面，请求行和请求头都不用写。
 
+
+
+---
+
+## 断点续传
+
+
+
