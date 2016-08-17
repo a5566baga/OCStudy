@@ -156,5 +156,91 @@
     NSLayoutRelationGreaterThanOrEqual = 1,
 ```
 
+### VFL语言
 
+> #### 利用可视化对视图进行布局
+> 
+> #### 需要设置字典，字符串，view
+
+#### 例子一：
+
+```
+-(void)testVFL1{
+    //    写一个蓝色的view，离左右边界为20，顶部top为64，高度是60
+    UIView * blueView = [[UIView alloc] init];
+    blueView.backgroundColor = [UIColor blueColor];
+    blueView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:blueView];
+    
+    NSString * vfl = @"H:|-20-[abc]-20-|";
+    NSDictionary * views = @{@"abc":blueView};
+    //    VFL字符创语句    约束操作    VFL中的具体数值    控件
+    NSArray<NSLayoutConstraint *> * constraint = [NSLayoutConstraint constraintsWithVisualFormat:vfl options:kNilOptions metrics:nil views:views];
+    
+    [self.view addConstraints:constraint];
+    
+    NSString * vfl2 = @"V:|-20-[abc(50)]";
+    NSDictionary * views2 = @{@"abc":blueView};
+    NSArray<NSLayoutConstraint *> * constraints2= [NSLayoutConstraint constraintsWithVisualFormat:vfl2 options:kNilOptions metrics:nil views:views2];
+    [self.view addConstraints:constraints2];
+}
+```
+
+#### 例子二：
+
+```
+-(void)testTwo{
+    UIView * topView = [[UIView alloc] init];
+    topView.backgroundColor = [UIColor blueColor];
+    topView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:topView];
+    
+    UIView * downView = [[UIView alloc] init];
+    downView.backgroundColor = [UIColor orangeColor];
+    downView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:downView];
+    
+    //    水平约束
+    NSNumber * margin = @20;
+    NSString * topVFL = @"H:|-margin-[topView]-margin-|";
+    //    会自动将这个view转换成一个字典dictionary
+    NSDictionary * topViewDic = NSDictionaryOfVariableBindings(topView);
+    //    NSDictionary * topMerics = @{@"margin": margin};
+    NSDictionary * topMerics = NSDictionaryOfVariableBindings(margin);
+    NSArray<NSLayoutConstraint *> * topConstraints = [NSLayoutConstraint constraintsWithVisualFormat:topVFL options:kNilOptions metrics:topMerics views:topViewDic];
+    [self.view addConstraints:topConstraints];
+    
+    //    垂直约束
+    NSNumber * topHeight = @80;
+    NSString * topVFLV = @"V:|-margin-[topView(topHeight)]";
+    NSDictionary * topViewDicV = NSDictionaryOfVariableBindings(topView);
+    NSDictionary * topMericsV = NSDictionaryOfVariableBindings(margin ,topHeight);
+    NSArray<NSLayoutConstraint *> * topConstrainsV = [NSLayoutConstraint constraintsWithVisualFormat:topVFLV options:kNilOptions metrics:topMericsV views:topViewDicV];
+    [self.view addConstraints:topConstrainsV];
+    
+    //    下面高度
+    NSString * downVFL = @"V:[topView]-margin-[downView(==topView)]";
+    NSDictionary * downViewDic = NSDictionaryOfVariableBindings(topView, downView);
+    NSDictionary * downMerics = NSDictionaryOfVariableBindings(margin);
+    NSArray<NSLayoutConstraint *> * downConstrains = [NSLayoutConstraint constraintsWithVisualFormat:downVFL options:kNilOptions metrics:downMerics views:downViewDic];
+    [self.view addConstraints:downConstrains];
+    
+    //    下面宽度
+    NSString * downVFLH = @"H:|-margin-[downView]-margin-|";
+    NSDictionary * downViewDicH = NSDictionaryOfVariableBindings(downView);
+    NSDictionary * downMericsH = NSDictionaryOfVariableBindings(margin);
+    NSArray<NSLayoutConstraint *> * downConstrainsH = [NSLayoutConstraint constraintsWithVisualFormat:downVFLH options:kNilOptions metrics:downMericsH views:downViewDicH];
+    [self.view addConstraints:downConstrainsH];
+}
+```
+
+
+
+
+
+---
+
+## 第三方——Masonry进行布局
+
+> 
 
