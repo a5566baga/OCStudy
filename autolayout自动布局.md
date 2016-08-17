@@ -24,5 +24,22 @@
      UIViewAutoresizingFlexibleBottomMargin = 1 << 5 下面伸缩
 ```
 
+![](/assets/停靠模式.png)
+
+#### 代码使用
+
+```
+    _blueView = [[UIView alloc] initWithFrame:CGRectMake(10, 30, 300, 50)];
+    _blueView.backgroundColor = [UIColor blueColor];
+    _blueView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
+    [self.view addSubview:_blueView];
+```
+
+
+
+---
+
+## AutoLayout自动布局
+
 
 
