@@ -33,6 +33,18 @@
 
 ##### post方法提交信息
 
+> #### 注意：
+> 
+> ##### 可能出现字符串编码问题
+> 
+> ```
+> [@"" stringByAddingPercentEncodingWithAllowedCharacters:<#(nonnull NSCharacterSet *)#>]
+> ```
+> 
+> ```
+> [@"" stringByAddingPercentEscapesUsingEncoding:<#(NSStringEncoding)#>]
+> ```
+
 ```
 NSURL * url = [NSURL URLWithString:@"http://v.juhe.cn/toutiao/index"];
 NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:url];
@@ -47,7 +59,20 @@ NSURLSessionDataTask * dataTask = [urlSession dataTaskWithRequest:request comple
 [dataTask resume];
 ```
 
+upload上传数据
 
+```
+NSURL * url = [NSURL URLWithString:@"http://v.juhe.cn/toutiao/index?type=%E7%A7%91%E6%8A%80&key=f47260da59b9944239ef813344918073"];
+NSURLRequest * request = [NSURLRequest requestWithURL:url];
+NSURLSession * urlSession = [NSURLSession sharedSession];
+//创建一个上传数据（虚拟的）
+NSString * uploadData = @"abcdefghijklmn";
+NSURLSessionUploadTask * uploadTask = [urlSession uploadTaskWithRequest:request fromData:[uploadData dataUsingEncoding:NSUTF8StringEncoding] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSString * content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@", content);
+    }];
+[uploadTask resume];
+```
 
 ---
 
