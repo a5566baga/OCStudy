@@ -160,3 +160,122 @@ didReceiveResponse:(NSURLResponse *)response
 }
 ```
 
+
+
+---
+
+## Session的断点续传
+
+#### 思路：
+
+> #### 1、创建连接
+> 
+> #### 2、创建会话
+> 
+> #### 3、后台下载
+> 
+> #### 4、通过代理方法实现NSData的拼接
+
+#### 代码实现——
+
+##### 1、创建连接
+
+```
+-(void)createDefaultSession{
+    NSURLSessionConfiguration * congfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    self.session = [NSURLSession sessionWithConfiguration:congfiguration delegate:self delegateQueue:[[NSOperationQueue alloc] init]];
+//    对session的描述
+    self.session.sessionDescription = @"defaultSession";
+    
+}
+```
+
+##### 2、创建会话（点击开始下载）
+
+```
+- (IBAction)downloadTask:(id)sender {
+//    1、确定存在一个会话
+    if (self.session == nil) {
+        [self createDefaultSession];
+    }
+//    创建一个任务
+    NSURL * url = [NSURL URLWithString:@"http://attach.bbs.miui.com/forum/201501/29/154842zxxna28m7i3nhadj.jpg"];
+//    NSURL * url = [NSURL URLWithString:@"http://desk.fd.zol-img.com.cn/t_s2560x1600c5/g5/M00/05/07/ChMkJleprBSIcf7rAAmFKP43miEAAUS_wNrOtsACYVA923.jpg"];
+    NSURLRequest * request = [NSURLRequest requestWithURL:url];
+//     创建一个下载任务
+//    self.data = [NSData data];
+    if (self.data) {
+        self.downloadTask = [self.session downloadTaskWithResumeData:self.data];
+    }else{
+        self.downloadTask = [self.session downloadTaskWithRequest:request];
+    }
+    [self.downloadTask resume];
+    
+}
+```
+
+##### 3、后台下载（设置成静态）
+
+```
+- (IBAction)backGroundDown:(id)sender {
+    NSURL * url = [NSURL URLWithString:@"http://attach.bbs.miui.com/forum/201501/29/154842zxxna28m7i3nhadj.jpg"];
+    NSURLRequest * request = [NSURLRequest requestWithURL:url];
+    self.backGroundTask = [self.backGroundSession downloadTaskWithRequest:request];
+    [self.backGroundTask resume];
+}
+
+-(NSURLSession *)backGroundSession{
+    //    要保证在程序进入后台运行时，存在所以写一个静态对象。
+    static NSURLSession * backgroundSession = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSURLSessionConfiguration * config = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"com.ben.back"];
+        backgroundSession = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
+    });
+    return backgroundSession;
+}
+```
+
+##### 4、代理的方法处理
+
+> 多次下数据调用
+
+```
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
+      didWriteData:(int64_t)bytesWritten
+ totalBytesWritten:(int64_t)totalBytesWritten
+totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite{
+//    self.data appendBytes:<#(nonnull const void *)#> length:<#(NSUInteger)#>
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.progress.progress = 1.0*totalBytesWritten/totalBytesExpectedToWrite;
+    });
+    NSLog(@"%lld ------------- %lld _____________ %lld", bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
+}
+```
+
+> 再次启动下载
+
+```
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
+ didResumeAtOffset:(int64_t)fileOffset
+expectedTotalBytes:(int64_t)expectedTotalBytes{
+    NSLog(@"%s", __func__);
+//    当前下载的数量， 总大小
+    NSLog(@"%lld ========= %lld", fileOffset, expectedTotalBytes);
+}
+```
+
+> 下载完成
+
+```
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
+didFinishDownloadingToURL:(NSURL *)location{
+    NSLog(@"下载完成");
+    NSLog(@"%@", location);
+    self.data = [NSData dataWithContentsOfURL:location];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.bgImage.image = [UIImage imageWithData:self.data];
+    });
+}
+```
+
