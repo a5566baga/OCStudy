@@ -31,9 +31,25 @@
     [dataTask resume];
 ```
 
+##### post方法提交信息
+
+```
+NSURL * url = [NSURL URLWithString:@"http://v.juhe.cn/toutiao/index"];
+NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:url];
+NSString * parm = @"type=科技&key=f47260da59b9944239ef813344918073";
+request.HTTPMethod = @"POST";
+request.HTTPBody = [parm dataUsingEncoding:NSUTF8StringEncoding];
+NSURLSession * urlSession = [NSURLSession sharedSession];
+NSURLSessionDataTask * dataTask = [urlSession dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSDictionary * dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+        NSLog(@"%@", dic);
+    }];
+[dataTask resume];
+```
+
+
+
 ---
-
-
 
 ## 数据下载相关
 
