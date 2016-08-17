@@ -87,23 +87,23 @@ NSURLSessionUploadTask * uploadTask = [urlSession uploadTaskWithRequest:request 
 //        沙盒中的temp目录。会在其中创建一个临时文件。下载完成后删除
 //        file:///Users/zhangzengqiang/Library/Developer/CoreSimulator/Devices/0C8E5CB1-7E70-403F-A366-01FC6F1B6DCB/data/Containers/Data/Application/8E2C5086-6FB4-42DB-8933-7B24A3F37F8E/tmp/CFNetworkDownload_8OaGGg.tmp
         NSLog(@"%@", location);
-        
+
 //        让文件转移到目录
         NSString * documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
         NSString * fullDocPath = [documentPath stringByAppendingPathComponent:[location lastPathComponent]];
-        
+
         NSURL * fullDocURL = [NSURL fileURLWithPath:fullDocPath];
-        
+
         [[NSFileManager defaultManager] moveItemAtURL:location toURL:fullDocURL error:nil];
-        
+
         NSLog(@"%@",[NSThread currentThread]);
-        
+
         dispatch_async(dispatch_get_main_queue(), ^{
             _imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:fullDocURL]];
         });
-        
+
     }];
-    
+
     [downLoadTask resume];
 ```
 
@@ -133,7 +133,30 @@ NSURLSessionUploadTask * uploadTask = [urlSession uploadTaskWithRequest:request 
 
 ##### 1、服务器响应
 
+```
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+didReceiveResponse:(NSURLResponse *)response
+ completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler{
+    NSLog(@"%s", __func__);
+//    允许处理服务器的响应
+    completionHandler(NSURLSessionResponseAllow);
+}
+```
+
 ##### 2、多次调用数据
 
+```
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+    didReceiveData:(NSData *)data{
+    NSLog(@"| %s", __func__);
+}
+```
+
 ##### 3、无论请求成功还是失败的都会调用的方法
+
+```
+-(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error{
+    NSLog(@"%s ++", __func__);
+}
+```
 
