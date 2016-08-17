@@ -54,14 +54,14 @@
             self.progress.progress = 1.0*downloadProgress.completedUnitCount/downloadProgress.totalUnitCount;
         }];
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+
         //        请求成功
         //        NSLog(@"%@", responseObject);
         UIImage * image = [UIImage imageWithData:responseObject];
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             _imageView.image = image;
         }];
-        
+
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //        请求失败
         NSLog(@"%@", error);
@@ -76,11 +76,11 @@
     AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
     NSDictionary * parmerters = @{@"type":@"top",@"key":@"f47260da59b9944239ef813344918073"};
     [manager POST:@"http://v.juhe.cn/toutiao/index" parameters:parmerters progress:^(NSProgress * _Nonnull uploadProgress) {
-        
+
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"%@", responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+
     }];
 }
 ```
@@ -94,7 +94,7 @@
             self.imageView.image = image;
         });
     } failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
-        
+
     }];
 }
 ```
@@ -113,7 +113,7 @@
         NSLog(@"%@", targetPath);
 //        下载的文件路径
         NSString * docmentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
-        
+
         return [NSURL fileURLWithPath:[docmentPath stringByAppendingPathComponent:@"image"]];
     } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -121,7 +121,7 @@
         }];
         NSLog(@"%@", filePath);
     }];
-    
+
     [task resume];
 }
 ```
@@ -138,17 +138,17 @@
         UIImage * image = [UIImage imageNamed:@"QQ20160805-0"];
         NSData * data = UIImagePNGRepresentation(image);
         [formData appendPartWithFileData:data name:@"file" fileName:@"QQ20160805-0" mimeType:@"image/png"];
-        
+
     } progress:^(NSProgress * _Nonnull uploadProgress) {
 //        上传文件的进度
-        
-        
+
+
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 //        成功请求
-        
+
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 //        失败请求
-        
+
     }];
 }
 ```
@@ -165,11 +165,11 @@
         [formData appendPartWithFileURL:@"上传文件URL" name:@"" fileName:@"" mimeType:@"image/jpg" error:nil];
 
     } progress:^(NSProgress * _Nonnull uploadProgress) {
-        
+
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+
     }];
 }
 ```
@@ -177,4 +177,16 @@
 ### 官方说明：
 
 
+
+
+
+---
+
+## JSONModel学习
+
+#### 说明：
+
+> #### 1、这个主要是在创建model的时候不同，有了很强大的功能
+> 
+> #### 2、使用第三方库，注意看文档
 
