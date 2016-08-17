@@ -222,6 +222,8 @@ NSURLConnection * connect = [[NSURLConnection alloc] initWithRequest:request del
 
 #### 3、开始下载的代理方法
 
+> 注意：这里要处理再次下载的时候，要计算现在下载存储了数据的大小，为了能在后面继续拼接，不出现错误
+
 ```
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
 //    开始下载
