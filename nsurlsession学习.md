@@ -277,8 +277,6 @@ didFinishDownloadingToURL:(NSURL *)location{
 }
 ```
 
-
-
 ---
 
 ### 完整代码
@@ -318,10 +316,10 @@ didFinishDownloadingToURL:(NSURL *)location{
     self.session = [NSURLSession sessionWithConfiguration:congfiguration delegate:self delegateQueue:[[NSOperationQueue alloc] init]];
 //    对session的描述
     self.session.sessionDescription = @"defaultSession";
-    
+
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -346,7 +344,7 @@ didFinishDownloadingToURL:(NSURL *)location{
         self.downloadTask = [self.session downloadTaskWithRequest:request];
     }
     [self.downloadTask resume];
-    
+
 }
 
 - (IBAction)intruptDownTask:(id)sender {
@@ -416,4 +414,8 @@ expectedTotalBytes:(int64_t)expectedTotalBytes{
 }
 @end
 ```
+
+#### 展示——
+
+
 
