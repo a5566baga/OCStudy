@@ -172,11 +172,53 @@ NSURLConnection * connect = [[NSURLConnection alloc] initWithRequest:request del
 > 说明：任何NSURLRequest默认都是get请求。
 > 注意：GET请求中不存在请求体，因为所有的信息都写在URL里面。在IOS里面，请求行和请求头都不用写。
 
-
-
 ---
 
 ## 断点续传
 
+### 思路：
 
+> #### 要明确在在哪里操作，我们下载的东西存在沙盒的tmp目录下的Cache中。所以我们要在代理的方法中进行读写操作，拼接NSData。
+
+#### 1、请求数据
+
+```
+-(void)startRequest{
+    _urlStr = @"http://img.zcool.cn/community/033ef53557121b80000004383e36a19.jpg";
+    //    NSString * string = @"http://img.zcool.cn/community/033ef53557121b80000004383e36a19.jpg";
+    
+//    创建文件
+    _fm = [NSFileManager defaultManager];
+    if (![_fm fileExistsAtPath:[self memoryPath]]) {
+        [_fm createFileAtPath:[self memoryPath] contents:nil attributes:nil];
+    }
+    _handle = [NSFileHandle fileHandleForUpdatingAtPath:[self memoryPath]];
+    [self.picData setData:[_handle readDataToEndOfFile]];
+    [_handle seekToEndOfFile];
+    
+    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:_urlStr] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10];
+    
+    NSString * rangStr = [NSString stringWithFormat:@"bytes=%ld-", [self.picData length]];
+    [request setValue:rangStr forHTTPHeaderField:@"Range"];
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        _connect = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+//        self.runloop = [NSRunLoop currentRunLoop];
+        CFRunLoopRun();
+    });
+}
+```
+
+#### 2、创建本地存储下载数据的目录结构
+
+```
+-(NSString *)memoryPath{
+    NSString * document = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
+    NSString * nameMD5 = [self.urlStr stringFromMD5];
+    NSString * path = [document stringByAppendingPathComponent:nameMD5];
+    return path;
+}
+```
+
+#### 3、
 
