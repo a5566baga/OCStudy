@@ -254,6 +254,123 @@ NSURLConnection * connect = [[NSURLConnection alloc] initWithRequest:request del
     UIImage * image = [UIImage imageWithData:self.picData];
     self.imageView.image = image;
     NSLog(@"==========");
+
+    float precent = 1.0*[self.picData length] / [self.fileTotle integerValue];
+    self.progress.progress = precent;
+
+    //    关闭文件
+    [self.handle closeFile];
+//    [self.handle synchronizeFile];
+}
+```
+
+
+
+---
+
+
+
+### 完整代码示例
+
+```
+#import "ViewController.h"
+#import "NSString+MD5Addition.h"
+
+@interface ViewController ()<NSURLConnectionDataDelegate>
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIProgressView *progress;
+//全局的发送请求
+@property (nonatomic, strong)NSURLConnection * connect;
+
+@property (nonatomic, strong)NSMutableData * picData;
+
+//总的下载数据打下
+@property(nonatomic, strong)NSNumber * fileTotle;
+//URL
+@property(nonatomic, copy)NSString * urlStr;
+//文件的读取
+@property(nonatomic, strong) NSFileHandle * handle;
+//文件操作
+@property(nonatomic, strong)NSFileManager * fm;
+
+- (IBAction)startDownLoad:(id)sender;
+- (IBAction)stopDownLoad:(id)sender;
+
+@end
+
+@implementation ViewController
+
+-(NSMutableData *)picData{
+    if (_picData == nil) {
+        _picData = [[NSMutableData alloc] init];
+    }
+    return _picData;
+}
+
+-(void)startRequest{
+    _urlStr = @"http://img.zcool.cn/community/033ef53557121b80000004383e36a19.jpg";
+    //    NSString * string = @"http://img.zcool.cn/community/033ef53557121b80000004383e36a19.jpg";
+    
+//    创建文件
+    _fm = [NSFileManager defaultManager];
+    if (![_fm fileExistsAtPath:[self memoryPath]]) {
+        [_fm createFileAtPath:[self memoryPath] contents:nil attributes:nil];
+    }
+    _handle = [NSFileHandle fileHandleForUpdatingAtPath:[self memoryPath]];
+    [self.picData setData:[_handle readDataToEndOfFile]];
+    [_handle seekToEndOfFile];
+    
+    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:_urlStr] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10];
+    
+    NSString * rangStr = [NSString stringWithFormat:@"bytes=%ld-", [self.picData length]];
+    [request setValue:rangStr forHTTPHeaderField:@"Range"];
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        _connect = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+//        self.runloop = [NSRunLoop currentRunLoop];
+        CFRunLoopRun();
+    });
+}
+
+-(NSString *)memoryPath{
+    NSString * document = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
+    NSString * nameMD5 = [self.urlStr stringFromMD5];
+    NSString * path = [document stringByAppendingPathComponent:nameMD5];
+    return path;
+}
+
+- (IBAction)startDownLoad:(id)sender {
+//    [_connect start];
+    [self startRequest];
+}
+
+- (IBAction)stopDownLoad:(id)sender {
+    NSLog(@"]]]]]]]]]]]]]]]]]]]");
+    [_connect cancel];
+}
+
+#pragma mark
+#pragma mark ========== delegate
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
+//    开始下载
+    [_connect start];
+    self.fileTotle = [NSNumber numberWithInteger: response.expectedContentLength + [self.picData length]];
+}
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
+//    下载数据，多次
+    [self.picData appendData:data];
+//     加上data去文件后面
+    [self.handle writeData:data];
+    NSLog(@"%ld", data.length);
+    float precent = 1.0*[self.picData length] / [self.fileTotle integerValue];
+    self.progress.progress = precent;
+}
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection{
+//    结束下载
+    UIImage * image = [UIImage imageWithData:self.picData];
+    self.imageView.image = image;
+    NSLog(@"==========");
     
     float precent = 1.0*[self.picData length] / [self.fileTotle integerValue];
     self.progress.progress = precent;
@@ -262,5 +379,23 @@ NSURLConnection * connect = [[NSURLConnection alloc] initWithRequest:request del
     [self.handle closeFile];
 //    [self.handle synchronizeFile];
 }
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view, typically from a nib.
+//    [self startRequest];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end
 ```
+
+#### 效果图
+
+![](/assets/connect断点续传.png)
 
