@@ -417,5 +417,5 @@ expectedTotalBytes:(int64_t)expectedTotalBytes{
 
 #### 展示——
 
-
+![](/assets/Session的断点续传.png)
 
