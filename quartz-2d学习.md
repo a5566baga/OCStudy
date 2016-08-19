@@ -100,15 +100,82 @@
     [path moveToPoint:CGPointMake(30, 40)];
     [path addLineToPoint:CGPointMake(100, 100)];
     [[UIColor redColor] setStroke];
-    
+
     UIBezierPath * path2 = [UIBezierPath bezierPath];
     [path2 moveToPoint:CGPointMake(120, 120)];
     [path2 addLineToPoint:CGPointMake(200, 200)];
     [[UIColor purpleColor] setStroke];
-    
+
     [path stroke];
     [path2 stroke];
 ```
 
+### 设置曲线：要中间添加一个点
 
+```
+    CGContextMoveToPoint(contextRef, 20, 100);
+    //    绘制曲线
+    CGContextAddQuadCurveToPoint(contextRef, 150, 100, 80, 150);
+    CGContextStrokePath(contextRef);
+```
+
+### 三角形创建
+
+ CGContextMoveToPoint\(contextRef, 30, 100\);
+
+ CGContextAddLineToPoint\(contextRef, 100, 200\);
+
+ CGContextAddLineToPoint\(contextRef, 222, 100\);
+
+\/\/ CGContextAddLineToPoint\(contextRef, 30, 100\);
+
+
+
+\/\/ 设置线或是边界线的颜色
+
+ \[\[UIColor blackColor\] setStroke\];
+
+\/\/ 填充色
+
+ \[\[UIColor redColor\] setFill\];
+
+\/\/ 写填充，会自动闭合
+
+ CGContextClosePath\(contextRef\);
+
+\/\/ 填充颜色
+
+\/\/ CGContextSetFillColorWithColor\(contextRef, \[UIColor redColor\].CGColor\);
+
+\/\/ 填充
+
+\/\/ CGContextFillPath\(contextRef\);
+
+
+
+
+
+\/\/ 设置图型或路静连线
+
+\/\/ CGContextStrokePath\(contextRef\);
+
+
+
+ \/\*
+
+ kCGPathFill,
+
+ kCGPathEOFill,
+
+ kCGPathStroke,
+
+ kCGPathFillStroke,
+
+ kCGPathEOFillStroke
+
+ \*\/
+
+\/\/ 绘制既有边界又有内容
+
+ CGContextDrawPath\(contextRef, kCGPathFillStroke\);
 
