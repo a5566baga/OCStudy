@@ -125,7 +125,6 @@
 > 
 > > #### CGContextClosePath\(contextRef\); 自动闭合
 > > 
-> > 
 > > #### CGContextFillPath\(contextRef\); 填充并且闭合
 > > 
 > > #### CGContextDrawPath\(contextRef, kCGPathFillStroke\); 可以设置填充方式
@@ -143,7 +142,7 @@
     CGContextAddLineToPoint(contextRef, 100, 200);
     CGContextAddLineToPoint(contextRef, 222, 100);
 //    CGContextAddLineToPoint(contextRef, 30, 100);
-    
+
 //    设置线或是边界线的颜色
     [[UIColor blackColor] setStroke];
 //    填充色
@@ -159,5 +158,128 @@
 //    CGContextStrokePath(contextRef);
 //    绘制既有边界又有内容
     CGContextDrawPath(contextRef, kCGPathFillStroke);
+```
+
+### 绘制一个矩形
+
+```
+    CGContextAddRect(contextRef, CGRectMake(80, 80, 180, 180));
+    CGContextSetLineWidth(contextRef, 15);
+    CGContextDrawPath(contextRef, kCGPathStroke);
+    
+    UIBezierPath * path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(80, 300, 100, 100) cornerRadius:50];
+    [[UIColor redColor] setStroke];
+    [path stroke];
+```
+
+![](/assets/绘制矩形.png)
+
+### 绘制圆形
+
+```
+    CGContextAddEllipseInRect(contextRef, CGRectMake(80, 80, 200, 200));
+    [[UIColor whiteColor] setStroke];
+    CGContextSetFillColorWithColor(contextRef, [UIColor blackColor].CGColor);
+    CGContextSetLineWidth(contextRef, 10);
+//    CGContextStrokePath(contextRef);
+    CGContextDrawPath(contextRef, kCGPathFillStroke);
+    
+//    YES顺时针，NO逆时针
+    UIBezierPath * path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(200, 400) radius:100 startAngle:0 endAngle:M_PI*2 clockwise:YES];
+    [path fill];
+```
+
+![](/assets/绘制圆形.png)
+
+### 绘制一个弧（根据圆心设置不同，填充方式也不同）
+
+```
+//    最后一个参数，为0是是顺时针，否则是逆时针
+    CGContextAddArc(contextRef, 100, 100, 80, 0, M_PI/2, 0);
+    CGContextAddLineToPoint(contextRef, 100, 100);
+    CGContextFillPath(contextRef);
+    
+    CGPoint center = CGPointMake(100, 300);
+    UIBezierPath * path = [UIBezierPath bezierPathWithArcCenter:center radius:80 startAngle:0 endAngle:M_PI_2 clockwise:NO];
+    [path fill];
+```
+
+![](/assets/弧（填充的）.png)
+
+### 饼状图
+
+```
+    NSArray * number = @[@20, @30, @50,@22, @90, @120];
+    
+    //    总数
+    float totle = 0;
+    for (NSNumber * num in number) {
+        totle += num.floatValue;
+    }
+    CGPoint point = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
+    
+    //    画第一部分扇形
+    float startAngle = 0;
+    float endAngle = 0;
+    float radius = MIN(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds))/2.0-5;
+    for (NSNumber * num in number) {
+        startAngle = endAngle;
+        endAngle = [num floatValue]/totle*M_PI*2 + startAngle;
+        UIBezierPath * path = [UIBezierPath bezierPathWithArcCenter:point radius:radius startAngle:startAngle endAngle:endAngle clockwise:YES];
+        [[self runColor] setFill];
+        [path addLineToPoint:point];
+        [path fill];
+    }
+```
+
+![](/assets/饼状图.png)
+
+### 绘制文本
+
+```
+    NSString * string = @"绘制的字符串abcdefg";
+    NSDictionary * dic = @{NSFontAttributeName:[UIFont systemFontOfSize:30], NSForegroundColorAttributeName:[UIColor whiteColor]};
+    [string drawInRect:CGRectMake(50, 50, 200, 200) withAttributes:dic];
+```
+
+![](/assets/绘制文本.png)
+
+### 绘制图片
+
+```
+    UIImage * img = [UIImage imageNamed:@"head.jpg"];
+//    [img size];获取图片大小
+//    [img drawInRect:CGRectMake(40, 40, 150, 150)];
+//    在指定点为起点绘制图片
+//    [img drawAtPoint:CGPointMake(150, 150)];
+//    平铺图片，并且显示不下的会被割掉
+    [img drawAsPatternInRect:CGRectMake(50, 50, 200, 200)];
+```
+
+### 切割图片
+
+```
+    UIImage * img = [UIImage imageNamed:@"default"];
+    CGContextAddEllipseInRect(contextRef, CGRectMake(40, 40, 100, 100));
+    CGContextClip(contextRef);
+    CGContextFillPath(contextRef);
+    [img drawInRect:CGRectMake(40, 40, 100, 100)];
+```
+
+![](/assets/剪裁图片.png)
+
+### 平移、缩放（注意位置：原点即\(0,0\)点）
+
+```
+//    原点平移的位置，x平移了140，y值平移了60。可以简单理解为重新设置原点
+//    CGContextTranslateCTM(contextRef, 140, 140);
+//    旋转，按照原点进行旋转多少度。在旋转之后的坐标下平移，位置是根据旋转之后的计算
+    CGContextRotateCTM(contextRef, M_PI_4);
+    CGContextRotateCTM(contextRef, -M_PI_4);
+//    缩放,使原来的坐标缩放了一定的比例
+    CGContextScaleCTM(contextRef, 2, 1);
+    
+    UIImage * img = [UIImage imageNamed:@"default"];
+    [img drawAtPoint:CGPointMake(20, 120)];
 ```
 
