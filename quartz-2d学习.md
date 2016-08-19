@@ -62,10 +62,10 @@
     //    终点位置
     CGContextAddLineToPoint(contextRef, 150, 100);
     CGContextAddLineToPoint(contextRef, 150, 300);
-    
+
     CGContextMoveToPoint(contextRef, 200, 200);
     CGContextAddLineToPoint(contextRef, 300, 500);
-    
+
     //    设置颜色
     CGContextSetStrokeColorWithColor(contextRef, [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:0.5].CGColor);
     //    [[UIColor blueColor] setStroke];
@@ -85,11 +85,30 @@
      */
     //    设置线起始位置样式
     CGContextSetLineCap(contextRef, kCGLineCapRound);
-    
+
     CGContextSetAlpha(contextRef, 0.5);
-    
+
     CGContextStrokePath(contextRef);
 ```
 
 ![](/assets/多条线段绘制.png)
+
+### 贝塞尔曲线:单独的线段
+
+```
+    UIBezierPath * path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake(30, 40)];
+    [path addLineToPoint:CGPointMake(100, 100)];
+    [[UIColor redColor] setStroke];
+    
+    UIBezierPath * path2 = [UIBezierPath bezierPath];
+    [path2 moveToPoint:CGPointMake(120, 120)];
+    [path2 addLineToPoint:CGPointMake(200, 200)];
+    [[UIColor purpleColor] setStroke];
+    
+    [path stroke];
+    [path2 stroke];
+```
+
+
 
