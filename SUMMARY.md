@@ -42,7 +42,7 @@
     * [AFNetworking学习\/JSONModel学习](afnetworking学习jsonmodel学习.md)
     * [AutoLayout自动布局](autolayout自动布局.md)
     * UIWebView学习
-    * Quartz 2D学习
+    * [Quartz 2D学习](quartz-2d学习.md)
 * [设计模式&重要知识点](设计模式重要知识点.md)
     * 单例模式
     * 火车售票问题
