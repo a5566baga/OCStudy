@@ -166,7 +166,7 @@
     CGContextAddRect(contextRef, CGRectMake(80, 80, 180, 180));
     CGContextSetLineWidth(contextRef, 15);
     CGContextDrawPath(contextRef, kCGPathStroke);
-    
+
     UIBezierPath * path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(80, 300, 100, 100) cornerRadius:50];
     [[UIColor redColor] setStroke];
     [path stroke];
@@ -183,7 +183,7 @@
     CGContextSetLineWidth(contextRef, 10);
 //    CGContextStrokePath(contextRef);
     CGContextDrawPath(contextRef, kCGPathFillStroke);
-    
+
 //    YES顺时针，NO逆时针
     UIBezierPath * path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(200, 400) radius:100 startAngle:0 endAngle:M_PI*2 clockwise:YES];
     [path fill];
@@ -198,7 +198,7 @@
     CGContextAddArc(contextRef, 100, 100, 80, 0, M_PI/2, 0);
     CGContextAddLineToPoint(contextRef, 100, 100);
     CGContextFillPath(contextRef);
-    
+
     CGPoint center = CGPointMake(100, 300);
     UIBezierPath * path = [UIBezierPath bezierPathWithArcCenter:center radius:80 startAngle:0 endAngle:M_PI_2 clockwise:NO];
     [path fill];
@@ -210,14 +210,14 @@
 
 ```
     NSArray * number = @[@20, @30, @50,@22, @90, @120];
-    
+
     //    总数
     float totle = 0;
     for (NSNumber * num in number) {
         totle += num.floatValue;
     }
     CGPoint point = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
-    
+
     //    画第一部分扇形
     float startAngle = 0;
     float endAngle = 0;
@@ -278,8 +278,76 @@
     CGContextRotateCTM(contextRef, -M_PI_4);
 //    缩放,使原来的坐标缩放了一定的比例
     CGContextScaleCTM(contextRef, 2, 1);
-    
+
     UIImage * img = [UIImage imageNamed:@"default"];
     [img drawAtPoint:CGPointMake(20, 120)];
 ```
+
+
+
+---
+
+
+
+## 经典小例子
+
+### 下载图形器：
+
+```
+#import "Progress.h"
+
+@interface Progress ()
+
+@property(nonatomic, strong)UILabel * label;
+
+@end
+
+@implementation Progress
+
+
+-(UILabel *)label{
+    if (nil == _label) {
+        _label = [[UILabel alloc] initWithFrame:self.bounds];
+        _label.textAlignment = NSTextAlignmentCenter;
+        _label.text = @"0.00%";
+        [self addSubview:_label];
+    }
+    return _label;
+}
+
+//接收外部传入的数据
+-(void)setProgress:(float)progress{
+    _progress = progress/100;
+    self.label.text = [NSString stringWithFormat:@"%.2f%%", progress];
+    if (progress == 100.0) {
+        self.label.text = [NSString stringWithFormat:@"下载完成 %.2f%%", progress];
+    }
+//    只能被系统调用，如果想让系统调用此方法，必须使用setNeedsDisplay请求系统重绘。（系统重绘的时候调用drawRect方法）
+    [self setNeedsDisplay];
+}
+
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+//不可以手动调用
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+    CGContextRef contextRef = UIGraphicsGetCurrentContext();
+    [self arcShapeDraw:contextRef];
+}
+
+-(void)arcShapeDraw2:(CGContextRef)contextRef{
+    CGContextAddArc(contextRef, 150, 150, 150, 0, M_PI_2, 0);
+    CGContextFillPath(contextRef);
+}
+
+-(void)arcShapeDraw:(CGContextRef)contextRef{
+    UIBezierPath * path = [UIBezierPath bezierPathWithArcCenter:self.label.center radius:130 startAngle:-M_PI_2 endAngle:self.progress*M_PI*2-M_PI_2 clockwise:YES];
+    [path stroke];
+    
+}
+
+@end
+```
+
+![](/assets/计算百分百.png)
 
