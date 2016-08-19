@@ -121,61 +121,43 @@
 
 ### 三角形创建
 
- CGContextMoveToPoint\(contextRef, 30, 100\);
+> #### 填充方式
+> 
+> > #### CGContextClosePath\(contextRef\); 自动闭合
+> > 
+> > 
+> > #### CGContextFillPath\(contextRef\); 填充并且闭合
+> > 
+> > #### CGContextDrawPath\(contextRef, kCGPathFillStroke\); 可以设置填充方式
+> 
+> #### 可选模式
+> 
+> > kCGPathFill,
+> >      kCGPathEOFill,
+> >      kCGPathStroke,
+> >      kCGPathFillStroke,
+> >      kCGPathEOFillStroke
 
- CGContextAddLineToPoint\(contextRef, 100, 200\);
+```
+    CGContextMoveToPoint(contextRef, 30, 100);
+    CGContextAddLineToPoint(contextRef, 100, 200);
+    CGContextAddLineToPoint(contextRef, 222, 100);
+//    CGContextAddLineToPoint(contextRef, 30, 100);
+    
+//    设置线或是边界线的颜色
+    [[UIColor blackColor] setStroke];
+//    填充色
+    [[UIColor redColor] setFill];
+//    写填充，会自动闭合
+    CGContextClosePath(contextRef);
+//    填充颜色
+//    CGContextSetFillColorWithColor(contextRef, [UIColor redColor].CGColor);
+//    填充
+//    CGContextFillPath(contextRef);
 
- CGContextAddLineToPoint\(contextRef, 222, 100\);
-
-\/\/ CGContextAddLineToPoint\(contextRef, 30, 100\);
-
-
-
-\/\/ 设置线或是边界线的颜色
-
- \[\[UIColor blackColor\] setStroke\];
-
-\/\/ 填充色
-
- \[\[UIColor redColor\] setFill\];
-
-\/\/ 写填充，会自动闭合
-
- CGContextClosePath\(contextRef\);
-
-\/\/ 填充颜色
-
-\/\/ CGContextSetFillColorWithColor\(contextRef, \[UIColor redColor\].CGColor\);
-
-\/\/ 填充
-
-\/\/ CGContextFillPath\(contextRef\);
-
-
-
-
-
-\/\/ 设置图型或路静连线
-
-\/\/ CGContextStrokePath\(contextRef\);
-
-
-
- \/\*
-
- kCGPathFill,
-
- kCGPathEOFill,
-
- kCGPathStroke,
-
- kCGPathFillStroke,
-
- kCGPathEOFillStroke
-
- \*\/
-
-\/\/ 绘制既有边界又有内容
-
- CGContextDrawPath\(contextRef, kCGPathFillStroke\);
+//    设置图型或路静连线
+//    CGContextStrokePath(contextRef);
+//    绘制既有边界又有内容
+    CGContextDrawPath(contextRef, kCGPathFillStroke);
+```
 
