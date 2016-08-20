@@ -38,15 +38,34 @@
 
 #### 创建数据表
 
-
+```
+CREATE TABLE IF NOT EXISTS t_student(
+    id integer PRIMARY KEY AUTOINCREMENT,
+    name text,
+    age integer,
+    score real
+)
+```
 
 #### 插入数据
 
+```
+INSERT INTO t_student(name, age, score) VALUES('Rose', 22, 66);
+```
+
 #### 删除数据
+
+```
+DELETE FROM t_student
+```
 
 #### 删除表
 
-#### 修改表结果
+```
+DROP TABLE IF EXISTS t_student;
+```
+
+#### 修改表结构
 
 #### 更新数据
 
