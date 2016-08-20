@@ -67,9 +67,34 @@ DROP TABLE IF EXISTS t_student;
 
 #### 修改表结构
 
+```
+ALTER TABLE table_name
+ADD column_name datatype
+```
+
+```
+ALTER TABLE table_name 
+DROP COLUMN column_name
+```
+
+```
+ALTER TABLE table_name
+ALTER COLUMN column_name datatype
+```
+
 #### 更新数据
 
+```
+UPDATE t_student SET age = 18, score = 100;
+```
+
 #### 查找数据
+
+```
+SELECT * FROM t_class 
+WHERE t_class = 1
+ORDER BY class_id
+```
 
 ---
 
@@ -86,4 +111,6 @@ DROP TABLE IF EXISTS t_student;
 > > 2、检查语句返回结果
 > > 
 > > 3、查询的话要先检查SQL语句的正确性
+
+
 
