@@ -45,6 +45,7 @@
     * [Quartz 2D学习](quartz-2d学习.md)
     * [SQLite学习](sqlite学习.md)
     * [FMDB的使用学习](fmdb的使用学习.md)
+    * [SVN使用学习](svn使用学习.md)
 * [设计模式&重要知识点](设计模式重要知识点.md)
     * 单例模式
     * 火车售票问题
